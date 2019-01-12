@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/01/11 21:26:26 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/01/12 18:16:25 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,22 +25,26 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_strndup.c ft_get_arr.c ft_is_lower.c ft_is_upper.c ft_is_space.c \
 	   get_next_line.c ft_strlen_chr.c
 
-PATH = srcs/
+INCLUDE = -I includes
+
+NAME = libftprintf.a
+
+FLAGS = -Wall -Wextra -Werror
+
+P = obj/
+
+vpath %.c srcs
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -I srcs/includes
-
-NAME = libft.a
-
 all: $(NAME)
 
-$(NAME): $(PATH$(OBJ))
-	ar -rv $(NAME) $(PATH$(OBJ))
+$(NAME): $(OBJ)
+	ar -rv $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 $(OBJ): %.o: %.c
-	gcc $(FLAGS) -c $< -o $@
+	gcc $(FLAGS) $(INCLUDE) -c $< -o $(P)$@
 
 clean:
 	rm -rf $(OBJ)

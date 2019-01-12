@@ -6,11 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 10:27:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:37:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {

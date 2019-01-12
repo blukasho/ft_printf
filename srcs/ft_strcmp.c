@@ -6,11 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 11:21:21 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:27 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:36:58 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 int		ft_strcmp(const char *s1, const char *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 13:56:28 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:28 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:36:59 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 size_t			ft_strlen_chr(const char *s, const char c)
 {

@@ -6,11 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/04 12:17:45 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:28 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:37:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strmap(char const *s, char (*f) (char))
 {

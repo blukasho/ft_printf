@@ -6,11 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:57:07 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:27 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:36:59 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

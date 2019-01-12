@@ -6,11 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 08:46:40 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:36:56 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 static int	count_int(int n)
 {

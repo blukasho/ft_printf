@@ -6,11 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:10:42 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:36:58 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:54:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/11 21:12:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:37:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 static char	*word_cp(char const *s, char c)
 {
