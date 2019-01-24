@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/01/24 11:14:18 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/01/24 12:21:54 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,21 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_putendl_fd.c ft_putnbr_fd.c ft_count_words.c ft_lstnew.c\
 	   ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 	   ft_strndup.c ft_get_arr.c ft_is_lower.c ft_is_upper.c ft_is_space.c\
-	   get_next_line.c ft_strlen_chr.c
+	   get_next_line.c ft_strlen_chr.c ft_printf.c
 
-VPATH = srcs:obj
+VPATH = srcs
 
 OBJ = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror -I includes
 
-NAME = libft.a
+NAME = libftprintf.a
+
 
 all: $(NAME)
+
+printf: $(NAME)
+	gcc $(FLAGS) main.c -o ft_printf -L . -lftprintf
 
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
@@ -47,6 +51,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm ft_printf
 
 re:	fclean all
 
