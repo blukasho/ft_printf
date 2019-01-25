@@ -6,15 +6,16 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/24 12:21:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/25 16:04:07 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+#include <stdio.h>
 
 int		main(void)
 {
-	ft_putnbr(ft_printf("1234"));
-	ft_putendl("");
+	printf("%d%s\n", 11);
+	ft_printf("Hell %d, %d, %d, %s %s!!!\n", 13, 26, 54, "World");
 	return (0);
 }
