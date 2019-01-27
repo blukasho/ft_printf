@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:11:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/25 16:08:23 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/26 12:06:56 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int			ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format != '%')
+		if (!ft_strncmp(format, "%s", 2))
+		{
+			if ((s = va_arg(ap, char *)))
+				ft_putstr(s);
+			format += 2;
+		}
+		else
 			ft_putchar(*(format++));
-		else if (!ft_strncmp("%d", format, 2) && (format += 2))
-			ft_putnbr(va_arg(ap, int));
-		else if (!ft_strncmp("%s", format, 2) && (format += 2))
-			s = va_arg(ap, char *); //Slojno niponyatno
 	}
 	va_end(ap);
 	return (0);

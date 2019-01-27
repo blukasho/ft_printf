@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/01/25 14:50:41 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/01/27 10:23:08 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_strndup.c ft_get_arr.c ft_is_lower.c ft_is_upper.c ft_is_space.c\
 	   get_next_line.c ft_strlen_chr.c ft_printf.c
 
-VPATH = srcs
+vpath %.c srcs
 
 OBJ = $(SRCS:.c=.o)
 
@@ -33,11 +33,10 @@ FLAGS = -Wall -Wextra -I includes
 
 NAME = libftprintf.a
 
+printf: $(NAME)
+	gcc $(FLAGS) srcs/main.c -o ft_printf -L . -lftprintf
 
 all: $(NAME)
-
-printf: $(NAME)
-	gcc $(FLAGS) main.c -o ft_printf -L . -lftprintf
 
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
@@ -51,7 +50,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm ft_printf
+	rm -rf ft_printf
 
 re:	fclean all
 
