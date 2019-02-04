@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/01/27 10:23:08 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/01/27 11:53:41 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ NAME = libftprintf.a
 
 printf: $(NAME)
 	gcc $(FLAGS) srcs/main.c -o ft_printf -L . -lftprintf
+	@echo "<---------------done-------------->"
+	@./ft_printf | cat -e
 
 all: $(NAME)
 

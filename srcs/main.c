@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/27 10:35:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/01/27 10:58:12 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		main(void)
 {
-	printf("Hell %s %s!!!\n", "World");
-	ft_printf("Hell %s %s!!!\n", "World");
+	printf("%5d\n", 123456);
+	ft_printf("Hello %s %s!!!\n", "World");
 	return (0);
 }
