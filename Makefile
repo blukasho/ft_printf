@@ -54,6 +54,6 @@ fclean: clean
 	rm -rf $(NAME)
 	rm -rf ft_printf
 
-re:	fclean all
+re:	fclean printf
 
 .PHONY: all clean fclean re
