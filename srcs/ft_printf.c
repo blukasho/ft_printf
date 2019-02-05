@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:11:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/01/26 12:06:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/05 13:57:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,12 @@
 int			ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	char	*s;
 
 	va_start(ap, format);
 	while (*format)
 	{
-		if (!ft_strncmp(format, "%s", 2))
-		{
-			if ((s = va_arg(ap, char *)))
-				ft_putstr(s);
-			format += 2;
-		}
+		if (*format == '%')
+			parse_format_specifiers(format);
 		else
 			ft_putchar(*(format++));
 	}
