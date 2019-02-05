@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_parser.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
+/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/24 12:11:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/05 18:38:24 by blukasho         ###   ########.fr       */
+/*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
+/*   Updated: 2019/02/05 18:38:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			ft_printf(const char *format, ...)
+void		parse_format_specifiers(const char **format)
 {
-	va_list	ap;
-
-	va_start(ap, format);
-	while (*format)
-	{
-		if (*format == '%')
-			parse_format_specifiers(&format);
-		else
-			ft_putchar(*(format++));
-	}
-	va_end(ap);
-	return (0);
+	(*format)++;
 }

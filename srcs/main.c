@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/05 13:57:31 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/05 18:27:03 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 int		main(void)
 {
+	ft_printf("Hello, %d Worlds!!!\n", 7);
 	return (0);
 }
