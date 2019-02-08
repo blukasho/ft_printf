@@ -24,8 +24,9 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 	   ft_strndup.c ft_get_arr.c ft_is_lower.c ft_is_upper.c ft_is_space.c\
 	   get_next_line.c ft_strlen_chr.c ft_printf.c ft_printf_parser.c\
+	   parse_flags.c
 
-vpath %.c srcs
+vpath %.c srcs srcs/ft_printf
 
 OBJ = $(SRCS:.c=.o)
 
@@ -34,8 +35,8 @@ FLAGS = -Wall -Wextra -I includes
 NAME = libftprintf.a
 
 printf: $(NAME)
-	gcc $(FLAGS) srcs/main.c -o ft_printf -L . -lftprintf
-	@echo "<---------------done-------------->"
+	gcc $(FLAGS) srcs/ft_printf/main.c -o ft_printf -L . -lftprintf
+	@echo "\033[6;32m<---------------done-------------->\033[0m"
 	@./ft_printf | cat -e
 
 all: $(NAME)

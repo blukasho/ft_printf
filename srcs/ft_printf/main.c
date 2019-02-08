@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/07 15:16:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:13:09 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int		main(void)
 {
-	ft_printf("Hello, %%%%%%%%%%%%%%%%%%%%%%%%%%%%#-+0 d Worlds!!!\n", 7);
-	printf("test %.5dcfdgsgc\n", -34);
+	ft_printf("%#-+ 0123456.llsdffsdf%\n", 7);
+//	printf("Hello, %#-+ .b Worlds!!!\n", 7);
+
 	return (0);
 }

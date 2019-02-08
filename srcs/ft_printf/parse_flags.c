@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_parser.c                                 :+:      :+:    :+:   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/07 11:55:04 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:12:17 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-//delete function
-static void	print_flags(void)
+//debug function
+void		print_s_data(void)
 {
 	int		c;
 
 	c = 0;
+	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
 	while (c < 5)
 		ft_putchar(s_data.flags[c++]);
+	ft_putstr("\nwidth ");
+	ft_putnbr(s_data.width);
+	ft_putstr("\nprecision ");
+	ft_putnbr(s_data.precision);
+	ft_putstr("\nlength ");
+	ft_putnbr(s_data.length);
+	ft_putstr("\nspecifier ");
+	ft_putchar(s_data.specifier);
+	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
 }
 
 static int	check_format_symbol(char c)
@@ -27,7 +37,7 @@ static int	check_format_symbol(char c)
 	return ((c == '#' || c == '0' || c == ' ' || c == '+' || c == '-' ? 1 : 0));
 }
 
-static void	parse_flags(const char **format)
+void		parse_flags(const char **format)
 {
 	while (**format == '%')
 		++(*(format));
@@ -42,10 +52,4 @@ static void	parse_flags(const char **format)
 			++(*format);
 		else if (**format == '-' && (s_data.flags[4] = '-'))
 			++(*format);
-}
-
-void		parse_format_specifiers(const char **format)
-{
-	parse_flags(format);
-	print_flags();
 }
