@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/08 16:12:17 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/09 18:27:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,20 @@ void		print_s_data(void)
 	ft_putnbr(s_data.precision);
 	ft_putstr("\nlength ");
 	ft_putnbr(s_data.length);
+	if (s_data.length == 1)
+		ft_putstr(" l ");
+	if (s_data.length == 2)
+		ft_putstr(" ll ");
+	if (s_data.length == 3)
+		ft_putstr(" L ");
+	if (s_data.length == 4)
+		ft_putstr(" h ");
+	if (s_data.length == 5)
+		ft_putstr(" hh ");
 	ft_putstr("\nspecifier ");
 	ft_putchar(s_data.specifier);
+	ft_putstr("\nprint_symbols ");
+	ft_putnbr(s_data.print_symbols);
 	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
 }
 
