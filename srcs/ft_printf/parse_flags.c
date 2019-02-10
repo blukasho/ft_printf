@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/09 18:27:47 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/10 14:06:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		print_s_data(void)
 	if (s_data.length == 4)
 		ft_putstr(" h ");
 	if (s_data.length == 5)
-		ft_putstr(" hh ");
+		ft_putendl(" hh ");
 	ft_putstr("\nspecifier ");
 	ft_putchar(s_data.specifier);
 	ft_putstr("\nprint_symbols ");

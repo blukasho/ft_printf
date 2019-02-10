@@ -6,13 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 09:46:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/09 12:58:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/10 15:16:26 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static void		clear_s_data(void)
+void			clear_s_data(void)
 {
 	int			c;
 
@@ -70,6 +70,5 @@ void			parse_format_specifiers(const char **format)
 	}
 	get_length(format);
 	get_specifier(format);
-	print_s_data();
-	clear_s_data();
+//	print_s_data();
 }
