@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 09:46:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/10 15:16:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/10 23:33:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void			clear_s_data(void)
 	s_data.precision = -1;
 	s_data.length = 0;
 	s_data.specifier = -1;
-	s_data.print_symbols = 0;
 }
 
 static void		skip_digits(const char **format)

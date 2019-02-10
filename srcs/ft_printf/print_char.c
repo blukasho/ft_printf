@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:18:12 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/10 18:06:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/10 23:33:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@ void		print_char(int c)
 	{
 		ft_putchar(c);
 		while (s_data.width-- > 1)
+		{
+			++g_print_symbols;
 			ft_putchar(' ');
+		}
+		++g_print_symbols;
 	}
 	else
 	{
 		while (s_data.width-- > 1)
+		{
+			++g_print_symbols;
 			ft_putchar(' ');
+		}
 		ft_putchar(c);
+		++g_print_symbols;
 	}
 }
 
