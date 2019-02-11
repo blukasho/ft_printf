@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/10 23:25:00 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/11 09:59:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ struct
 
 int			ft_printf(const char *format, ...);
 
+void		print_string(char *s);
 void		print_char(int c);
-void		result_preparation(const char **format, va_list ap);
+void		result_preparation(va_list ap);
 void		main_function(const char **format, va_list ap);
 void		parse_format_specifiers(const char **format);
 void		parse_flags(const char **format);
