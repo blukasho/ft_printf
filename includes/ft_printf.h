@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/11 09:59:36 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/11 15:50:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ struct
 
 int			ft_printf(const char *format, ...);
 
+void		print_digits(__int128 d);
+void		print_pointer(void *ptr);
 void		print_string(char *s);
 void		print_char(int c);
 void		result_preparation(va_list ap);
