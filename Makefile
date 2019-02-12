@@ -24,7 +24,8 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 	   ft_strndup.c ft_get_arr.c ft_is_lower.c ft_is_upper.c ft_is_space.c\
 	   get_next_line.c ft_strlen_chr.c ft_printf.c ft_printf_parser.c\
-	   parse_flags.c result_preparation.c print_char.c
+	   parse_flags.c result_preparation.c print_char.c print_pointer.c\
+	   print_digits.c
 
 vpath %.c srcs srcs/ft_printf
 
