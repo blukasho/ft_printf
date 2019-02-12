@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:18:12 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/11 17:39:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:12:21 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void		print_char(int c)
 	}
 }
 
+
+//add precision and replace put_char
 void		print_string(char *s)
 {
 	int		len;

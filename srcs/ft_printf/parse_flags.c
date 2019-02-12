@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/10 14:06:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/12 14:26:45 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void		print_s_data(void)
 		ft_putendl(" hh ");
 	ft_putstr("\nspecifier ");
 	ft_putchar(s_data.specifier);
-	ft_putstr("\nprint_symbols ");
-	ft_putnbr(s_data.print_symbols);
 	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
 }
 
