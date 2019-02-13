@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:18:12 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/13 12:39:15 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/13 15:53:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,18 @@ void		print_char(int c)
 {
 	if (s_data.width > 1 && ft_strchr(s_data.flags, '-'))
 	{
-		ft_putchar(c);
+		ft_printf_put_char(c);
 		while (s_data.width-- > 1)
-		{
-			++g_print_symbols;
-			ft_putchar(' ');
-		}
-		++g_print_symbols;
+			ft_printf_put_char(' ');
 	}
 	else
 	{
 		while (s_data.width-- > 1)
-		{
-			++g_print_symbols;
-			ft_putchar(' ');
-		}
-		ft_putchar(c);
-		++g_print_symbols;
+			ft_printf_put_char(' ');
+		ft_printf_put_char(c);
 	}
 }
 
-
-//add precision and replace put_char
 void		print_string(char *s)
 {
 	int		len;

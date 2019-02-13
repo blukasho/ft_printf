@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/13 11:19:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/13 16:51:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ static int		len_nbr(__int128 d)
 	return (len);
 }
 
+static void		print_spaces(int l)
+{
+	if (s_data.precision < l)
+		while (s_data.width-- > l)
+			ft_printf_put_char(' ');
+	else
+		while (s_data.width-- > s_data.precision)
+			ft_printf_put_char(' ');
+}
+
 void			print_digits(__int128 d)
 {
 	int			l;
@@ -40,17 +50,15 @@ void			print_digits(__int128 d)
 	l = len_nbr(d);
 	if (d < 0 || ft_strchr(s_data.flags, '+'))
 		--s_data.width;
-	if (s_data.precision < l)
-		while (s_data.width-- > l)
-			ft_printf_put_char(' ');
-	else
-		while (s_data.width-- > s_data.precision)
-			ft_printf_put_char(' ');
+	if (!ft_strchr(s_data.flags, '-'))
+		print_spaces(len_nbr(d));
 	if (d < 0 && (d = -d))
 		ft_printf_put_char('-');
 	else if (ft_strchr(s_data.flags, '+'))
 		ft_printf_put_char('+');
-	while (s_data.precision-- > l)
+	while (s_data.precision > l++)
 		ft_printf_put_char('0');
 	ft_put_long_nbr(d);
+	if (ft_strchr(s_data.flags, '-'))
+		print_spaces(len_nbr(d));
 }

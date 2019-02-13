@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/12 18:42:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/13 15:57:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ struct
 	int		precision;
 	char	length;
 	char	specifier;
-//	int		print_symbols;
 }			s_data;
 
 int			ft_printf(const char *format, ...);
