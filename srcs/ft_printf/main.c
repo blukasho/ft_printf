@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/12 19:26:40 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/13 12:55:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int						main(void)
 	char				*s = "TEST";
 	unsigned long long	d = 9229999999999999999;
     ft_printf("<<<<<<ft_printf>>>>>>\n");
-	my = ft_printf("%+60.45lld\n", d);
+	my = ft_printf("%15.0d\n", d);
 	ft_printf("<<<<<<printf>>>>>>\n");
-	sy = printf("%+60.45lld\n", d);
+	sy = printf("%15.0d\n", d);
 	printf("my = %d sy = %d\n", my, sy);
 	return (0);
 }

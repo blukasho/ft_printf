@@ -6,31 +6,19 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/12 19:22:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/13 11:19:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_put_long_nbr(__int128 d)
+static int		ft_put_long_nbr(__int128 d)
 {
-	if (d < 0)
-	{
-		d = -d;
-		ft_putchar('-');
-		++g_print_symbols;
-	}
-	if (d > 9)
-	{
-		ft_put_long_nbr(d / 10);
-		ft_putchar((d % 10) + 48);
-		++g_print_symbols;
-	}
+	if (d > 9 && !(ft_put_long_nbr(d / 10)))
+		ft_printf_put_char((d % 10) + 48);
 	else
-	{
-		ft_putchar((d % 10) + 48);
-		++g_print_symbols;
-	}
+		ft_printf_put_char((d % 10) + 48);
+	return (0);
 }
 
 static int		len_nbr(__int128 d)
