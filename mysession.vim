@@ -50,10 +50,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 Makefile
-badd +34 includes/ft_printf.h
-badd +25 srcs/ft_printf/main.c
+badd +32 includes/ft_printf.h
+badd +23 srcs/ft_printf/main.c
 badd +23 srcs/ft_printf/ft_printf.c
-badd +9 srcs/ft_printf/result_preparation.c
+badd +14 srcs/ft_printf/result_preparation.c
 badd +19 srcs/ft_printf/print_digits.c
 badd +17 srcs/ft_printf/print_octal.c
 badd +30 srcs/ft_printf/parse_flags.c
@@ -184,7 +184,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 23
-normal! 024|
+normal! 04|
 wincmd w
 argglobal
 edit srcs/ft_printf/ft_printf.c
