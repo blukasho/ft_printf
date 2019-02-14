@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/13 16:51:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:50:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		ft_put_long_nbr(__int128 d)
 	return (0);
 }
 
-static int		len_nbr(__int128 d)
+int				ft_len_nbr(int d)
 {
 	int			len;
 
@@ -47,11 +47,11 @@ void			print_digits(__int128 d)
 {
 	int			l;
 
-	l = len_nbr(d);
+	l = ft_len_nbr(d);
 	if (d < 0 || ft_strchr(s_data.flags, '+'))
 		--s_data.width;
 	if (!ft_strchr(s_data.flags, '-'))
-		print_spaces(len_nbr(d));
+		print_spaces(ft_len_nbr(d));
 	if (d < 0 && (d = -d))
 		ft_printf_put_char('-');
 	else if (ft_strchr(s_data.flags, '+'))
@@ -60,5 +60,5 @@ void			print_digits(__int128 d)
 		ft_printf_put_char('0');
 	ft_put_long_nbr(d);
 	if (ft_strchr(s_data.flags, '-'))
-		print_spaces(len_nbr(d));
+		print_spaces(ft_len_nbr(d));
 }

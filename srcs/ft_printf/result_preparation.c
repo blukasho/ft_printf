@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/14 11:37:42 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:01:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static	void	result_preparation_2(va_list ap)
 	else if (s_data.specifier == 'u' && s_data.length == 5
 			&& srcrpl(s_data.flags, '+', -1))
 		print_digits((unsigned char)va_arg(ap, unsigned int));
+	else if (s_data.specifier == 'o' && !s_data.length)
+		print_octal(va_arg(ap, unsigned int));
 }
 
 void			result_preparation(va_list ap)
@@ -45,9 +47,6 @@ void			result_preparation(va_list ap)
 		print_char(va_arg(ap, int));
 	else if (s_data.specifier == 's')
 		print_string(va_arg(ap, char *));
-	else if(s_data.specifier == 'p')
-	{
-	}
 	else if(s_data.specifier == '%')
 		print_char('%');
 	else if ((s_data.specifier == 'd' || s_data.specifier == 'i')

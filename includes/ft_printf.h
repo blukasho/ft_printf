@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/14 09:54:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:50:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ struct
 }			s_data;
 
 int			ft_printf(const char *format, ...);
+int			ft_len_nbr(int d);
 
-void		print_octal(long long o);
+void		print_octal(__int128 o);
 void		ft_printf_put_char(char c);
 void		print_digits(__int128 d);
 void		print_pointer(void *ptr);
