@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/14 13:01:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/14 19:31:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ static int		srcrpl(char *s, char a, char b)
 		if (*s++ == a)
 			*(s - 1) = b;
 	return (1);
+}
+
+static void		result_preparation_3(va_list ap)
+{
+	if (s_data.specifier == 'o' && s_data.length == 4
+			&& srcrpl(s_data.flags, '+', -1))
+		print_octal((unsigned short)va_arg(ap, unsigned int));
+	else if (s_data.specifier == 'o' && s_data.length == 5
+			&& srcrpl(s_data.flags, '+', -1))
+		print_octal((unsigned char)va_arg(ap, unsigned int));
 }
 
 static	void	result_preparation_2(va_list ap)
@@ -39,6 +49,14 @@ static	void	result_preparation_2(va_list ap)
 		print_digits((unsigned char)va_arg(ap, unsigned int));
 	else if (s_data.specifier == 'o' && !s_data.length)
 		print_octal(va_arg(ap, unsigned int));
+	else if (s_data.specifier == 'o' && s_data.length == 1
+			&& srcrpl(s_data.flags, '+', -1))
+		print_octal(va_arg(ap, unsigned long));
+	else if (s_data.specifier == 'o' && s_data.length == 2
+			&& srcrpl(s_data.flags, '+', -1))
+		print_octal(va_arg(ap, unsigned long long));
+	else
+		result_preparation_3(ap);
 }
 
 void			result_preparation(va_list ap)
