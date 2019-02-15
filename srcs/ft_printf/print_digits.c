@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 13:59:19 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 16:23:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int				ft_len_nbr(__int128 d)
 static void		print_spaces(int l)
 {
 	if (ft_strchr(s_data.flags, '0') && !ft_strchr(s_data.flags, '-'))
-		++s;
 		s_data.precision = s_data.width;
 	else if (s_data.precision < l)
 		while (s_data.width-- > l)

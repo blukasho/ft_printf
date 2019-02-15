@@ -50,12 +50,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 Makefile
-badd +33 includes/ft_printf.h
-badd +29 srcs/ft_printf/main.c
+badd +24 includes/ft_printf.h
+badd +30 srcs/ft_printf/main.c
 badd +23 srcs/ft_printf/ft_printf.c
-badd +15 srcs/ft_printf/result_preparation.c
+badd +102 srcs/ft_printf/result_preparation.c
 badd +19 srcs/ft_printf/print_digits.c
-badd +17 srcs/ft_printf/print_octal.c
+badd +39 srcs/ft_printf/print_octal.c
 badd +30 srcs/ft_printf/parse_flags.c
 badd +58 srcs/ft_printf/ft_printf_parser.c
 argglobal
@@ -415,12 +415,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 42 - ((32 * winheight(0) + 35) / 70)
+let s:l = 41 - ((29 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-42
-normal! 0
+41
+normal! 09|
 tabedit srcs/ft_printf/print_octal.c
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -539,12 +539,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 39 - ((38 * winheight(0) + 35) / 70)
+let s:l = 22 - ((21 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-39
-normal! 016|
+22
+normal! 012|
 wincmd w
 argglobal
 edit srcs/ft_printf/ft_printf_parser.c
@@ -780,11 +780,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 102 - ((69 * winheight(0) + 35) / 70)
+let s:l = 67 - ((58 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-102
+67
 normal! 0
 wincmd w
 argglobal
@@ -894,7 +894,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 33 - ((14 * winheight(0) + 35) / 70)
+let s:l = 33 - ((32 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 13:59:19 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 16:24:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,5 @@ void			print_octal(__int128 o)
 
 void			print_hexdecimal(__int128 h)
 {
-	char		s[50];
-	int			i;
-
-	i = 0;
-	while (h > 0)
-	{
-
-	}
+	if (h){}
 }
