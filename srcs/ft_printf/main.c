@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/14 20:00:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 12:59:20 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int						main(void)
 {
 	int					my;
 	int					sy;
-	unsigned long long	d = 9593845773498;
+	unsigned int		d = 2829582459275;
     ft_printf("<<<<<<ft_printf>>>>>>\n");
-	my = ft_printf("%#.20llo\n", d);
+	my = ft_printf("% -30llo\n", d);
 	ft_printf("<<<<<<printf>>>>>>\n");
-	sy = printf("%#.20llo\n", d);
+	sy = printf("% -30llo\n", d);
 	printf("my = %d sy = %d\n", my, sy);
 	return (0);
 }
