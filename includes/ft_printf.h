@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 13:09:09 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:49:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int			ft_printf(const char *format, ...);
 int			ft_len_nbr(__int128 d);
 int			srcrpl(char *s, char a, char b);
 
+void		print_all_digits(__int128 d);
+void		print_unsigned_digits(va_list ap);
 void		print_hexdecimal(__int128 h);
 void		print_hesh(void);
-void		print_octal(__int128 o);
+void		print_octal(va_list ap);
 void		ft_printf_put_char(char c);
-void		print_digits(__int128 d);
+void		print_digits(va_list ap);
 void		print_pointer(void *ptr);
 void		print_string(char *s);
 void		print_char(int c);

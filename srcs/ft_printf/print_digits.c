@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 16:23:48 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:46:38 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,6 @@ static int		ft_put_long_nbr(__int128 d)
 	else
 		ft_printf_put_char((d % 10) + 48);
 	return (0);
-}
-
-int				ft_len_nbr(__int128 d)
-{
-	int			len;
-
-	len = 0;
-	if (d == 0)
-		return (1);
-	if (d < 0)
-		d = -d;
-	while (d > 0 && ++len)
-		d = d / 10;
-	return (len);
 }
 
 static void		print_spaces(int l)
@@ -54,7 +40,7 @@ static void		print_space_flag(void)
 		ft_printf_put_char(' ');
 }
 
-void			print_digits(__int128 d)
+void			print_all_digits(__int128 d)
 {
 	int			l;
 
@@ -77,4 +63,23 @@ void			print_digits(__int128 d)
 	ft_put_long_nbr(d);
 	if (ft_strchr(s_data.flags, '-'))
 		print_spaces(ft_len_nbr(d));
+}
+
+void			print_digits(va_list ap)
+{
+	if ((s_data.specifier == 'd' || s_data.specifier == 'i')
+			&& !s_data.length)
+		print_all_digits(va_arg(ap, int));
+	else if ((s_data.specifier == 'd' || s_data.specifier == 'i')
+			&& s_data.length == 1)
+		print_all_digits(va_arg(ap, long));
+	else if ((s_data.specifier == 'd' || s_data.specifier == 'i')
+			&& s_data.length == 2)
+		print_all_digits(va_arg(ap, long long));
+	else if ((s_data.specifier == 'd' || s_data.specifier == 'i')
+			&& s_data.length == 4)
+		print_all_digits((short)va_arg(ap, int));
+	else if ((s_data.specifier == 'd' || s_data.specifier == 'i')
+			&& s_data.length == 5)
+		print_all_digits((char)va_arg(ap, int));
 }

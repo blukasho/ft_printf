@@ -6,23 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 16:24:15 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:46:38 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void			print_hesh(void)
-{
-	if (s_data.specifier == 'o')
-		ft_printf_put_char('0');
-	else if (s_data.specifier == 'x' && (g_print_symbols += 2))
-		ft_putstr("0x");
-	else if (s_data.specifier == 'X' && (g_print_symbols += 2))
-		ft_putstr("0X");
-}
-
-static __int128	int_to_octal(__int128 d, int base)
+static __int128	oct(__int128 d, int base)
 {
 	__int128	res;
 
@@ -43,9 +33,22 @@ static __int128	int_to_octal(__int128 d, int base)
 	return (d);
 }	
 
-void			print_octal(__int128 o)
+void			print_octal(va_list ap)
 {
-	print_digits(int_to_octal(o, 8));
+	if (s_data.specifier == 'o' && !s_data.length)
+		print_all_digits(oct(va_arg(ap, unsigned int), 8));
+	else if (s_data.specifier == 'o' && s_data.length == 1
+			&& srcrpl(s_data.flags, '+', -1))
+		print_all_digits(oct(va_arg(ap, unsigned long), 8));
+	else if (s_data.specifier == 'o' && s_data.length == 2
+			&& srcrpl(s_data.flags, '+', -1))
+		print_all_digits(oct(va_arg(ap, unsigned long long), 8));
+	else if (s_data.specifier == 'o' && s_data.length == 4
+			&& srcrpl(s_data.flags, '+', -1))
+		print_all_digits(oct((unsigned short)va_arg(ap, unsigned int), 8));
+	else if (s_data.specifier == 'o' && s_data.length == 5
+			&& srcrpl(s_data.flags, '+', -1))
+		print_all_digits(oct((unsigned char)va_arg(ap, unsigned int), 8));
 }
 
 void			print_hexdecimal(__int128 h)
