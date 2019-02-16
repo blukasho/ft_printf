@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 17:46:38 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/16 13:26:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,4 @@ void			print_octal(va_list ap)
 	else if (s_data.specifier == 'o' && s_data.length == 5
 			&& srcrpl(s_data.flags, '+', -1))
 		print_all_digits(oct((unsigned char)va_arg(ap, unsigned int), 8));
-}
-
-void			print_hexdecimal(__int128 h)
-{
-	if (h){}
 }

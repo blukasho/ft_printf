@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_hexdecimal.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/16 12:04:08 by blukasho          #+#    #+#             */
+/*   Updated: 2019/02/16 17:47:29 by blukasho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_printf.h"
+
+void		print_hexdecimal(va_list ap)
+{
+	if (!s_data.length)
+		print_hex(va_arg(ap, unsigned int));
+	else if (s_data.length == 1)
+		print_hex(va_arg(ap, unsigned long));
+	else if (s_data.length == 2)
+		print_hex(va_arg(ap, unsigned long long));
+	else if (s_data.length == 4)
+		print_hex((unsigned short)va_arg(ap, unsigned int));
+	else if (s_data.length == 5)
+		print_hex((unsigned char)va_arg(ap, unsigned int));
+}
+
+static void	strrev(char s[])
+{
+	int		end;
+	int		start;
+	char	c;
+
+	start = 0;
+	end = ft_strlen(s);
+	while (--end > start)
+	{
+		c = s[start];
+		s[start++] = s[end];
+		s[end] = c;
+
+	}
+}
+
+static void	print(char *s)
+{
+	int		l;
+	char	c;
+
+	if (ft_strchr(s_data.flags, '0') && !ft_strchr(s_data.flags, '-'))
+		c = '0';
+	else
+		c = ' ';
+	l = ft_strlen(s);
+	while (s_data.width > l++)
+		ft_printf_put_char(c);
+	ft_printf_put_str("0x");
+	ft_printf_put_str(s);
+}
+
+void		print_hex(__int128 h)
+{
+	char	res[50];
+	int		c;
+	int		d;
+
+	c = 0;
+	while (h)
+	{
+		d = (h % 16);
+		if (d > 9 && s_data.specifier == 'X')
+			res[c++] = d + 'A' - 10;
+		else if (d > 9 && s_data.specifier == 'x')
+			res[c++] = d + 'a' - 10;
+  		else
+			res[c++] = d + '0';
+  		h /= 16;
+ 	 }
+	res[c] = '\0';
+	strrev(res);
+	s_data.width -= 2;
+	print(res);
+}

@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 17:13:07 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/16 17:45:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void		ft_printf_put_char(char c)
 {
 	write(1, &c, 1);
 	++g_print_symbols;
+}
+
+void		ft_printf_put_str(char *s)
+{
+	while (*s)
+		ft_printf_put_char(*(s++));
 }
 
 void			print_hesh(void)
