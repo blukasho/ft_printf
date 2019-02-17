@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:04:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/16 17:47:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/17 19:01:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,51 @@ static void	strrev(char s[])
 	}
 }
 
-static void	print(char *s)
+static void print2(int l, char *res)
 {
-	int		l;
-	char	c;
-
-	if (ft_strchr(s_data.flags, '0') && !ft_strchr(s_data.flags, '-'))
-		c = '0';
+	if (s_data.flags[0] == '#')
+		s_data.width -= 2;
+	if (s_data.flags[1] == '0' && s_data.precision == -1)
+	{
+		if (s_data.flags[0] == '#')
+			print_hesh();
+		while (s_data.width-- > l)
+			ft_printf_put_char('0');
+	}
 	else
-		c = ' ';
-	l = ft_strlen(s);
-	while (s_data.width > l++)
-		ft_printf_put_char(c);
-	ft_printf_put_str("0x");
-	ft_printf_put_str(s);
+	{
+		while (s_data.width > l && s_data.width-- > s_data.precision)
+			ft_printf_put_char(' ');
+		if (s_data.flags[0] == '#')
+			print_hesh();
+	}
+	while (s_data.precision-- > l)
+		ft_printf_put_char('0');
+	ft_printf_put_str(res);
+
+}
+
+static void	print(int l, char *res)
+{
+	if (s_data.flags[4] == '-')
+	{
+		if (s_data.flags[0] == '#')
+		{
+			print_hesh();
+			s_data.width -= 2;
+		}
+		while (s_data.precision-- > l)
+		{
+			--s_data.width;
+			ft_printf_put_char('0');
+		}
+		ft_printf_put_str(res);
+		s_data.width -= l;
+		while (s_data.width-- > 0)
+			ft_printf_put_char(' ');
+	}
+	else
+		print2(l, res);
 }
 
 void		print_hex(__int128 h)
@@ -79,6 +110,5 @@ void		print_hex(__int128 h)
  	 }
 	res[c] = '\0';
 	strrev(res);
-	s_data.width -= 2;
-	print(res);
+	print(c, res);
 }

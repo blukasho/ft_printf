@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/16 17:45:48 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/17 18:45:23 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void			print_hesh(void)
 {
 	if (s_data.specifier == 'o')
 		ft_printf_put_char('0');
-	else if (s_data.specifier == 'x' && (g_print_symbols += 2))
-		ft_putstr("0x");
-	else if (s_data.specifier == 'X' && (g_print_symbols += 2))
-		ft_putstr("0X");
+	else if (s_data.specifier == 'x')
+		ft_printf_put_str("0x");
+	else if (s_data.specifier == 'X')
+		ft_printf_put_str("0X");
 }
 
