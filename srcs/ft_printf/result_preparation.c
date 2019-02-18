@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/17 15:50:20 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/18 11:33:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ void			result_preparation(va_list ap)
 	else if (s_data.specifier == 'x' || s_data.specifier == 'X')
 		print_hexdecimal(ap);
 	else if (s_data.specifier == 'p' && (s_data.specifier = 'x'))
-		print_hex(va_arg(ap, void *));
+		print_hex((__int128)va_arg(ap, void *));
+	else if (s_data.specifier == 'f' || s_data.specifier == 'F')
+		print_double(ap);
 }

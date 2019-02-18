@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:25:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 17:46:38 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/18 09:45:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_unsigned_digits(va_list ap)
 {
+	s_data.flags[2] = -1;
 	if (s_data.specifier == 'u' && !s_data.length
 		&& srcrpl(s_data.flags, '+', -1))
 		print_all_digits(va_arg(ap, unsigned int));
