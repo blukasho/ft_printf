@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/18 11:33:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/20 10:08:11 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void			result_preparation(va_list ap)
 	else if (s_data.specifier == 'o')
 		print_octal(ap);
 	else if(s_data.specifier == '%')
-		print_char('%');
+		print_percent(ap);
 	else if (s_data.specifier == 'c')
-		print_char(va_arg(ap, int));
+		print_char(ap);
 	else if (s_data.specifier == 's')
-		print_string(va_arg(ap, char *));
+		print_string(ap);
 	else if (s_data.specifier == 'x' || s_data.specifier == 'X')
 		print_hexdecimal(ap);
-	else if (s_data.specifier == 'p' && (s_data.specifier = 'x'))
-		print_hex((__int128)va_arg(ap, void *));
+	else if (s_data.specifier == 'p')
+		print_pointer(ap);
 	else if (s_data.specifier == 'f' || s_data.specifier == 'F')
 		print_double(ap);
 }

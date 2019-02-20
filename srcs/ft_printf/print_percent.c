@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/10 14:18:12 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 10:08:12 by blukasho         ###   ########.fr       */
+/*   Created: 2019/02/20 09:14:51 by blukasho          #+#    #+#             */
+/*   Updated: 2019/02/20 10:08:11 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		print_char(va_list ap)
+void	print_percent(va_list ap)
 {
-	print_c(va_arg(ap, int));
-}
+	if (ap){}
 
-void		print_c(int c)
-{
-	if (s_data.width > 1 && ft_strchr(s_data.flags, '-'))
-	{
-		ft_printf_put_char(c);
-		while (s_data.width-- > 1)
-			ft_printf_put_char(' ');
-	}
-	else
-	{
-		if (!ft_strchr(s_data.flags, '0'))
-			while (s_data.width-- > 1)
-				ft_printf_put_char(' ');
-		else
-			while (s_data.width-- > 1)
-				ft_printf_put_char('0');
-		ft_printf_put_char(c);
-	}
+	print_c('%');
 }
