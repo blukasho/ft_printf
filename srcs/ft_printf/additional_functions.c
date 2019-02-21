@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:33:51 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 22:04:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ long double		round_double(long double d)
 	ld = 0.5;
 	if (s_data.precision >= 0)
 	{
+	printf("float %f\n", d);
 		while (l++ < s_data.precision)
 			ld /= 10;
 		if (d > 0)
@@ -65,7 +66,7 @@ void			print_hesh(void)
 {
 	if (s_data.specifier == 'o')
 		ft_printf_put_char('0');
-	else if (s_data.specifier == 'x')
+	else if (s_data.specifier == 'x' || s_data.specifier == 'p')
 		ft_printf_put_str("0x");
 	else if (s_data.specifier == 'X')
 		ft_printf_put_str("0X");

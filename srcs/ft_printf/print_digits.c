@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:45:20 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 20:26:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@ static int		ft_put_long_nbr(__int128 d)
 	return (0);
 }
 
-static void		print_spaces(int l)
+static void		print_spaces(int l, __int128 d)
 {
+	if ((s_data.precision == 0 && d == 0))
+		++s_data.width;
 	if (ft_strchr(s_data.flags, '0') && !ft_strchr(s_data.flags, '-')
 		&& s_data.precision == -1)
 		s_data.precision = s_data.width;
 	else if (s_data.precision < l)
+	{
 		while (s_data.width-- > l)
 			ft_printf_put_char(' ');
+	}
 	else
 		while (s_data.width-- > s_data.precision)
 			ft_printf_put_char(' ');
@@ -37,8 +41,7 @@ static void		print_spaces(int l)
 static void		print_space_flag(void)
 {
 	if (ft_strchr(s_data.flags, ' ') && !ft_strchr(s_data.flags, '+')
-		&& s_data.specifier != 'o' && --s_data.width
-		&& srcrpl(s_data.flags, ' ', -1))
+		&& --s_data.width && srcrpl(s_data.flags, ' ', -1))
 		ft_printf_put_char(' ');
 }
 
@@ -47,24 +50,23 @@ void			print_all_digits(__int128 d)
 	int			l;
 
 	l = ft_len_nbr(d);
-	if ((d < 0 || ft_strchr(s_data.flags, '+')) && s_data.specifier != 'o')
+	if (d < 0 || ft_strchr(s_data.flags, '+'))
 		--s_data.width;
-	if (ft_strchr(s_data.flags, ' '))
+	if (ft_strchr(s_data.flags, ' ') && d > -1)
 		print_space_flag();
 	if (!ft_strchr(s_data.flags, '-'))
-		print_spaces(ft_len_nbr(d));
+		print_spaces(ft_len_nbr(d), d);
 	if (d < 0 && (d = -d))
 		ft_printf_put_char('-');
-	else if (ft_strchr(s_data.flags, '+') && s_data.specifier != 'o')
+	else if (ft_strchr(s_data.flags, '+'))
 		ft_printf_put_char('+');
 	if (s_data.precision > l)
 		while (s_data.precision > l++)
 			ft_printf_put_char('0');
-	else if (ft_strchr(s_data.flags, '#'))
-		print_hesh();
-	ft_put_long_nbr(d);
+	if (!(s_data.precision == 0 && d == 0))
+		ft_put_long_nbr(d);
 	if (ft_strchr(s_data.flags, '-'))
-		print_spaces(ft_len_nbr(d));
+		print_spaces(ft_len_nbr(d), d);
 }
 
 void			print_digits(va_list ap)

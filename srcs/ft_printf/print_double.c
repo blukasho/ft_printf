@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:42:40 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 22:08:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static void			print_2(char *s, int m)
 			else
 				ft_printf_put_char('+');
 		}
-		while (s_data.width--)
+		while (s_data.width-- > 0)
 			ft_printf_put_char('0');
 	}
 	else
 	{
-		while (s_data.width--)
+		while (s_data.width-- > 0)
 			ft_printf_put_char(' ');
 		if (s_data.flags[3] == '+' || m)
 		{
@@ -80,6 +80,7 @@ static void			print(long double d)
 	char			s[500];
 	int				m;
 
+	printf("float %f\n", d);
 	if (d < 0 && (m = 1))
 		d = -d;
 	else
@@ -109,5 +110,5 @@ void				print_double(va_list ap)
 	if (s_data.length == 3)
 		print(va_arg(ap, long double));
 	else
-		print(va_arg(ap, double));
+		print(va_arg(ap, float));
 }
