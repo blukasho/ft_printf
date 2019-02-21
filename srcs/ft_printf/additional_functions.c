@@ -6,11 +6,34 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 10:58:06 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:33:51 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+long double		round_double(long double d)
+{
+	int				l;
+	long double		ld;
+
+	l = 0;
+	ld = 0.5;
+	if (s_data.precision >= 0)
+	{
+		while (l++ < s_data.precision)
+			ld /= 10;
+		if (d > 0)
+			d += ld;
+		else if (d < 0)
+			d -= ld;
+	}
+	else if (d < 0)
+		d -= 0.0000005;
+	else if (d > 0)
+		d += 0.0000005;
+	return (d);
+}
 
 int				ft_len_nbr(__int128 d)
 {
@@ -26,13 +49,13 @@ int				ft_len_nbr(__int128 d)
 	return (len);
 }
 
-void		ft_printf_put_char(char c)
+void			ft_printf_put_char(char c)
 {
 	write(1, &c, 1);
 	++g_print_symbols;
 }
 
-void		ft_printf_put_str(char *s)
+void			ft_printf_put_str(char *s)
 {
 	while (*s)
 		ft_printf_put_char(*(s++));
@@ -47,4 +70,3 @@ void			print_hesh(void)
 	else if (s_data.specifier == 'X')
 		ft_printf_put_str("0X");
 }
-

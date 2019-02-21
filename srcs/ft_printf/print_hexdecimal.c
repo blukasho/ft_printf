@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:04:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/18 10:27:20 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:44:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ static void	strrev(char s[])
 		c = s[start];
 		s[start++] = s[end];
 		s[end] = c;
-
 	}
 }
 
-static void print2(int l, char *res)
+static void	print2(int l, char *res)
 {
 	if (s_data.flags[0] == '#')
 		s_data.width -= 2;
@@ -64,7 +63,6 @@ static void print2(int l, char *res)
 	while (s_data.precision-- > l)
 		ft_printf_put_char('0');
 	ft_printf_put_str(res);
-
 }
 
 static void	print(int l, char *res)
@@ -104,10 +102,10 @@ void		print_hex(__int128 h)
 			res[c++] = d + 'A' - 10;
 		else if (d > 9 && s_data.specifier == 'x')
 			res[c++] = d + 'a' - 10;
-  		else
+		else
 			res[c++] = d + '0';
-  		h /= 16;
- 	 }
+		h /= 16;
+	}
 	res[c] = '\0';
 	strrev(res);
 	print(c, res);

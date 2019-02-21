@@ -6,40 +6,17 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 17:25:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:42:40 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static long double	round_double(long double d)
+void				reverse_double(char *s)
 {
-	int 			l;
-	long double		ld;
-
-	l = 0;
-	ld = 0.5;
-	if (s_data.precision >= 0)
-	{
-		while (l++ < s_data.precision)
-			ld /= 10;
-		if (d > 0)
-			d += ld;
-		else if (d < 0)
-			d -= ld;
-	}
-	else if (d < 0)
-		d -= 0.0000005;
-	else if (d > 0)
-		d += 0.0000005;
-	return (d);
-}
-
-static void		reverse_double(char *s)
-{
-	int			start;
-	int			end;
-	char		tmp;
+	int				start;
+	int				end;
+	char			tmp;
 
 	end = 0;
 	while (s[end] != '.' && !(start = 0))
@@ -53,36 +30,55 @@ static void		reverse_double(char *s)
 	}
 }
 
-static void		double_to_string(long double d, char *s)
+static void			print_2(char *s, int m)
 {
-	char		*st;
-	int			i;
-	__int128	a;
-
-	st = s;
-	a = d;
-	d = d - a;
-	while (a > 0 && !(i = 0))
+	if (s_data.flags[1] == '0')
 	{
-		*(s++) = (a % 10) + 48;
-		a /= 10;
+		if (s_data.flags[3] == '+' || m)
+		{
+			if (m)
+				ft_printf_put_char('-');
+			else
+				ft_printf_put_char('+');
+		}
+		while (s_data.width--)
+			ft_printf_put_char('0');
 	}
-	*(s++) = '.';
-	while (s_data.precision > i++)
+	else
 	{
-		d = d * 10;
-		a = d;
-		*(s++) = (a % 10) + 48;
-		d = d - a;
+		while (s_data.width--)
+			ft_printf_put_char(' ');
+		if (s_data.flags[3] == '+' || m)
+		{
+			if (m)
+				ft_printf_put_char('-');
+			else
+				ft_printf_put_char('+');
+		}
 	}
-	*s = '\0';
-	reverse_double(st);
+	ft_printf_put_str(s);
 }
 
-static void		print(long double d)
+static void			print_1(char *s, int m)
 {
-	char		s[500];
-	int			m;
+	if (s_data.flags[3] == '+' || m)
+	{
+		if (m)
+			ft_printf_put_char('-');
+		else
+			ft_printf_put_char('+');
+	}
+	ft_printf_put_str(s);
+	while (s_data.width-- > 0)
+		ft_printf_put_char(' ');
+	if (s_data.flags[0] == '#' && s_data.precision == 0)
+		ft_printf_put_char('.');
+}
+
+static void			print(long double d)
+{
+	char			s[500];
+	int				m;
 
 	if (d < 0 && (m = 1))
 		d = -d;
@@ -90,14 +86,25 @@ static void		print(long double d)
 		m = 0;
 	if (s_data.precision == -1)
 		s_data.precision = 6;
+	if (s_data.flags[0] == '#' && s_data.precision == 0)
+		--s_data.width;
+	if (s_data.flags[3] == '+' || m)
+		--s_data.width;
 	d = round_double(d);
 	double_to_string(d, s);
-	if (m)
-		ft_printf_put_char('-');
-	ft_printf_put_str(s);
+	s_data.width = s_data.width - ft_strlen(s);
+	if (s_data.flags[2] == ' ' && s_data.flags[3] != '+')
+	{
+		--s_data.width;
+		ft_printf_put_char(' ');
+	}
+	if (s_data.flags[4] == '-')
+		print_1(s, m);
+	else
+		print_2(s, m);
 }
 
-void	print_double(va_list ap)
+void				print_double(va_list ap)
 {
 	if (s_data.length == 3)
 		print(va_arg(ap, long double));

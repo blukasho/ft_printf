@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:11:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/15 17:13:07 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:36:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ int			ft_printf(const char *format, ...)
 	va_end(ap);
 	return (g_print_symbols);
 }
-

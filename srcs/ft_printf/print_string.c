@@ -6,17 +6,17 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 09:52:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 10:15:19 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:59:07 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	print(char *s, int len, int prs)
+static void		print(char *s, int len, int prs)
 {
 	if (ft_strchr(s_data.flags, '-'))
 	{
-		while (*s && prs--) 
+		while (*s && prs--)
 			ft_printf_put_char(*(s++));
 		while (s_data.width-- > len)
 			ft_printf_put_char(' ');
@@ -40,11 +40,14 @@ static void	print(char *s, int len, int prs)
 	}
 }
 
-//print with 0
+/*
+**print with 0
+*/
+
 static void		preparation(char *s)
 {
-	int		len;
-	int		prs;
+	int			len;
+	int			prs;
 
 	len = ft_strlen(s);
 	prs = len;
@@ -58,6 +61,32 @@ static void		preparation(char *s)
 	else
 		while (*s && prs--)
 			ft_printf_put_char(*(s++));
+}
+
+void			double_to_string(long double d, char *s)
+{
+	char		*st;
+	int			i;
+	__int128	a;
+
+	st = s;
+	a = d;
+	d = d - a;
+	while (a > 0 && !(i = 0))
+	{
+		*(s++) = (a % 10) + 48;
+		a /= 10;
+	}
+	*(s++) = '.';
+	while (s_data.precision > i++)
+	{
+		d = d * 10;
+		a = d;
+		*(s++) = (a % 10) + 48;
+		d = d - a;
+	}
+	*s = '\0';
+	reverse_double(st);
 }
 
 void			print_string(va_list ap)

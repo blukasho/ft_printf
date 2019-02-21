@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 09:46:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/18 11:34:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:39:30 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		get_specifier(const char **format)
 	if ((**format == 'd' || **format == 'i' || **format == 'o'
 		|| **format == 'u' || **format == 'x' || **format == 'x'
 		|| **format == 'X' || **format == 'f' || **format == '%'
-		|| **format == 'c' || **format == 's' || **format =='p')
+		|| **format == 'c' || **format == 's' || **format == 'p')
 		&& (s_data.specifier = **format))
 		++(*(format));
 }
@@ -69,5 +69,4 @@ void			parse_format_specifiers(const char **format)
 	}
 	get_length(format);
 	get_specifier(format);
-//	print_s_data();
 }

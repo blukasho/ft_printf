@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/16 13:26:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:41:21 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static __int128	oct(__int128 d, int base)
 		res /= 10;
 	}
 	return (d);
-}	
+}
 
 void			print_octal(va_list ap)
 {

@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 10:08:32 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:40:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void		result_preparation(va_list ap);
 void		main_function(const char **format, va_list ap);
 void		parse_format_specifiers(const char **format);
 void		parse_flags(const char **format);
-void		print_s_data(void); //debug function
+void		double_to_string(long double d, char *s);
+void		reverse_double(char *s);
+
+long double	round_double(long double d);
 
 #endif

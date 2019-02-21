@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:45:00 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/18 09:41:38 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:45:20 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void		print_spaces(int l)
 static void		print_space_flag(void)
 {
 	if (ft_strchr(s_data.flags, ' ') && !ft_strchr(s_data.flags, '+')
-		&& s_data.specifier != 'o' && --s_data.width && srcrpl(s_data.flags, ' ', -1))
+		&& s_data.specifier != 'o' && --s_data.width
+		&& srcrpl(s_data.flags, ' ', -1))
 		ft_printf_put_char(' ');
 }
 

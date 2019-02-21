@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/20 10:08:11 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:48:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			result_preparation(va_list ap)
 		print_unsigned_digits(ap);
 	else if (s_data.specifier == 'o')
 		print_octal(ap);
-	else if(s_data.specifier == '%')
+	else if (s_data.specifier == '%')
 		print_percent(ap);
 	else if (s_data.specifier == 'c')
 		print_char(ap);

@@ -6,41 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/16 17:37:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:40:41 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-//debug function
-void		print_s_data(void)
-{
-	int		c;
-
-	c = 0;
-	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
-	while (c < 5)
-		ft_putchar(s_data.flags[c++]);
-	ft_putstr("\nwidth ");
-	ft_putnbr(s_data.width);
-	ft_putstr("\nprecision ");
-	ft_putnbr(s_data.precision);
-	ft_putstr("\nlength ");
-	ft_putnbr(s_data.length);
-	if (s_data.length == 1)
-		ft_putstr(" l ");
-	if (s_data.length == 2)
-		ft_putstr(" ll ");
-	if (s_data.length == 3)
-		ft_putstr(" L ");
-	if (s_data.length == 4)
-		ft_putstr(" h ");
-	if (s_data.length == 5)
-		ft_putendl(" hh ");
-	ft_putstr("\nspecifier ");
-	ft_putchar(s_data.specifier);
-	ft_putendl("\n<<<<<<<<<s_data>>>>>>>>>");
-}
 
 static int	check_format_symbol(char c)
 {
