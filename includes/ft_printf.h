@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:40:37 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:25:23 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		print_digits(va_list ap);
 void		print_pointer(va_list ap);
 void		print_string(va_list ap);
 void		print_char(va_list ap);
+void		print_s(char *s);
 void		print_c(int c);
 void		result_preparation(va_list ap);
 void		main_function(const char **format, va_list ap);

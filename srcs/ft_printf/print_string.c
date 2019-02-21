@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 09:52:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:59:07 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 15:02:39 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		print(char *s, int len, int prs)
 **print with 0
 */
 
-static void		preparation(char *s)
+void			print_s(char *s)
 {
 	int			len;
 	int			prs;
@@ -59,8 +59,12 @@ static void		preparation(char *s)
 	if (s_data.width > len)
 		print(s, len, prs);
 	else
+	{
+		if (s_data.specifier == 'o' && s_data.flags[0] == '#')
+			print_hesh();
 		while (*s && prs--)
 			ft_printf_put_char(*(s++));
+	}
 }
 
 void			double_to_string(long double d, char *s)
@@ -91,5 +95,11 @@ void			double_to_string(long double d, char *s)
 
 void			print_string(va_list ap)
 {
-	preparation(va_arg(ap, char *));
+	char		*s;
+
+	s = va_arg(ap, char *);
+	if (!s)
+		print_s("(null)");
+	else
+		print_s(s);
 }

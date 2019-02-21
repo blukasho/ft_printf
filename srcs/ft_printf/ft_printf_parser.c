@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 09:46:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:39:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:21:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ static void		get_specifier(const char **format)
 		++(*(format));
 }
 
+static void		print_s_data(void)
+{
+	printf("<<<<<<<<<<<s_data>>>>>>>>>>\n");
+	printf("s_data.specifier = %d\n", s_data.specifier);
+	printf("<<<<<<<<<<<<<end>>>>>>>>>>>\n");
+}
+
 void			parse_format_specifiers(const char **format)
 {
 	clear_s_data();
@@ -69,4 +76,5 @@ void			parse_format_specifiers(const char **format)
 	}
 	get_length(format);
 	get_specifier(format);
+//	print_s_data();
 }

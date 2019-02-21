@@ -27,7 +27,7 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   parse_flags.c result_preparation.c print_char.c print_pointer.c\
 	   print_digits.c print_octal.c additional_functions.c\
 	   print_unsigned_digits.c print_hexdecimal.c print_double.c\
-	   print_percent.c print_string.c
+	   print_percent.c print_string.c main_function.c
 
 vpath %.c srcs srcs/ft_printf
 
@@ -38,7 +38,7 @@ FLAGS = -Wall -Wextra -I includes
 NAME = libftprintf.a
 
 printf: $(NAME)
-	gcc $(FLAGS) srcs/ft_printf/main.c -o ft_printf -L . -lftprintf
+	gcc $(FLAGS) main.c -o ft_printf -L . -lftprintf
 	@echo "\033[6;32m<---------------done-------------->\033[0m"
 	@./ft_printf | cat -e
 
@@ -58,6 +58,6 @@ fclean: clean
 	rm -rf $(NAME)
 	rm -rf ft_printf
 
-re:	fclean printf
+re:	fclean all
 
 .PHONY: all clean fclean re

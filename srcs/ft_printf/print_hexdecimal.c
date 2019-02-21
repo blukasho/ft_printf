@@ -6,13 +6,13 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:04:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:44:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:01:59 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		print_hexdecimal(va_list ap)
+void			print_hexdecimal(va_list ap)
 {
 	if (!s_data.length)
 		print_hex(va_arg(ap, unsigned int));
@@ -26,11 +26,11 @@ void		print_hexdecimal(va_list ap)
 		print_hex((unsigned char)va_arg(ap, unsigned int));
 }
 
-static void	strrev(char s[])
+static void		strrev(char s[])
 {
-	int		end;
-	int		start;
-	char	c;
+	int			end;
+	int			start;
+	char		c;
 
 	start = 0;
 	end = ft_strlen(s);
@@ -42,13 +42,13 @@ static void	strrev(char s[])
 	}
 }
 
-static void	print2(int l, char *res)
+static void		print2(int l, char *res, __int128 h)
 {
 	if (s_data.flags[0] == '#')
 		s_data.width -= 2;
 	if (s_data.flags[1] == '0' && s_data.precision == -1)
 	{
-		if (s_data.flags[0] == '#')
+		if (s_data.flags[0] == '#' && h > 0)
 			print_hesh();
 		while (s_data.width-- > l)
 			ft_printf_put_char('0');
@@ -57,7 +57,7 @@ static void	print2(int l, char *res)
 	{
 		while (s_data.width > l && s_data.width-- > s_data.precision)
 			ft_printf_put_char(' ');
-		if (s_data.flags[0] == '#')
+		if (s_data.flags[0] == '#' && h > 0)
 			print_hesh();
 	}
 	while (s_data.precision-- > l)
@@ -65,11 +65,11 @@ static void	print2(int l, char *res)
 	ft_printf_put_str(res);
 }
 
-static void	print(int l, char *res)
+static void		print(int l, char *res, __int128 h)
 {
 	if (s_data.flags[4] == '-')
 	{
-		if (s_data.flags[0] == '#')
+		if (s_data.flags[0] == '#' && h > 0)
 		{
 			print_hesh();
 			s_data.width -= 2;
@@ -85,16 +85,20 @@ static void	print(int l, char *res)
 			ft_printf_put_char(' ');
 	}
 	else
-		print2(l, res);
+		print2(l, res, h);
 }
 
-void		print_hex(__int128 h)
-{
-	char	res[50];
-	int		c;
-	int		d;
+void			print_hex(__int128 h)
+{               
+	char		res[50];
+	int			c;
+	int			d;
+	__int128	tmp;
 
+	tmp = h;
 	c = 0;
+	if (!h && s_data.precision != 0)
+		res[c++] = '0';
 	while (h)
 	{
 		d = (h % 16);
@@ -108,5 +112,5 @@ void		print_hex(__int128 h)
 	}
 	res[c] = '\0';
 	strrev(res);
-	print(c, res);
+	print(c, res, tmp);
 }

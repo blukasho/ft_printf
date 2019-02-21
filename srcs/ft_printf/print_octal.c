@@ -6,47 +6,51 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:41:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:40:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static __int128	oct(__int128 d, int base)
+static char		*oct(__int128 d, char *res)
 {
-	__int128	res;
+	char		tmp;
+	int			i;
 
-	res = 0;
+	i = 0;
 	while (d > 0)
 	{
-		res *= 10;
-		res = res + (d % base);
-		d /= base;
+		res[i++] = (d % 8) + 48;
+		d /= 8;
 	}
+	res[i] = '\0';
 	d = 0;
-	while (res > 0)
+	while (i > d)
 	{
-		d *= 10;
-		d = d + (res % 10);
-		res /= 10;
+		tmp = res[d];
+		res[d++] = res[--i];
+		res[i] = tmp;
 	}
-	return (d);
+	return (res);
 }
 
 void			print_octal(va_list ap)
 {
+	char		res[50];
+
+	s_data.precision = -1;
 	if (s_data.specifier == 'o' && !s_data.length)
-		print_all_digits(oct(va_arg(ap, unsigned int), 8));
+		print_s(oct(va_arg(ap, unsigned int), res));
 	else if (s_data.specifier == 'o' && s_data.length == 1
 			&& srcrpl(s_data.flags, '+', -1))
-		print_all_digits(oct(va_arg(ap, unsigned long), 8));
+		print_s(oct(va_arg(ap, unsigned long), res));
 	else if (s_data.specifier == 'o' && s_data.length == 2
 			&& srcrpl(s_data.flags, '+', -1))
-		print_all_digits(oct(va_arg(ap, unsigned long long), 8));
+		print_s(oct(va_arg(ap, unsigned long long), res));
 	else if (s_data.specifier == 'o' && s_data.length == 4
 			&& srcrpl(s_data.flags, '+', -1))
-		print_all_digits(oct((unsigned short)va_arg(ap, unsigned int), 8));
+		print_s(oct((unsigned short)va_arg(ap, unsigned int), res));
 	else if (s_data.specifier == 'o' && s_data.length == 5
 			&& srcrpl(s_data.flags, '+', -1))
-		print_all_digits(oct((unsigned char)va_arg(ap, unsigned int), 8));
+		print_s(oct((unsigned char)va_arg(ap, unsigned int), res));
 }
