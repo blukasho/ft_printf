@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/14 12:37:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 09:16:46 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int					ft_isascii(int c);
 int					ft_isalnum(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);
-int					ft_atoi(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+__int128			ft_atoi(const char *str);
 #endif

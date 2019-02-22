@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
+/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/24 12:03:03 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 11:02:33 by blukasho         ###   ########.fr       */
+/*   Created: 2019/02/22 10:54:39 by blukasho          #+#    #+#             */
+/*   Updated: 2019/02/22 11:09:38 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int					main_function(const char **format, va_list ap)
+int				check_errors(void)
 {
-	parse_format_specifiers(format);
-	if (check_errors() == -1)
+	if (s_data.width > 2147483646)
 		return (-1);
-	result_preparation(ap);
-	return (0);
+	if (s_data.precision > 2147483641)
+		return (-1);
+	return(0);
+}
+
+int				check_exeption_double(long double d)
+{
+	__int128	a;
+
+	a = d;
+	d = d - a;
+	d *= 10;
+	return ((s_data.precision == 0 && !a && d == 5 ? 1 : 0));
 }

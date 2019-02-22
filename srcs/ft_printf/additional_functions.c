@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 22:04:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:59:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ long double		round_double(long double d)
 
 	l = 0;
 	ld = 0.5;
-	if (s_data.precision >= 0)
+	if (s_data.precision >= 0 && !check_exeption_double(d))
 	{
-	printf("float %f\n", d);
 		while (l++ < s_data.precision)
 			ld /= 10;
 		if (d > 0)

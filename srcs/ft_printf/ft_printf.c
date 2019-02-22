@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:11:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:36:47 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:23:45 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int			ft_printf(const char *format, ...)
 	g_print_symbols = 0;
 	while (*format)
 		if (*format == '%')
-			main_function(&format, ap);
+		{
+			if (main_function(&format, ap) == -1)
+				return (-1);
+		}
 		else
 			ft_printf_put_char(*(format++));
 	va_end(ap);

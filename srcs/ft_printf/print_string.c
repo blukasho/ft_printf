@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 09:52:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 21:12:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:36:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ static void		print(char *s, int len, int prs)
 	}
 }
 
-/*
-**print with 0
-*/
-
 void			print_s(char *s)
 {
 	int			len;
@@ -72,6 +68,8 @@ void			double_to_string(long double d, char *s)
 	st = s;
 	a = d;
 	d = d - a;
+	if (!a)
+		*(s++) = '0';
 	while (a > 0 && !(i = 0))
 	{
 		*(s++) = (a % 10) + 48;

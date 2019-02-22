@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 14:25:23 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:59:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int			g_print_symbols;
 struct
 {
 	char	flags[5];
-	int		width;
-	int		precision;
+	long	width;
+	long	precision;
 	char	length;
 	char	specifier;
 }			s_data;
@@ -31,7 +31,10 @@ struct
 int			ft_printf(const char *format, ...);
 int			ft_len_nbr(__int128 d);
 int			srcrpl(char *s, char a, char b);
+int			main_function(const char **format, va_list ap);
+int			check_exeption_double(long double d);
 
+int			check_errors(void);
 void		print_percent(va_list ap);
 void		print_double(va_list ap);
 void		print_hexdecimal(va_list ap);
@@ -49,7 +52,6 @@ void		print_char(va_list ap);
 void		print_s(char *s);
 void		print_c(int c);
 void		result_preparation(va_list ap);
-void		main_function(const char **format, va_list ap);
 void		parse_format_specifiers(const char **format);
 void		parse_flags(const char **format);
 void		double_to_string(long double d, char *s);
