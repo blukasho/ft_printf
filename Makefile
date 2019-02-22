@@ -28,19 +28,15 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   print_digits.c print_octal.c additional_functions.c\
 	   print_unsigned_digits.c print_hexdecimal.c print_double.c\
 	   print_percent.c print_string.c main_function.c check_errors.c\
+	   reverse_double.c
 
 vpath %.c srcs srcs/ft_printf
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -I includes
+FLAGS = -Wall -Wextra -Werror -I includes
 
 NAME = libftprintf.a
-
-printf: $(NAME)
-	gcc $(FLAGS) main.c -o ft_printf -L . -lftprintf
-	@echo "\033[6;32m<---------------done-------------->\033[0m"
-	@./ft_printf | cat -e
 
 all: $(NAME)
 

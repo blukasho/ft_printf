@@ -6,27 +6,22 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 11:16:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:30:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void				reverse_double(char *s)
+static void			print_3(int m)
 {
-	int				start;
-	int				end;
-	char			tmp;
-
-	end = 0;
-	while (s[end] != '.' && !(start = 0))
-		++end;
-	if (s_data.precision <= 0)
-		s[end] = '\0';
-	while (start < end && (tmp = s[start]))
+	while (s_data.width-- > 0)
+		ft_printf_put_char(' ');
+	if (s_data.flags[3] == '+' || m)
 	{
-		s[start++] = s[--end];
-		s[end] = tmp;
+		if (m)
+			ft_printf_put_char('-');
+		else
+			ft_printf_put_char('+');
 	}
 }
 
@@ -45,18 +40,10 @@ static void			print_2(char *s, int m)
 			ft_printf_put_char('0');
 	}
 	else
-	{
-		while (s_data.width-- > 0)
-			ft_printf_put_char(' ');
-		if (s_data.flags[3] == '+' || m)
-		{
-			if (m)
-				ft_printf_put_char('-');
-			else
-				ft_printf_put_char('+');
-		}
-	}
+		print_3(m);
 	ft_printf_put_str(s);
+	if (s_data.flags[0] == '#' && s_data.precision == 0)
+		ft_printf_put_char('.');
 }
 
 static void			print_1(char *s, int m)

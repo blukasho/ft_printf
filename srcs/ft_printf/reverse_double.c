@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   reverse_double.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 10:54:39 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 14:30:36 by blukasho         ###   ########.fr       */
+/*   Created: 2019/02/22 14:25:32 by blukasho          #+#    #+#             */
+/*   Updated: 2019/02/22 14:26:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				check_errors(void)
+void				reverse_double(char *s)
 {
-	if (s_data.width > 2147483646)
-		return (-1);
-	if (s_data.precision > 2147483641)
-		return (-1);
-	return (0);
-}
+	int				start;
+	int				end;
+	char			tmp;
 
-int				check_exeption_double(long double d)
-{
-	__int128	a;
-
-	a = d;
-	d = d - a;
-	d *= 10;
-	return ((s_data.precision == 0 && !a && d == 5 ? 1 : 0));
+	end = 0;
+	while (s[end] != '.' && !(start = 0))
+		++end;
+	if (s_data.precision <= 0)
+		s[end] = '\0';
+	while (start < end && (tmp = s[start]))
+	{
+		s[start++] = s[--end];
+		s[end] = tmp;
+	}
 }
