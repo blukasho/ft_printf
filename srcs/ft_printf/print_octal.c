@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 21:52:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/26 21:18:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void		preparate(__int128 d, char *res)
 
 void			print_octal(va_list ap)
 {
-	char		res[50];
+	char		res[MAX_BUFF_SIZE];
 
 	if (s_data.specifier == 'o' && !s_data.length)
 		preparate(va_arg(ap, unsigned int), res);

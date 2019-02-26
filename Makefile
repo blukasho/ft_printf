@@ -38,6 +38,11 @@ FLAGS = -Wall -Wextra -Werror -I includes
 
 NAME = libftprintf.a
 
+printf: $(NAME)
+	gcc -Wall -Wextra main.c $(NAME)
+	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
+	@./a.out
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -52,7 +57,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf ft_printf
+	rm -rf a.out
 
 re:	fclean all
 

@@ -6,12 +6,13 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 10:59:05 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/02/26 20:01:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# define MAX_BUFF_SIZE 2147483648
 
 # include "libft.h"
 # include <stdarg.h>
