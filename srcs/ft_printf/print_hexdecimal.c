@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:04:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 21:51:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/04 14:54:41 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ static void		strrev(char s[])
 
 static void		print2(int l, char *res, __int128 h)
 {
-	if (s_data.flags[0] == '#')
+	if (s_data.flags[0] == '#' && l > 1 && res[0] != '0')
+		s_data.width -= 2;
+	if (s_data.specifier == 'p' && s_data.flags[0] == '#' && !h)
 		s_data.width -= 2;
 	if (s_data.flags[1] == '0' && s_data.precision == -1)
 	{

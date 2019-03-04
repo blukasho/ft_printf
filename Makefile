@@ -28,23 +28,25 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   print_digits.c print_octal.c additional_functions.c\
 	   print_unsigned_digits.c print_hexdecimal.c print_double.c\
 	   print_percent.c print_string.c main_function.c check_errors.c\
-	   reverse_double.c
+	   reverse_double.c additional_functions_1.c
 
 vpath %.c srcs srcs/ft_printf
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -I includes
+FLAGS = -Wall -Wextra -g3 -I includes
 
 NAME = libftprintf.a
 
 printf: $(NAME)
-	gcc -Wall -Wextra main.c $(NAME)
+	@echo "\033[4;31m"
+	cp -rvf libftprintf.a ~/Documents/tests/Vol4icatest/ft_printf/
+	@echo "\033[0m"
+	gcc $(FLAGS) main.c $(NAME)
 	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
-	@./a.out
-
+	@./a.out | cat -e
 all: $(NAME)
-
+    
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
 	ranlib $(NAME)

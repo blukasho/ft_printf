@@ -6,13 +6,12 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/26 20:01:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/04 09:54:57 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define MAX_BUFF_SIZE 2147483648
 
 # include "libft.h"
 # include <stdarg.h>
@@ -36,6 +35,8 @@ int			main_function(const char **format, va_list ap);
 int			check_exeption_double(long double d);
 
 int			check_errors(void);
+void		print_precision_octal(int l);
+void		print_width_octal(char c);
 void		print_percent(va_list ap);
 void		print_double(va_list ap);
 void		print_hexdecimal(va_list ap);
