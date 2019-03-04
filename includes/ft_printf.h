@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/04 09:54:57 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/04 19:51:09 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ struct
 	long	precision;
 	char	length;
 	char	specifier;
+	double	pos_inf;
+	double	neg_inf;
 }			s_data;
 
 int			ft_printf(const char *format, ...);
@@ -33,8 +35,11 @@ int			ft_len_nbr(__int128 d);
 int			srcrpl(char *s, char a, char b);
 int			main_function(const char **format, va_list ap);
 int			check_exeption_double(long double d);
-
 int			check_errors(void);
+int			check_nan(char *s, long double);
+
+char		*check_inf(char *s, long double d);
+
 void		print_precision_octal(int l);
 void		print_width_octal(char c);
 void		print_percent(va_list ap);
