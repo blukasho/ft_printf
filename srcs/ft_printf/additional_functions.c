@@ -6,11 +6,24 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 10:59:05 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 20:50:01 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+static long double	round_precision_zero(long double d)
+{
+	__int128 		l;
+	int				r;
+
+	l = d;
+	r = l % 10;
+	l = r % 2;
+	if (l)
+		d += 0.5;
+	return (d);
+}
 
 long double		round_double(long double d)
 {
@@ -19,7 +32,7 @@ long double		round_double(long double d)
 
 	l = 0;
 	ld = 0.5;
-	if (s_data.precision >= 0 && !check_exeption_double(d))
+	if (s_data.precision > 0 && !check_exeption_double(d))
 	{
 		while (l++ < s_data.precision)
 			ld /= 10;
@@ -28,25 +41,13 @@ long double		round_double(long double d)
 		else if (d < 0)
 			d -= ld;
 	}
+	else if (s_data.precision == 0)
+		d = round_precision_zero(d);
 	else if (d < 0)
 		d -= 0.0000005;
 	else if (d > 0)
 		d += 0.0000005;
 	return (d);
-}
-
-int				ft_len_nbr(__int128 d)
-{
-	int			len;
-
-	len = 0;
-	if (d == 0)
-		return (1);
-	if (d < 0)
-		d = -d;
-	while (d > 0 && ++len)
-		d = d / 10;
-	return (len);
 }
 
 void			ft_printf_put_char(char c)

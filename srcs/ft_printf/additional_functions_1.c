@@ -6,11 +6,25 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:12:42 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/05 13:14:05 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 19:55:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+int				ft_len_nbr(__int128 d)
+{
+	int			len;
+
+	len = 0;
+	if (d == 0)
+		return (1);
+	if (d < 0)
+		d = -d;
+	while (d > 0 && ++len)
+		d = d / 10;
+	return (len);
+}
 
 void			print_width_octal(char c)
 {
