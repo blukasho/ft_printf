@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/04 19:51:09 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:33:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ int			srcrpl(char *s, char a, char b);
 int			main_function(const char **format, va_list ap);
 int			check_exeption_double(long double d);
 int			check_errors(void);
-int			check_nan(char *s, long double);
-
-char		*check_inf(char *s, long double d);
+int			print_nan(char *s, long double d);
+int			print_inf(char *s, long double d, int m);
 
 void		print_precision_octal(int l);
 void		print_width_octal(char c);

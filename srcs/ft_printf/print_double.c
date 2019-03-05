@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/04 19:34:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 13:18:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void			print_3(int m)
 
 static void			print_2(char *s, int m, long double d)
 {
-	if (!check_nan(s, d) && (s = check_inf(s, d)))
+	if (!print_inf(s, d, m) && !print_nan(s, d))
 	{
 		if (s_data.flags[1] == '0')
 		{
@@ -51,7 +51,7 @@ static void			print_2(char *s, int m, long double d)
 
 static void			print_1(char *s, int m, long double d)
 {
-	if (!check_nan(s, d) && (s = check_inf(s, d)))
+	if (!print_inf(s, d, m) && !print_nan(s, d))
 	{
 		if (s_data.flags[3] == '+' || m)
 		{
@@ -70,7 +70,7 @@ static void			print_1(char *s, int m, long double d)
 
 static void			print(long double d)
 {
-	char			s[500];
+	char			s[80000];
 	int				m;
 
 	if (d < 0 && (m = 1))
@@ -85,7 +85,7 @@ static void			print(long double d)
 		--s_data.width;
 	d = round_double(d);
 	double_to_string(d, s);
-	if (s_data.flags[2] == ' ' && s_data.flags[3] != '+' && d == d)
+	if (s_data.flags[2] == ' ' && s_data.flags[3] != '+' && d == d && !m)
 	{
 		--s_data.width;
 		ft_printf_put_char(' ');

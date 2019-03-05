@@ -6,13 +6,18 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 09:16:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:06:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # define GNL_BUFF_SIZE 42
+
+# define _IS_NAN(n) ((n) != (n)) ? 1 : 0
+# define _IS_POS_INF(n) ((n) == (1.0 / 0.0) ? 1 : 0)
+# define _IS_NEG_INF(n) ((n) == (-1.0 / 0.0) ? 1 : 0)
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>

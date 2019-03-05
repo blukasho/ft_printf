@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:12:42 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/04 19:58:38 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/05 13:14:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,38 @@ void			print_precision_octal(int l)
 		ft_printf_put_char('0');
 }
 
-char			*check_inf(char *s, long double d)
+int				print_inf(char *s, long double d, int m)
 {
-	if (d == s_data.pos_inf || d == s_data.neg_inf)
-		return ((s_data.specifier == 'f' ? (s = "inf") : (s = "INF")));
-	return(s);
+	if (_IS_POS_INF(d))
+	{
+		s_data.specifier == 'f' ? (s = "inf") : (s = "INF");
+		if (s_data.flags[4] == '-')
+		{
+			if (s_data.flags[3] == '+' || m)
+				m == 1 ? ft_printf_put_char('-') : ft_printf_put_char('+');
+			ft_printf_put_str(s);
+			while ((s_data.width--) - 3 > 0)
+				ft_printf_put_char(' ');
+		}
+		else
+		{
+			while ((s_data.width--) - 3 > 0)
+				ft_printf_put_char(' ');
+			if (s_data.flags[3] == '+' || m)
+				m == 1 ? ft_printf_put_char('-') : ft_printf_put_char('+');
+			ft_printf_put_str(s);
+		}
+		return (1);
+	}
+	return(0);
 }
 
-int				check_nan(char *s, long double d)
+int				print_nan(char *s, long double d)
 {
-	if (d == d && d != s_data.pos_inf && d != s_data.neg_inf)
-	{
-		s_data.width = s_data.width - ft_strlen(s);
-		return (0);
-	}
+	if (!_IS_NAN(d))
+		return (((s_data.width = s_data.width - ft_strlen(s)) ? 0 : 0));
 	else
-	{
-		if (s_data.specifier == 'f')
-			s = "nan";
-		else
-			s = "NAN";
-	}
+		s_data.specifier == 'f' ? (s = "nan") : (s = "NAN");
 	if (s_data.flags[4] == '-')
 	{
 		ft_printf_put_str(s);
