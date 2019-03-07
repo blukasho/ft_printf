@@ -40,6 +40,8 @@ FLAGS = -Wall -Wextra -g3 -I includes
 
 NAME = libftprintf.a
 
+all: $(DIR_O) printf
+
 printf: $(NAME)
 	@echo "\033[4;31m"
 	cp -rvf libftprintf.a ~/Documents/tests/Vol4icatest/ft_printf/
@@ -47,11 +49,9 @@ printf: $(NAME)
 	gcc $(FLAGS) main.c $(NAME)
 	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
 	@./a.out | cat -e
-
-all: $(DIR_O) $(NAME)
     
 $(DIR_O):
-	mkdir tmp
+	mkdir -p tmp
 
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
@@ -61,7 +61,7 @@ $(OBJ): $(DIR_O)/%.o: %.c
 	gcc -c $(FLAGS) $< -o $@
 
 clean: 
-	rm -rf $(OBJ)
+	rm -rf $(DIR_O)
 
 fclean: clean
 	rm -rf $(NAME)

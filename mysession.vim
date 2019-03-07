@@ -796,12 +796,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 57 - ((47 * winheight(0) + 35) / 70)
+let s:l = 64 - ((54 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-57
-normal! 018|
+64
+normal! 019|
 wincmd w
 argglobal
 edit includes/ft_printf.h
