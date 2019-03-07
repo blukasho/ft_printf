@@ -32,7 +32,9 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 
 vpath %.c srcs srcs/ft_printf
 
-OBJ = $(SRCS:.c=.o)
+DIR_O = tmp
+
+OBJ = $(addprefix $(DIR_O)/,$(SRCS:.c=.o))
 
 FLAGS = -Wall -Wextra -g3 -I includes
 
@@ -45,13 +47,17 @@ printf: $(NAME)
 	gcc $(FLAGS) main.c $(NAME)
 	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
 	@./a.out | cat -e
-all: $(NAME)
+
+all: $(DIR_O) $(NAME)
     
+$(DIR_O):
+	mkdir tmp
+
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
 	ranlib $(NAME)
 
-$(OBJ): %.o: %.c
+$(OBJ): $(DIR_O)/%.o: %.c
 	gcc -c $(FLAGS) $< -o $@
 
 clean: 
