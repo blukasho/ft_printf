@@ -51,7 +51,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +30 main.c
-badd +31 Makefile
+badd +50 Makefile
 badd +81 srcs/ft_printf/print_double.c
 badd +35 srcs/ft_printf/additional_functions.c
 badd +13 srcs/ft_printf/parse_flags.c
@@ -88,8 +88,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 89 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 89 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 97 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 97 + 97) / 195)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -317,8 +317,8 @@ normal! zt
 20
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 89 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 89 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 97 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 97 + 97) / 195)
 tabedit srcs/ft_printf/print_double.c
 set splitbelow splitright
 set nosplitbelow
@@ -447,8 +447,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 80 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 98 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 87 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 107 + 97) / 195)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -676,8 +676,8 @@ normal! zt
 4
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 80 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 98 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 87 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 107 + 97) / 195)
 tabedit Makefile
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -688,8 +688,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 81 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 97 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 88 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 106 + 97) / 195)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -796,12 +796,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 64 - ((54 * winheight(0) + 35) / 70)
+let s:l = 69 - ((59 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-64
-normal! 019|
+69
+normal! 011|
 wincmd w
 argglobal
 edit includes/ft_printf.h
@@ -910,15 +910,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 40 - ((39 * winheight(0) + 35) / 70)
+let s:l = 40 - ((32 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 40
 normal! 051|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 81 + 89) / 179)
-exe 'vert 2resize ' . ((&columns * 97 + 89) / 179)
+exe 'vert 1resize ' . ((&columns * 88 + 97) / 195)
+exe 'vert 2resize ' . ((&columns * 106 + 97) / 195)
 tabedit includes/libft.h
 set splitbelow splitright
 set nosplitbelow

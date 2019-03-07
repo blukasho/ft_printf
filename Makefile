@@ -66,6 +66,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf a.out
+	rm -rf a.out.dSYM
 
 re:	fclean all
 
