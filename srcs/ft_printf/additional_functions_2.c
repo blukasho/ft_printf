@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   additional_functions_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 10:54:39 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
+/*   Created: 2019/03/11 13:40:08 by blukasho          #+#    #+#             */
+/*   Updated: 2019/03/11 20:50:01 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				check_errors(void)
+void		get_double_bits(__int128 li)
 {
-	if (g_data.width > 2147483646)
-		return (-1);
-	if (g_data.precision > 2147483641)
-		return (-1);
-	return (0);
+	int		i;
+	char	tmp;
+
+	i = 0;
+	while (i < 80)
+	{
+		if (li & 0x1)
+			g_data.double_bit_mask[i] = '1';
+		else
+			g_data.double_bit_mask[i] = '0';
+		li = li >> 1;
+		++i;
+	}
+	g_data.double_bit_mask[i] = '\0';
 }
 
-int				check_exeption_double(long double d)
+void		get_double_exp(void)
 {
-	__int128	a;
+	int		i;
 
-	a = d;
-	d = d - a;
-	d *= 10;
-	return ((g_data.precision == 0 && !a && d == 5 ? 1 : 0));
+	i = 1;
+	while (i++ < 15)
+	{
+		g_data.double_exp = g_data.double_exp << 1;
+		if (g_data.double_bit_mask[i] == '1')
+			g_data.double_exp = g_data.double_exp | 0x1;
+	}
 }

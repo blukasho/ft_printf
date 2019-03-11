@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 09:52:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/27 20:37:54 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 20:04:27 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void		print(char *s, int len, int prs)
 {
-	if (ft_strchr(s_data.flags, '-'))
+	if (ft_strchr(g_data.flags, '-'))
 	{
 		while (*s && prs--)
 			ft_printf_put_char(*(s++));
-		while (s_data.width-- > len)
+		while (g_data.width-- > len)
 			ft_printf_put_char(' ');
 	}
 	else
 	{
-		if (!ft_strchr(s_data.flags, '0'))
+		if (!ft_strchr(g_data.flags, '0'))
 		{
-			while (s_data.width-- > len)
+			while (g_data.width-- > len)
 				ft_printf_put_char(' ');
 			while (*s && prs--)
 				ft_printf_put_char(*(s++));
 		}
 		else
 		{
-			while (s_data.width-- > len)
+			while (g_data.width-- > len)
 				ft_printf_put_char('0');
 			while (*s && prs--)
 				ft_printf_put_char(*(s++));
@@ -47,44 +47,28 @@ void			print_s(char *s)
 
 	len = ft_strlen(s);
 	prs = len;
-	if ((s_data.precision >= 0) && (s_data.precision < len))
+	if ((g_data.precision >= 0) && (g_data.precision < len))
 	{
-		len = s_data.precision;
+		len = g_data.precision;
 		prs = len;
 	}
-	if (s_data.width > len)
+	if (g_data.width > len)
 		print(s, len, prs);
 	else
 		while (*s && prs--)
 			ft_printf_put_char(*(s++));
 }
 
-void			double_to_string(long double d, char *s)
+void			double_to_string(long double d)
 {
-	char		*st;
-	int			i;
-	__int128	a;
+	__int128	li;
 
-	st = s;
-	a = d;
-	d = d - a;
-	if (!a)
-		*(s++) = '0';
-	while (a > 0 && !(i = 0))
-	{
-		*(s++) = (a % 10) + 48;
-		a /= 10;
-	}
-	*(s++) = '.';
-	while (s_data.precision > i++)
-	{
-		d = d * 10;
-		a = d;
-		*(s++) = (a % 10) + 48;
-		d = d - a;
-	}
-	*s = '\0';
-	reverse_double(st);
+	li = *(__int128 *)&d;
+	get_double_bits(li);
+	reverse_double(g_data.double_bit_mask);
+	g_data.double_sign = g_data.double_bit_mask[0];
+	get_double_exp();
+	printf("exp %d\n\"%s\"", g_data.double_exp, g_data.double_bit_mask);
 }
 
 void			print_string(va_list ap)

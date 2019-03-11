@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/22 09:02:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ int				srcrpl(char *s, char a, char b)
 
 void			result_preparation(va_list ap)
 {
-	if (s_data.specifier == 'd' || s_data.specifier == 'i')
+	if (g_data.specifier == 'd' || g_data.specifier == 'i')
 		print_digits(ap);
-	else if (s_data.specifier == 'u')
+	else if (g_data.specifier == 'u')
 		print_unsigned_digits(ap);
-	else if (s_data.specifier == 'o')
+	else if (g_data.specifier == 'o')
 		print_octal(ap);
-	else if (s_data.specifier == '%')
+	else if (g_data.specifier == '%')
 		print_percent(ap);
-	else if (s_data.specifier == 'c')
+	else if (g_data.specifier == 'c')
 		print_char(ap);
-	else if (s_data.specifier == 's')
+	else if (g_data.specifier == 's')
 		print_string(ap);
-	else if (s_data.specifier == 'x' || s_data.specifier == 'X')
+	else if (g_data.specifier == 'x' || g_data.specifier == 'X')
 		print_hexdecimal(ap);
-	else if (s_data.specifier == 'p')
+	else if (g_data.specifier == 'p')
 		print_pointer(ap);
-	else if (s_data.specifier == 'f' || s_data.specifier == 'F')
+	else if (g_data.specifier == 'f' || g_data.specifier == 'F')
 		print_double(ap);
 }

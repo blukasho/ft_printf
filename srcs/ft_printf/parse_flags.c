@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:20:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 12:20:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void		parse_flags(const char **format)
 	if (**format == '%')
 		++(*(format));
 	while (check_format_symbol(**format))
-		if (**format == '#' && (s_data.flags[0] = '#'))
+		if (**format == '#' && (g_data.flags[0] = '#'))
 			++(*format);
-		else if (**format == '0' && (s_data.flags[1] = '0'))
+		else if (**format == '0' && (g_data.flags[1] = '0'))
 			++(*format);
-		else if (**format == ' ' && (s_data.flags[2] = ' '))
+		else if (**format == ' ' && (g_data.flags[2] = ' '))
 			++(*format);
-		else if (**format == '+' && (s_data.flags[3] = '+'))
+		else if (**format == '+' && (g_data.flags[3] = '+'))
 			++(*format);
-		else if (**format == '-' && (s_data.flags[4] = '-'))
+		else if (**format == '-' && (g_data.flags[4] = '-'))
 			++(*format);
 }

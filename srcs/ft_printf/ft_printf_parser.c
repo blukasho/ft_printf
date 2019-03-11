@@ -6,26 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 09:46:35 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/04 19:51:09 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:58:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-
-void			clear_s_data(void)
-{
-	int			c;
-
-	c = -1;
-	while (++c < 5)
-		s_data.flags[c] = -1;
-	s_data.width = -1;
-	s_data.precision = -1;
-	s_data.length = 0;
-	s_data.specifier = -1;
-	s_data.pos_inf = 1.0 / 0.0;
-	s_data.neg_inf = -1.0 / 0.0;
-}
 
 static void		skip_digits(const char **format)
 {
@@ -35,15 +20,15 @@ static void		skip_digits(const char **format)
 
 static void		get_length(const char **format)
 {
-	if (!ft_strncmp(*format, "ll", 2) && (s_data.length = 2))
+	if (!ft_strncmp(*format, "ll", 2) && (g_data.length = 2))
 		*format += 2;
-	else if (!ft_strncmp(*format, "hh", 2) && (s_data.length = 5))
+	else if (!ft_strncmp(*format, "hh", 2) && (g_data.length = 5))
 		*format += 2;
-	else if (!ft_strncmp(*format, "l", 1) && (s_data.length = 1))
+	else if (!ft_strncmp(*format, "l", 1) && (g_data.length = 1))
 		++(*(format));
-	else if (!ft_strncmp(*format, "h", 1) && (s_data.length = 4))
+	else if (!ft_strncmp(*format, "h", 1) && (g_data.length = 4))
 		++(*(format));
-	else if (!ft_strncmp(*format, "L", 1) && (s_data.length = 3))
+	else if (!ft_strncmp(*format, "L", 1) && (g_data.length = 3))
 		++(*(format));
 }
 
@@ -54,20 +39,23 @@ static void		get_specifier(const char **format)
 		|| **format == 'X' || **format == 'f' || **format == '%'
 		|| **format == 'c' || **format == 's' || **format == 'p'
 		|| **format == 'F')
-		&& (s_data.specifier = **format))
+		&& (g_data.specifier = **format))
 		++(*(format));
 }
 
 void			parse_format_specifiers(const char **format)
 {
-	clear_s_data();
+	g_data = (t_data) 
+	{{-1, -1, -1, -1, -1},
+	-1, -1, 0, -1, 1.0 / 0.0, -1.0 / 0.0,
+	{0}, 0, 0}; 
 	parse_flags(format);
-	s_data.width = ft_atoi(*format);
-	if (s_data.width > -1)
+	g_data.width = ft_atoi(*format);
+	if (g_data.width > -1)
 		skip_digits(format);
 	if (**format == '.')
 	{
-		s_data.precision = ft_atoi(++(*(format)));
+		g_data.precision = ft_atoi(++(*(format)));
 		skip_digits(format);
 	}
 	get_length(format);

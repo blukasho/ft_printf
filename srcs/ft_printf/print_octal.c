@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 09:53:49 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/27 19:08:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		print_3(char *s, int l, char c)
 {
-	while (s_data.width > l && s_data.width-- > s_data.precision)
+	while (g_data.width > l && g_data.width-- > g_data.precision)
 		ft_printf_put_char(c);
 	print_precision_octal(l);
 	ft_printf_put_str(s);
@@ -24,22 +24,22 @@ static void		print_2(char *s, int l)
 {
 	char 		c;
 
-	if (s_data.precision > -1 || s_data.flags[1] != '0')
+	if (g_data.precision > -1 || g_data.flags[1] != '0')
 		c = ' ';
 	else
 		c = '0';
-	if (s_data.flags[0] == '#')
+	if (g_data.flags[0] == '#')
 	{
-		if (s_data.precision > l + 1)
+		if (g_data.precision > l + 1)
 		{
-			s_data.width -= s_data.precision;
+			g_data.width -= g_data.precision;
 			print_width_octal(c);
 		}
 		else
-			while (s_data.width-- > l + 1)
+			while (g_data.width-- > l + 1)
 				ft_printf_put_char(c);
 		print_hesh();
-		while (s_data.precision-- > l + 1)
+		while (g_data.precision-- > l + 1)
 			ft_printf_put_char('0');
 		ft_printf_put_str(s);
 	}
@@ -49,20 +49,20 @@ static void		print_2(char *s, int l)
 
 static void		print(char *s, int l)
 {
-	if (s_data.flags[4] == '-')
+	if (g_data.flags[4] == '-')
 	{
-		if (s_data.flags[0] == '#')
+		if (g_data.flags[0] == '#')
 		{
-			if (s_data.precision > l + 1)
+			if (g_data.precision > l + 1)
 			{
-				s_data.width -= s_data.precision;
-				while (s_data.precision-- > l)
+				g_data.width -= g_data.precision;
+				while (g_data.precision-- > l)
 					ft_printf_put_char('0');
 			}
 			else
 			{
 				print_hesh();
-				s_data.width -= l + 1;
+				g_data.width -= l + 1;
 			}
 		}
 		else
@@ -80,7 +80,7 @@ static void		preparate(__int128 d, char *res)
 	int			i;
 
 	i = 0;
-	if (!d && s_data.precision == -1 && (s_data.flags[0] = -1))
+	if (!d && g_data.precision == -1 && (g_data.flags[0] = -1))
 		res[i++] = '0';
 	while (d > 0)
 	{
@@ -103,18 +103,18 @@ void			print_octal(va_list ap)
 {
 	char		res[40];
 
-	if (s_data.specifier == 'o' && !s_data.length)
+	if (g_data.specifier == 'o' && !g_data.length)
 		preparate(va_arg(ap, unsigned int), res);
-	else if (s_data.specifier == 'o' && s_data.length == 1
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'o' && g_data.length == 1
+			&& srcrpl(g_data.flags, '+', -1))
 		preparate(va_arg(ap, unsigned long), res);
-	else if (s_data.specifier == 'o' && s_data.length == 2
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'o' && g_data.length == 2
+			&& srcrpl(g_data.flags, '+', -1))
 		preparate(va_arg(ap, unsigned long long), res);
-	else if (s_data.specifier == 'o' && s_data.length == 4
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'o' && g_data.length == 4
+			&& srcrpl(g_data.flags, '+', -1))
 		preparate((unsigned short)va_arg(ap, unsigned int), res);
-	else if (s_data.specifier == 'o' && s_data.length == 5
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'o' && g_data.length == 5
+			&& srcrpl(g_data.flags, '+', -1))
 		preparate((unsigned char)va_arg(ap, unsigned int), res);
 }

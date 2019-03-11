@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:25:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 10:47:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	print_unsigned_digits(va_list ap)
 {
-	s_data.flags[2] = -1;
-	if (s_data.specifier == 'u' && !s_data.length
-		&& srcrpl(s_data.flags, '+', -1))
+	g_data.flags[2] = -1;
+	if (g_data.specifier == 'u' && !g_data.length
+		&& srcrpl(g_data.flags, '+', -1))
 		print_all_digits(va_arg(ap, unsigned int));
-	else if (s_data.specifier == 'u' && s_data.length == 1
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'u' && g_data.length == 1
+			&& srcrpl(g_data.flags, '+', -1))
 		print_all_digits(va_arg(ap, unsigned long));
-	else if (s_data.specifier == 'u' && s_data.length == 2
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'u' && g_data.length == 2
+			&& srcrpl(g_data.flags, '+', -1))
 		print_all_digits(va_arg(ap, unsigned long long));
-	else if (s_data.specifier == 'u' && s_data.length == 4
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'u' && g_data.length == 4
+			&& srcrpl(g_data.flags, '+', -1))
 		print_all_digits((unsigned short)va_arg(ap, unsigned int));
-	else if (s_data.specifier == 'u' && s_data.length == 5
-			&& srcrpl(s_data.flags, '+', -1))
+	else if (g_data.specifier == 'u' && g_data.length == 5
+			&& srcrpl(g_data.flags, '+', -1))
 		print_all_digits((unsigned char)va_arg(ap, unsigned int));
 }

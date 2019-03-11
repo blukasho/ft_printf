@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/05 20:50:01 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ long double		round_double(long double d)
 
 	l = 0;
 	ld = 0.5;
-	if (s_data.precision > 0 && !check_exeption_double(d))
+	if (g_data.precision > 0 && !check_exeption_double(d))
 	{
-		while (l++ < s_data.precision)
+		while (l++ < g_data.precision)
 			ld /= 10;
 		if (d > 0)
 			d += ld;
 		else if (d < 0)
 			d -= ld;
 	}
-	else if (s_data.precision == 0)
+	else if (g_data.precision == 0)
 		d = round_precision_zero(d);
 	else if (d < 0)
 		d -= 0.0000005;
@@ -64,10 +64,10 @@ void			ft_printf_put_str(char *s)
 
 void			print_hesh(void)
 {
-	if (s_data.specifier == 'o')
+	if (g_data.specifier == 'o')
 		ft_printf_put_char('0');
-	else if (s_data.specifier == 'x' || s_data.specifier == 'p')
+	else if (g_data.specifier == 'x' || g_data.specifier == 'p')
 		ft_printf_put_str("0x");
-	else if (s_data.specifier == 'X')
+	else if (g_data.specifier == 'X')
 		ft_printf_put_str("0X");
 }

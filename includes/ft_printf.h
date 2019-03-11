@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/05 12:33:42 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:58:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int			g_print_symbols;
 
-struct
+typedef struct	s_data
 {
 	char	flags[5];
 	long	width;
@@ -28,7 +28,12 @@ struct
 	char	specifier;
 	double	pos_inf;
 	double	neg_inf;
-}			s_data;
+	char	double_bit_mask[80];
+	char	double_sign;
+	short	double_exp;
+}				t_data;
+
+t_data		g_data;
 
 int			ft_printf(const char *format, ...);
 int			ft_len_nbr(__int128 d);
@@ -39,6 +44,8 @@ int			check_errors(void);
 int			print_nan(char *s, long double d);
 int			print_inf(char *s, long double d, int m);
 
+void		get_double_exp(void);
+void		get_double_bits(__int128 li);
 void		print_precision_octal(int l);
 void		print_width_octal(char c);
 void		print_percent(va_list ap);
@@ -60,7 +67,7 @@ void		print_c(int c);
 void		result_preparation(va_list ap);
 void		parse_format_specifiers(const char **format);
 void		parse_flags(const char **format);
-void		double_to_string(long double d, char *s);
+void		double_to_string(long double d);
 void		reverse_double(char *s);
 
 long double	round_double(long double d);

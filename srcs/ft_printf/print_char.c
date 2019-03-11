@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:18:12 by blukasho          #+#    #+#             */
-/*   Updated: 2019/02/21 11:44:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void		print_char(va_list ap)
 
 void		print_c(int c)
 {
-	if (s_data.width > 1 && ft_strchr(s_data.flags, '-'))
+	if (g_data.width > 1 && ft_strchr(g_data.flags, '-'))
 	{
 		ft_printf_put_char(c);
-		while (s_data.width-- > 1)
+		while (g_data.width-- > 1)
 			ft_printf_put_char(' ');
 	}
 	else
 	{
-		if (!ft_strchr(s_data.flags, '0'))
-			while (s_data.width-- > 1)
+		if (!ft_strchr(g_data.flags, '0'))
+			while (g_data.width-- > 1)
 				ft_printf_put_char(' ');
 		else
-			while (s_data.width-- > 1)
+			while (g_data.width-- > 1)
 				ft_printf_put_char('0');
 		ft_printf_put_char(c);
 	}
