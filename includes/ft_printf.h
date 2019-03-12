@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/11 19:58:36 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/12 09:30:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_data
 	char	specifier;
 	double	pos_inf;
 	double	neg_inf;
-	char	double_bit_mask[80];
+	char	double_bit_mask[81];
 	char	double_sign;
 	short	double_exp;
 }				t_data;

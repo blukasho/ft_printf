@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/07 14:40:14 by blukasho          #+#    #+#              #
-#    Updated: 2019/03/07 14:41:19 by blukasho         ###   ########.fr        #
+#    Updated: 2019/03/11 15:22:10 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,3 +14,5 @@ SRCS = test.c
 
 all:
 	gcc -Wall -Wextra -g3 $(SRCS)
+	./a.out
+#	lldb a.out
