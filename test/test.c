@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/12 19:48:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/13 13:58:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,13 @@ void			pos_exp_of_digit(int dig, int base, int len, int *res)
 }
 
 /*
- *Only for 2
- */
-
-void		neg_exp_of_digit_two(int dig, int base, int len, int *res)
-{
-	base = -base;
-	pos_exp_of_digit(5, base, len, res);
-}
-
-/*
  * Array a must be bigger than b
  * Resul write in a
- *
  */
 
 void			sum_two_digits(int *a, int *b, int  a_len, int b_len)
 {
 	int			i;
-	int			m;
 
 	i = 0;
 	if (a_len > b_len)
@@ -113,62 +101,114 @@ void			sum_two_digits(int *a, int *b, int  a_len, int b_len)
 	}
 }
 
+/*
+ * logical comparison of two integers represented in an int array
+ * return 1 if a > b
+ * return -1 if a < b
+ * return  0 if a == b
+ */
+
+int				int_arr_comparing(int *a, int *b, int a_len, int b_len)
+{
+	while (a[--a_len] == 0)
+		;
+	while (b[--b_len] == 0)
+		;
+	if (a_len > b_len)
+		return (1);
+	else if (a_len < b_len)
+		return (-1);
+	else
+	{
+		while (a_len >= 0)
+		{
+			if (a[a_len] > b[a_len])
+				return (1);
+			else if (a[a_len] < b[a_len])
+				return (-1);
+			--a_len;
+		}
+	}
+	return (0);
+}
+
+int				***create_int_arr(int len)
+{
+	int			arr[len];
+
+	return (&arr);
+}
+
 int 			main(void)
 {
-	__int128	li;
-	int			exp = -5;
-	int			digit = 2;
-	int			exp2 = -4;
-	int			digit2 = 2;
-	int			len_arr = -exp;
-	int			len_arr2 = -exp2;
+	int			li;
+	int			exp = 89;
+	int			digit = 46;
+	int			exp2 = 80;
+	int			digit2 = 68;
+	int			len_arr = len_of_digit(digit) * exp;
+	int			len_arr2 = len_of_digit(digit2) * exp2;
+
 	int			tmp = len_arr;
 	int			tmp2 = len_arr2;
-	int			arr[len_arr];
-	int			arr2[len_arr2];
 
-	printf("exp %d\ndigit %d\ncreate len_arr -------->>>>>>>>>>>>> %d\n", exp, digit, len_arr);
-	printf("exp2 %d\ndigit2 %d\ncreate len_arr2 -------->>>>>>>>>>>>> %d\n", exp2, digit2, len_arr2);
+//	printf("exp %d\ndigit %d\ncreate len_arr -------->>>>>>>>>>>>> %d\n", exp, digit, len_arr);
+//	printf("exp2 %d\ndigit2 %d\ncreate len_arr2 -------->>>>>>>>>>>>> %d\n", exp2, digit2, len_arr2);
 	if (len_arr < 2097152 && len_arr2 < 2097152)
 	{
-//		pos_exp_of_digit(digit, exp, len_arr, arr);
-//		pos_exp_of_digit(digit2, exp2, len_arr2, arr2);
-		neg_exp_of_digit_two(digit, exp, len_arr, arr);
-		neg_exp_of_digit_two(digit2, exp2, len_arr2, arr2);
+		int			arr[len_arr];
+		int			arr2[len_arr2];
 		li = 0;
-		while (li < len_arr)
-			printf("%d", arr[li++]);
-		printf("\n");
-		li = 0;
-		while (li < len_arr2)
-			printf("%d", arr2[li++]);
-		printf("\n");
+	//	while (li < len_arr)
+	//		arr[li++] = 0;
+		pos_exp_of_digit(digit, exp, len_arr, arr);
+		pos_exp_of_digit(digit2, exp2, len_arr2, arr2);
+	//	li = 0;
+		while (arr[--len_arr] == 0)
+			;
+	//	printf("\n");
+	//	li = 0;
+		while (arr2[--len_arr2] == 0)
+			;
+	//	printf("\n");
 		printf("real len_arr -------->>>>>>>>>>>>> %d\n", len_arr + 1);
 		printf("real len_arr2 -------->>>>>>>>>>>>> %d\n", len_arr2 + 1);
 		printf("digit one -------->>>>>>>>>>>>> ");
-//		while (len_arr >= 0)
-//			printf("%d", arr[len_arr--]);
-//		printf("\n");
-//		printf("digit two -------->>>>>>>>>>>>> ");
-//		while (len_arr2 >= 0)
-//			printf("%d", arr2[len_arr2--]);
-//		printf("\n");
-		if (tmp > tmp2)
-		{
-			sum_two_digits(arr, arr2, tmp, tmp2);
-			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp + 1);
-			while (--tmp >= 0)
-				printf("%d", arr[tmp]);
-			printf("\n");
-		}
+
+		while (len_arr >= 0)
+			printf("%d", arr[len_arr--]);
+		printf("\n");
+		printf("digit two -------->>>>>>>>>>>>> ");
+		while (len_arr2 >= 0)
+			printf("%d", arr2[len_arr2--]);
+		printf("\n");
+
+		printf("result equals a");
+		li = int_arr_comparing(arr, arr2, tmp, tmp2);
+		if (li == 1)
+			printf(" > b\n");
+		else if (li == -1)
+			printf(" < b\n");
 		else
-		{
-			sum_two_digits(arr2, arr, tmp2, tmp);
-			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp2 + 1);
-			while (--tmp2 >= 0)
-				printf("%d", arr2[tmp2]);
-			printf("\n");
-		}
+			printf(" = b\n");
+
+		create_int_arr(10);
+//		if (tmp > tmp2)
+//		{
+//			sum_two_digits(arr, arr2, tmp, tmp2);
+//			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp + 1);
+//			while (--tmp >= 0)
+//				printf("%d", arr[tmp]);
+//			printf("\n");
+//		}
+//		else
+//		{
+//			sum_two_digits(arr2, arr, tmp2, tmp);
+//			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp2 + 1);
+//			while (--tmp2 >= 0)
+//				printf("%d", arr2[tmp2]);
+//			printf("\n");
+//		}
 	}
 }
 
