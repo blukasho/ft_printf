@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/13 13:58:13 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/14 19:23:20 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,53 +132,85 @@ int				int_arr_comparing(int *a, int *b, int a_len, int b_len)
 	return (0);
 }
 
-int				***create_int_arr(int len)
-{
-	int			arr[len];
+/*
+ * Subtract a from b
+ * result write in a;
+ * a must be less than b
+ */
 
-	return (&arr);
+#include <stdlib.h>
+#include "../includes/libft.h"
+
+typedef struct			s_int_arr_subtract
+{                       
+	int					flag;
+	int					find;
+	int					count;
+}						t_int_arr_subtract;
+
+int						int_arr_subtract(int *a, int *b, int a_len, int b_len)
+{
+	t_int_arr_subtract	*s;
+
+	s = (t_int_arr_subtract*)malloc(sizeof(t_int_arr_subtract));
+	ft_bzero(s, sizeof(t_int_arr_subtract));
+	while (a[--a_len] == 0)
+		;
+	while (b[--b_len] == 0)
+		;
+	while (s->count <= b_len)
+	{
+		if (a[s->count] >= b[s->count])
+			a[s->count] = a[s->count] - b[s->count];
+		else
+		{
+			s->find = s->count + 1;
+			while (a[s->find] == 0)
+				a[s->find++] = 9;
+			--(a[s->find]);
+			a[s->count] = (a[s->count] + 10) - b[s->count];
+		}
+		++(s->count);
+	}
+	free(s);
+	return (0);
 }
 
 int 			main(void)
 {
 	int			li;
-	int			exp = 89;
-	int			digit = 46;
-	int			exp2 = 80;
-	int			digit2 = 68;
+	int			exp = 323;
+	int			digit = 4;
+	int			exp2 = 95;
+	int			digit2 = 56;
 	int			len_arr = len_of_digit(digit) * exp;
 	int			len_arr2 = len_of_digit(digit2) * exp2;
 
 	int			tmp = len_arr;
 	int			tmp2 = len_arr2;
 
-//	printf("exp %d\ndigit %d\ncreate len_arr -------->>>>>>>>>>>>> %d\n", exp, digit, len_arr);
-//	printf("exp2 %d\ndigit2 %d\ncreate len_arr2 -------->>>>>>>>>>>>> %d\n", exp2, digit2, len_arr2);
+	printf("exp %d\ndigit %d\ncreate len_arr -------->>>>>>>>>>>>> %d\n", exp, digit, len_arr);
+	printf("exp2 %d\ndigit2 %d\ncreate len_arr2 -------->>>>>>>>>>>>> %d\n", exp2, digit2, len_arr2);
 	if (len_arr < 2097152 && len_arr2 < 2097152)
 	{
-		int			arr[len_arr];
-		int			arr2[len_arr2];
-		li = 0;
-	//	while (li < len_arr)
-	//		arr[li++] = 0;
+		int			*arr = (int *)malloc(len_arr * sizeof(int));
+		int			*arr2 = (int *)malloc(len_arr2 * sizeof(int));
+		ft_bzero(arr, len_arr * sizeof(int));
+		ft_bzero(arr2, len_arr2 * sizeof(int));
+
 		pos_exp_of_digit(digit, exp, len_arr, arr);
 		pos_exp_of_digit(digit2, exp2, len_arr2, arr2);
-	//	li = 0;
-		while (arr[--len_arr] == 0)
+		while (arr[--len_arr] == 0 && len_arr)
 			;
-	//	printf("\n");
-	//	li = 0;
-		while (arr2[--len_arr2] == 0)
+		while (arr2[--len_arr2] == 0 && len_arr2)
 			;
-	//	printf("\n");
 		printf("real len_arr -------->>>>>>>>>>>>> %d\n", len_arr + 1);
 		printf("real len_arr2 -------->>>>>>>>>>>>> %d\n", len_arr2 + 1);
 		printf("digit one -------->>>>>>>>>>>>> ");
-
 		while (len_arr >= 0)
 			printf("%d", arr[len_arr--]);
 		printf("\n");
-		printf("digit two -------->>>>>>>>>>>>> ");
+		printf("digit two -------->>>>>>>>>>>>>			            ");
 		while (len_arr2 >= 0)
 			printf("%d", arr2[len_arr2--]);
 		printf("\n");
@@ -192,7 +224,15 @@ int 			main(void)
 		else
 			printf(" = b\n");
 
-		create_int_arr(10);
+		int_arr_subtract(arr, arr2, tmp, tmp2);
+		len_arr = tmp;
+		while (arr[--len_arr] == 0)
+			;
+		printf("a - b =                         ");
+		while (len_arr >= 0)
+			printf("%d", arr[len_arr--]);
+		printf("\n");
+
 //		if (tmp > tmp2)
 //		{
 //			sum_two_digits(arr, arr2, tmp, tmp2);
