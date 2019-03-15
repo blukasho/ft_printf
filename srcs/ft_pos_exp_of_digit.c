@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sum_two_digits.c                                :+:      :+:    :+:   */
+/*   ft_pos_exp_of_digit.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/15 15:38:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/15 19:39:30 by blukasho         ###   ########.fr       */
+/*   Created: 2019/03/15 18:07:36 by blukasho          #+#    #+#             */
+/*   Updated: 2019/03/15 18:30:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static t_sum_two_digits	*init(int *a, int a_len, int b_len)
+static t_pos_exp_of_digit	*init(int dig, int base)
 {
-	t_sum_two_digits	*s;
+	t_pos_exp_of_digit		*s;
 
-	s = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
-	ft_bzero(s, sizeof(t_sum_two_digits));
-	s->r_len = a_len + b_len;
+	s = (t_pos_exp_of_digit *)malloc(sizeof(t_pos_exp_of_digit));
+	ft_bzero(s, sizeof(t_pos_exp_of_digit));
+	s->r_len = base * ft_len_of_digit(dig);
 	s->r = (int *)malloc(s->r_len * sizeof(int));
 	ft_bzero(s->r, s->r_len * sizeof(int));
-	while (--a_len >= 0)
-		s->r[a_len] = a[a_len];
+	s->r[0] = 1;
 	return (s);
 }
 
-t_sum_two_digits		*ft_sum_two_digits(int *a, int *b, int a_len, int b_len)
+t_pos_exp_of_digit		*ft_pos_exp_of_digit(int dig, int base)
 {
-	t_sum_two_digits    *s;
+	t_pos_exp_of_digit	*s;
 
-	s = init(a, a_len, b_len);
-	if (a_len && b_len)
+	s = init(dig, base);
+	while (base-- > 0)
 	{
-		while (s->i < b_len)
+		s->i = 0;
+		while (s->i < s->r_len)
 		{
-			s->r[s->i] = s->r[s->i] + b[s->i];
+			s->r[s->i] = s->r[s->i] * dig;
+			++(s->i);
+		}
+		s->i = 0;
+		while (s->i < s->r_len)
+		{
 			if (s->r[s->i] > 9)
 			{
 				s->r[s->i + 1] = s->r[s->i + 1] + (s->r[s->i] / 10);
 				s->r[s->i] = s->r[s->i] % 10;
 			}
 			++(s->i);
-			while (s->r[s->i] > 10)
-			{
-				s->r[s->i + 1] = s->r[s->i + 1] + (s->r[s->i] % 10);
-				s->r[s->i] = s->r[s->i] / 10;
-			}
 		}
 	}
 	return (s);
