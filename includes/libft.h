@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/15 14:44:10 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:42:40 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,25 @@ typedef struct		s_int_arr_mult
 	int		  		r_len;
 }			  		t_int_arr_mult;
 
+typedef struct		s_int_arr_subtr
+{                   
+	int				flag;
+	int				find;
+	int				count;
+	int				r_len;
+	int				*r;
+}					t_int_arr_subtr;
+
+typedef struct		s_sum_two_digits
+{                   
+	int				i;
+	int				r_len;
+	int				*r;
+}					t_sum_two_digits;
+
+__int128			ft_len_of_digit(__int128 d);
+t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int  a_len, int b_len);
+t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
 
 void				ft_lstiter(t_list *lst, void (*f) (t_list *elem));

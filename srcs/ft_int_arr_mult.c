@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 14:40:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/15 14:45:27 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:50:12 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len)
 		;
 	s->r_len = a_len + b_len + 2;
 	s->r = (int *)malloc(s->r_len * sizeof(int));
-	ft_bzero(s->r, sizeof(s->r));
+	ft_bzero(s->r, s->r_len * sizeof(int));
 	while (s->a_tmp <= a_len)
 	{
 		s->b_tmp = -1;

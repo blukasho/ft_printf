@@ -6,13 +6,14 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/07 14:40:14 by blukasho          #+#    #+#              #
-#    Updated: 2019/03/14 14:09:09 by blukasho         ###   ########.fr        #
+#    Updated: 2019/03/15 14:48:34 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = test.c
 
 all:
+	make -C ../
 	gcc -Wall -Wextra -g3 ../libftprintf.a $(SRCS)
 	./a.out
 #	lldb a.out
