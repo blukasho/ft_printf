@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/14 19:23:20 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:46:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,13 +176,51 @@ int						int_arr_subtract(int *a, int *b, int a_len, int b_len)
 	return (0);
 }
 
+
+//typedef struct					s_int_arr_mult
+//{
+//	int							*r;
+//	int							a_tmp;
+//	int							b_tmp;
+//	int							r_len;
+//}								t_int_arr_mult;
+//
+//t_int_arr_mult		*int_arr_mult(int *a, int *b, int a_len, int b_len)
+//{
+//	t_int_arr_mult	*s;
+//
+//	s = (t_int_arr_mult *)malloc(sizeof(t_int_arr_mult));
+//	ft_bzero(s, sizeof(t_int_arr_mult));
+//	while (a[--a_len] == 0)
+//		;
+//	while (b[--b_len] == 0)
+//		;
+//	s->r_len = a_len + b_len + 2;
+//	s->r = (int *)malloc(s->r_len * sizeof(int));
+//	ft_bzero(s->r, sizeof(s->r));
+//	while (s->a_tmp <= a_len)
+//	{
+//		s->b_tmp = -1;
+//		while (++(s->b_tmp) <= b_len )
+//			s->r[s->a_tmp + s->b_tmp] += a[s->a_tmp] * b[s->b_tmp];
+//		++(s->a_tmp);
+//	}
+//	a_len = -1;
+//	while (++a_len < s->r_len)
+//	{
+//		s->r[a_len + 1] += s->r[a_len] / 10;
+//		s->r[a_len] %= 10;
+//	}
+//	return (s);
+//}
+
 int 			main(void)
 {
 	int			li;
-	int			exp = 323;
-	int			digit = 4;
-	int			exp2 = 95;
-	int			digit2 = 56;
+	int			exp = 33;
+	int			digit = 51;
+	int			exp2 = 52;
+	int			digit2 = 47;
 	int			len_arr = len_of_digit(digit) * exp;
 	int			len_arr2 = len_of_digit(digit2) * exp2;
 
@@ -210,45 +248,62 @@ int 			main(void)
 		while (len_arr >= 0)
 			printf("%d", arr[len_arr--]);
 		printf("\n");
-		printf("digit two -------->>>>>>>>>>>>>			            ");
+		printf("digit two -------->>>>>>>>>>>>>	");
 		while (len_arr2 >= 0)
 			printf("%d", arr2[len_arr2--]);
+		printf("\n         ");
+
+		t_int_arr_mult	*s;
+	
+		s = ft_int_arr_mult(arr, arr2, tmp, tmp2);
+		s->a_tmp = s->r_len;
+		while (--(s->a_tmp) >= 0)
+			printf("%d", s->r[s->a_tmp]);
 		printf("\n");
 
-		printf("result equals a");
-		li = int_arr_comparing(arr, arr2, tmp, tmp2);
-		if (li == 1)
-			printf(" > b\n");
-		else if (li == -1)
-			printf(" < b\n");
-		else
-			printf(" = b\n");
-
-		int_arr_subtract(arr, arr2, tmp, tmp2);
-		len_arr = tmp;
-		while (arr[--len_arr] == 0)
-			;
-		printf("a - b =                         ");
-		while (len_arr >= 0)
-			printf("%d", arr[len_arr--]);
-		printf("\n");
+//		printf("result equals a");
+//		li = int_arr_comparing(arr, arr2, tmp, tmp2);
+//		if (li == 1)
+//			printf(" > b\n");
+//		else if (li == -1)
+//			printf(" < b\n");
+//		else
+//			printf(" = b\n");
+//
+//		int_arr_subtract(arr, arr2, tmp, tmp2);
+//		len_arr = tmp;
+//		while (arr[--len_arr] == 0)
+//			;
+//		printf("a - b =                         ");
+//		while (len_arr >= 0)
+//			printf("%d", arr[len_arr--]);
+//		printf("\n");
 
 //		if (tmp > tmp2)
 //		{
 //			sum_two_digits(arr, arr2, tmp, tmp2);
 //			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp + 1);
-//			while (--tmp >= 0)
-//				printf("%d", arr[tmp]);
+//			while (arr[--tmp] == 0)
+//				;
+//			while (tmp >= 0)
+//				printf("%d", arr[tmp--]);
 //			printf("\n");
 //		}
 //		else
 //		{
 //			sum_two_digits(arr2, arr, tmp2, tmp);
 //			printf("real size arr ----->>>>>>>> %d\nresul sum = ", tmp2 + 1);
-//			while (--tmp2 >= 0)
-//				printf("%d", arr2[tmp2]);
+//			while (arr2[--tmp2] == 0)
+//				;
+//			while (tmp2 >= 0)
+//				printf("%d", arr2[tmp2--]);
 //			printf("\n");
 //		}
+	ft_memdel((void **)&s->r);
+	ft_memdel((void **)&s);
+	ft_memdel((void **)&arr);
+	ft_memdel((void **)&arr2);
+//	system("leaks a.out");
 	}
 }
 

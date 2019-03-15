@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/05 12:06:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:44:10 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_int_arr_mult
+{
+	int		  		*r;
+	int		  		a_tmp;
+	int		  		b_tmp;
+	int		  		r_len;
+}			  		t_int_arr_mult;
+
+t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
 
 void				ft_lstiter(t_list *lst, void (*f) (t_list *elem));
 void				ft_lstadd(t_list **alst, t_list *new);
