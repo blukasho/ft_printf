@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/15 20:10:51 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/16 18:48:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,35 +30,6 @@ void		print_double_bits(__int128 li)
 	while (--i >= 0)
 		printf("%c", res[i]);
 }
-
-//t_pos_exp_of_digit		*pos_exp_of_digit(int dig, int base)
-//{
-//	t_pos_exp_of_digit	*s;
-//
-//	s = (t_pos_exp_of_digit *)malloc(sizeof(t_pos_exp_of_digit));
-//	ft_bzero(s, sizeof(t_pos_exp_of_digit));
-//
-//	while (base-- > 0)
-//	{
-//		i = 0;
-//		while (i < len)
-//		{
-//			res[i] = res[i] * dig;
-//			++i;
-//		}
-//		i = 0;
-//		while (i < len)
-//		{
-//			if (res[i] > 9)
-//			{
-//				res[i + 1] = res[i + 1] + (res[i] / 10);
-//				res[i] = res[i] % 10;
-//			}
-//			++i;
-//		}
-//	}
-//	return (s);
-//}
 
 /*
  * logical comparison of two integers represented in an int array
@@ -93,53 +64,73 @@ int				int_arr_comparing(int *a, int *b, int a_len, int b_len)
 
 int 					main(void)
 {                   
-	int					exp = 13;
-	int					digit = 3;
-	int					exp2 = 12;
-	int					digit2 = 10;
+	int					exp = 10;
+	int					digit = 2;
+	int					exp2 = 16;
+	int					digit2 = 2;
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
-
-	printf("-------->>>>>>> %d ^ %d = ", digit, exp);
-	s = ft_pos_exp_of_digit(digit, exp);
-	s->i = s->r_len;
-	while (s->r[s->r_len] == 0)
-		s->r_len--;
-	while (s->r_len >= 0)
-		printf("%d", s->r[s->r_len--]);
-	printf("\n");
-
-	printf("-------->>>>>>> %d ^ %d = ", digit2, exp2);
-	s2 = ft_pos_exp_of_digit(digit2, exp2);
-	s2->i = s2->r_len;
-	while (s2->r[s2->r_len] == 0)
-		s2->r_len--;
-	while (s2->r_len >= 0)
-		printf("%d", s2->r[s2->r_len--]);
-	printf("\n");
-
 	t_sum_two_digits	*sum;
+	t_sum_two_digits	*all;
+	t_sum_two_digits	*tmp;
 
-	sum = ft_sum_two_digits(s->r, s2->r, s->i, s2->i);
-	printf("sum = ");
-	while (sum->r[--(sum->r_len)] == 0)
-		;
-	while (sum->r_len >= 0)
-		printf("%d", sum->r[sum->r_len--]);
-	printf("\n");
-//	printf("result equals a");
-//	li = int_arr_comparing(arr, arr2, tmp, tmp2);
-//	if (li == 1)
-//		printf(" > b\n");
-//	else if (li == -1)
-//		printf(" < b\n");
-//	else
-//		printf(" = b\n");
-
-//	ft_memdel((void **)&s->r);
-//	ft_memdel((void **)&s);
-//	ft_memdel((void **)&s2->r);
-//	ft_memdel((void **)&s2);
+	all = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
+	ft_bzero(all, sizeof(t_sum_two_digits));
+	all->r_len = 1;
+	all->r = (int *)malloc(all->r_len * sizeof(int));
+	ft_bzero(all->r, all->r_len * sizeof(int));
+	while (exp2 <= 20)
+	{
+		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
+		s = ft_pos_exp_of_digit(digit, exp);
+		s->i = s->r_len;
+		while (s->r[--(s->r_len)] == 0)
+			;
+		while (s->r_len >= 0)
+			printf("%d", s->r[s->r_len--]);
+		printf("\n");
+    
+		printf("-------->>>>>>> %d ^ %d = ", digit2, exp2);
+		s2 = ft_pos_exp_of_digit(digit2, exp2);
+		s2->i = s2->r_len;
+		while (s2->r[--(s2->r_len)] == 0)
+			;
+		while (s2->r_len >= 0)
+			printf("%d", s2->r[s2->r_len--]);
+		printf("\n");
+    
+    
+		sum = ft_sum_two_digits(s2->r, s->r, s2->i, s->i);
+		printf("sum = ");
+		sum->i = sum->r_len;
+		while (sum->r[--(sum->i)] == 0)
+			;
+		while (sum->i >= 0)
+			printf("%d", sum->r[sum->i--]);
+		printf("\n");
+		
+		tmp = all;
+		all = ft_sum_two_digits(all->r, sum->r, all->r_len, sum->r_len);
+		printf("all = ");
+		all->i = all->r_len;
+		while (all->r[--all->i] == 0 && all->i)
+			;
+		while (all->i >= 0)
+			printf("%d", all->r[all->i--]);
+		printf("\n");
+		ft_memdel((void **)&s->r);
+		ft_memdel((void **)&s);
+		ft_memdel((void **)&s2->r);
+		ft_memdel((void **)&s2);
+		ft_memdel((void **)&sum->r);
+		ft_memdel((void **)&sum);
+		ft_memdel((void **)&tmp->r);
+		ft_memdel((void **)&tmp);
+		++exp;
+		++exp2;
+	}
+	ft_memdel((void **)&all->r);
+	ft_memdel((void **)&all);
 //	system("leaks a.out");
 }
 
