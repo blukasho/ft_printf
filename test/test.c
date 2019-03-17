@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/16 18:48:15 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/17 13:44:08 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int 					main(void)
 	t_sum_two_digits	*sum;
 	t_sum_two_digits	*all;
 	t_sum_two_digits	*tmp;
+	t_int_arr_subtr		*sub;
 
 	all = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
 	ft_bzero(all, sizeof(t_sum_two_digits));
@@ -118,6 +119,15 @@ int 					main(void)
 		while (all->i >= 0)
 			printf("%d", all->r[all->i--]);
 		printf("\n");
+
+		sub = ft_int_arr_subtr(all->r, sum->r, all->r_len, sum->r_len);
+		sub->count = sub->r_len;
+		printf("sub = ");
+		while (sub->count > 0 && sub->r[--(sub->count)] == 0)
+			;
+		while (sub->count >= 0)
+			printf("%d", sub->r[sub->count--]);
+		printf("\n");
 		ft_memdel((void **)&s->r);
 		ft_memdel((void **)&s);
 		ft_memdel((void **)&s2->r);
@@ -126,6 +136,8 @@ int 					main(void)
 		ft_memdel((void **)&sum);
 		ft_memdel((void **)&tmp->r);
 		ft_memdel((void **)&tmp);
+		ft_memdel((void **)&sub->r);
+		ft_memdel((void **)&sub);
 		++exp;
 		++exp2;
 	}

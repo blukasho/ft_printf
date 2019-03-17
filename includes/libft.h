@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/15 18:50:37 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/17 10:59:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct		s_int_arr_subtr
 	int				flag;
 	int				find;
 	int				count;
+	int				r_a_len;
+	int				r_b_len;
 	int				r_len;
 	int				*r;
 }					t_int_arr_subtr;
