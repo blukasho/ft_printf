@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/17 13:44:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/17 18:30:39 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int 					main(void)
 	t_sum_two_digits	*all;
 	t_sum_two_digits	*tmp;
 	t_int_arr_subtr		*sub;
+	t_int_arr_mult		*mul;
 
 	all = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
 	ft_bzero(all, sizeof(t_sum_two_digits));
@@ -128,6 +129,15 @@ int 					main(void)
 		while (sub->count >= 0)
 			printf("%d", sub->r[sub->count--]);
 		printf("\n");
+
+		mul = ft_int_arr_mult(all->r, sum->r, all->r_len, sum->r_len);
+		printf("multiple = ");
+		mul->a_tmp = mul->r_len;
+		while (mul->r[--(mul->a_tmp)] == 0)
+			;
+		while (mul->a_tmp >= 0)
+			printf("%d", mul->r[(mul->a_tmp)--]);
+		printf("\n");
 		ft_memdel((void **)&s->r);
 		ft_memdel((void **)&s);
 		ft_memdel((void **)&s2->r);
@@ -138,7 +148,9 @@ int 					main(void)
 		ft_memdel((void **)&tmp);
 		ft_memdel((void **)&sub->r);
 		ft_memdel((void **)&sub);
-		++exp;
+		ft_memdel((void **)&mul->r);
+		ft_memdel((void **)&mul);
+		exp *= 10;
 		++exp2;
 	}
 	ft_memdel((void **)&all->r);
