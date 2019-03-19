@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/18 18:12:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/19 09:45:21 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,10 @@ typedef struct		s_pos_exp_of_digit
 
 typedef struct		s_neg_exp_of_digit
 {
+	int				tmp;
 	int				sw;
 	int				*r;
+	int				r_pos;
 	int				r_len;
 	int				*div;
 	int				div_len;

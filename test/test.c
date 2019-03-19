@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/18 18:14:19 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/19 13:04:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int 					main(void)
 			printf("%d", mul->r[(mul->a_tmp)--]);
 		printf("\n");
 
-		neg = ft_neg_exp_of_digit(2, -16);
+		neg = ft_neg_exp_of_digit(2, -8);
 
 		ft_memdel((void **)&s->r);
 		ft_memdel((void **)&s);
