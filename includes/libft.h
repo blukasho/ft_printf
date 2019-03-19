@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/17 10:59:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:12:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,23 @@ typedef struct		s_pos_exp_of_digit
 	int				*r;
 }					t_pos_exp_of_digit;
 
+typedef struct		s_neg_exp_of_digit
+{
+	int				sw;
+	int				*r;
+	int				r_len;
+	int				*div;
+	int				div_len;
+}					t_neg_exp_of_digit;
+
+typedef struct		s_int_arr_division
+{
+	int				r_len;
+	int				*r;
+}					t_int_arr_division;
+
 __int128			ft_len_of_digit(__int128 d);
+t_neg_exp_of_digit	*ft_neg_exp_of_digit(int dig, int base);
 t_pos_exp_of_digit	*ft_pos_exp_of_digit(int dig, int base);
 t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int  a_len, int b_len);
 t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);

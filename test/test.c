@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/17 18:30:39 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:14:19 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,11 @@ void		print_double_bits(__int128 li)
 		printf("%c", res[i]);
 }
 
-/*
- * logical comparison of two integers represented in an int array
- * return 1 if a > b
- * return -1 if a < b
- * return  0 if a == b
- */
-
-int				int_arr_comparing(int *a, int *b, int a_len, int b_len)
-{
-	while (a[--a_len] == 0)
-		;
-	while (b[--b_len] == 0)
-		;
-	if (a_len > b_len)
-		return (1);
-	else if (a_len < b_len)
-		return (-1);
-	else
-	{
-		while (a_len >= 0)
-		{
-			if (a[a_len] > b[a_len])
-				return (1);
-			else if (a[a_len] < b[a_len])
-				return (-1);
-			--a_len;
-		}
-	}
-	return (0);
-}
-
 int 					main(void)
 {                   
-	int					exp = 10;
-	int					digit = 2;
-	int					exp2 = 16;
+	int					exp = 22;
+	int					digit = 33;
+	int					exp2 = 8;
 	int					digit2 = 2;
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
@@ -75,13 +44,14 @@ int 					main(void)
 	t_sum_two_digits	*tmp;
 	t_int_arr_subtr		*sub;
 	t_int_arr_mult		*mul;
+	t_neg_exp_of_digit	*neg;
 
 	all = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
 	ft_bzero(all, sizeof(t_sum_two_digits));
 	all->r_len = 1;
 	all->r = (int *)malloc(all->r_len * sizeof(int));
 	ft_bzero(all->r, all->r_len * sizeof(int));
-	while (exp2 <= 20)
+	while (exp2 <= 10)
 	{
 		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
 		s = ft_pos_exp_of_digit(digit, exp);
@@ -91,7 +61,7 @@ int 					main(void)
 		while (s->r_len >= 0)
 			printf("%d", s->r[s->r_len--]);
 		printf("\n");
-    
+
 		printf("-------->>>>>>> %d ^ %d = ", digit2, exp2);
 		s2 = ft_pos_exp_of_digit(digit2, exp2);
 		s2->i = s2->r_len;
@@ -100,7 +70,6 @@ int 					main(void)
 		while (s2->r_len >= 0)
 			printf("%d", s2->r[s2->r_len--]);
 		printf("\n");
-    
     
 		sum = ft_sum_two_digits(s2->r, s->r, s2->i, s->i);
 		printf("sum = ");
@@ -138,6 +107,9 @@ int 					main(void)
 		while (mul->a_tmp >= 0)
 			printf("%d", mul->r[(mul->a_tmp)--]);
 		printf("\n");
+
+		neg = ft_neg_exp_of_digit(2, -16);
+
 		ft_memdel((void **)&s->r);
 		ft_memdel((void **)&s);
 		ft_memdel((void **)&s2->r);
@@ -150,14 +122,13 @@ int 					main(void)
 		ft_memdel((void **)&sub);
 		ft_memdel((void **)&mul->r);
 		ft_memdel((void **)&mul);
-		exp *= 10;
+		exp *= 2;
 		++exp2;
 	}
 	ft_memdel((void **)&all->r);
 	ft_memdel((void **)&all);
 //	system("leaks a.out");
 }
-
 /*
  *
  * 11111111111111111000000000000000000000000000000000000000000000000000000000000000 -Inf
