@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/19 13:04:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:21:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int 					main(void)
 {                   
 	int					exp = 22;
 	int					digit = 33;
-	int					exp2 = 8;
-	int					digit2 = 2;
+	int					exp2 = 22;
+	int					digit2 = 3;
+	int					exp3 = -22;
+	int					digit3 = 3;
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
 	t_sum_two_digits	*sum;
@@ -51,7 +53,7 @@ int 					main(void)
 	all->r_len = 1;
 	all->r = (int *)malloc(all->r_len * sizeof(int));
 	ft_bzero(all->r, all->r_len * sizeof(int));
-	while (exp2 <= 10)
+	while (exp2 <= 25)
 	{
 		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
 		s = ft_pos_exp_of_digit(digit, exp);
@@ -108,8 +110,18 @@ int 					main(void)
 			printf("%d", mul->r[(mul->a_tmp)--]);
 		printf("\n");
 
-		neg = ft_neg_exp_of_digit(2, -8);
-
+		printf("%d ^ %d = ", digit3, exp3);
+		neg = ft_neg_exp_of_digit(digit3, exp3);
+		while (neg->r[--(neg->r_len)] == 0)
+			;
+		neg->r_pos = 0;
+		while (neg->r_pos <= neg->r_len)
+		{
+			if (neg->r_pos == 1)
+				printf(".");
+			printf("%d", neg->r[neg->r_pos++]);
+		}
+		printf("\n");
 		ft_memdel((void **)&s->r);
 		ft_memdel((void **)&s);
 		ft_memdel((void **)&s2->r);
@@ -119,10 +131,11 @@ int 					main(void)
 		ft_memdel((void **)&tmp->r);
 		ft_memdel((void **)&tmp);
 		ft_memdel((void **)&sub->r);
-		ft_memdel((void **)&sub);
+		ft_memdel((void **)&sub); 
 		ft_memdel((void **)&mul->r);
 		ft_memdel((void **)&mul);
-		exp *= 2;
+		--exp3;
+		++exp;
 		++exp2;
 	}
 	ft_memdel((void **)&all->r);
