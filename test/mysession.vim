@@ -61,9 +61,9 @@ badd +27 ../srcs/ft_sum_two_digits.c
 badd +16 ../srcs/ft_int_arr_subtr.c
 badd +35 ../srcs/ft_int_arr_mult.c
 badd +13 ../srcs/ft_int_arr_division.c
-badd +89 ../srcs/ft_neg_exp_of_digit.c
+badd +110 ../srcs/ft_neg_exp_of_digit.c
 badd +28 ../srcs/ft_int_arr_comparing.c
-badd +0 result
+badd +1 result
 argglobal
 silent! argdel *
 argadd Makefile
@@ -183,12 +183,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 56 - ((32 * winheight(0) + 25) / 50)
+let s:l = 38 - ((12 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-56
-normal! 021|
+38
+normal! 032|
 tabedit ../srcs/ft_neg_exp_of_digit.c
 set splitbelow splitright
 wincmd _ | wincmd |

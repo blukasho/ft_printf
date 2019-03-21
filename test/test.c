@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/20 18:21:42 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:40:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int 					main(void)
 {                   
 	int					exp = 22;
 	int					digit = 33;
-	int					exp2 = 22;
+	int					exp2 = 4;
 	int					digit2 = 3;
-	int					exp3 = -22;
+	int					exp3 = -4;
 	int					digit3 = 3;
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
