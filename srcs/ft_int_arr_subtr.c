@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 14:57:27 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/17 13:48:38 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/22 13:19:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_int_arr_subtr	*init(int *a, int *b, int a_len, int b_len)
 	s->r = (int *)malloc(s->r_len * sizeof(int));
 	ft_bzero(s->r, s->r_len * sizeof(int));
 	while (s->count < a_len)
-		s->r[s->count] = a[s->count++];
+		s->r[s->count++] = a[s->count];
 	s->count = 0;
 	s->r_a_len = a_len;
 	s->r_b_len = b_len;

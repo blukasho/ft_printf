@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:26:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/20 18:18:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:55:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ static t_neg_exp_of_digit	*init(int dig, int base, int div)
 	s->r_len = dig * base;
 	s->r = (int *)malloc(s->r_len * sizeof(int));
 	ft_bzero(s->r, s->r_len * sizeof(int));
-	s->div_len = div;
+	s->div_len = div + 1;
 	s->div = (int *)malloc(s->div_len * sizeof(int));
 	ft_bzero(s->div, s->div_len * sizeof(int));
+	s->per_len = MAX_PERIOD;
+	s->per = (int *)malloc(s->per_len * sizeof(int));
+	ft_bzero(s->per, s->per_len * sizeof(int));
 	s->div[0] = 1;
 	s->sw = 1;
 	s->r_pos = 1;
@@ -31,44 +34,59 @@ static t_neg_exp_of_digit	*init(int dig, int base, int div)
 	return (s);
 }
 
-static void					move_int_arr(int *a, int a_len)
+static int					check_period(t_neg_exp_of_digit *neg)
 {
-	while (a[--a_len] == 0)
+	int						i;
+	int						r;
+
+	r = 0;
+	i = neg->div_len;
+	while (i >= 0 && neg->div[--i] == 0)
 		;
-	while (a_len >= 0)
+	if (i >= 0)
 	{
-		a[a_len + 1] = a[a_len];
-		a[a_len] = 0;
-		--a_len;
+		while (i >= 0)
+		{
+			r *= 10;
+			r += neg->div[i--];
+		}
+		i = 0;
+		while (i < neg->per_len && neg->per[i] > 0)
+			if (neg->per[i++] == r)
+				return (1);
+		neg->per[i] = r;
 	}
+	return (0);
 }
 
-static int					get_result_sum(int a, int b, int a_len, int b_len)
+static int					get_result_sum(int *a, int *b, int a_len, int b_len)
 {
-	int						c;
-	int						i;
 	int						r;
 	t_sum_two_digits		*sum;
 	t_sum_two_digits		*tmp;
+	t_sum_two_digits		*tmp2;
 
-	i = 1;
-	r = -1;
-	c = 0;
+	r = 0;
 	sum = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
 	ft_bzero(sum, sizeof(t_sum_two_digits));
 	sum->r_len = 1;
 	sum->r = (int *)malloc(sum->r_len * sizeof(int));
 	ft_bzero(sum->r, sum->r_len * sizeof(int));
-	while (ft_int_arr_comparing(a, sum->r, a_len, sum->r_len) >= 0)
+	while (ft_int_arr_comparing(a, sum->r, a_len, sum->r_len) == 1 && ++r)
 	{
 		tmp = sum;
 		sum = ft_sum_two_digits(tmp->r, b, tmp->r_len, b_len);
-		++r;
-		c = sum->r_len;
-		ft_memdel((void **)&tmp->r);
-		ft_memdel((void **)&tmp);
+		tmp2 = ft_sum_two_digits(sum->r, b, sum->r_len, b_len);
+		if (ft_int_arr_comparing(a, tmp2->r, a_len, tmp2->r_len)  == -1)
+		{
+			ft_memdel((void **)&tmp->r);
+			ft_memdel((void **)&tmp);
+			ft_memdel((void **)&tmp2->r);
+			ft_memdel((void **)&tmp2);
+			return (r);
+		}
 	}
-	return (r);
+	return (0);
 }
 
 static void					get_subt_res(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
@@ -82,7 +100,7 @@ static void					get_subt_res(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
 		m = ft_int_arr_subtr(n->div, p->r, n->div_len, p->r_len);
 		while (i < n->div_len)
 			n->div[i++] = 0;
-		while (m->r_len >= 0 && m->r[--(m->r_len)] == 0)
+		while (m->r[--(m->r_len)] == 0)
 			;
 		while (m->r_len >= 0)
 		{
@@ -90,14 +108,6 @@ static void					get_subt_res(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
 			--(m->r_len);
 		}
 	}
-}
-
-static int					get_result(int *a, int a_len)
-{
-	while (--a_len >= 0)
-		if (a[a_len] > 0)
-			return (1);
-	return (0);
 }
 
 t_neg_exp_of_digit			*ft_neg_exp_of_digit(int dig, int base)
@@ -109,10 +119,12 @@ t_neg_exp_of_digit			*ft_neg_exp_of_digit(int dig, int base)
 	base = -base;
 	pos = ft_pos_exp_of_digit(dig, base);
 	neg = init(dig, base, pos->r_len);
-	while (get_result(neg->div, neg->div_len))
+	while (srch_int_in_arr(neg->div, neg->div_len, 0))
 	{
 		while (ft_int_arr_comparing(neg->div, pos->r, neg->div_len, pos->r_len) == -1)
 		{
+			if (check_period(neg))
+				return (neg);
 			move_int_arr(neg->div, neg->div_len);
 			if (ft_int_arr_comparing(neg->div, pos->r, neg->div_len, pos->r_len) == -1)
 				neg->r[neg->r_pos++] = 0;

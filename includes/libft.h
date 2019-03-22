@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/19 09:45:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:47:11 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct		s_pos_exp_of_digit
 	int				*r;
 }					t_pos_exp_of_digit;
 
+#define				MAX_PERIOD 100
+
 typedef struct		s_neg_exp_of_digit
 {
 	int				tmp;
@@ -78,6 +80,8 @@ typedef struct		s_neg_exp_of_digit
 	int				r_len;
 	int				*div;
 	int				div_len;
+	int				*per;
+	int				per_len;
 }					t_neg_exp_of_digit;
 
 typedef struct		s_int_arr_division
@@ -93,6 +97,8 @@ t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int  a_len, int b_len);
 t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
 
+void				move_int_arr(int *a, int a_len);
+void				ft_print_int_arr(int *a, int a_len);
 void				ft_lstiter(t_list *lst, void (*f) (t_list *elem));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstdel(t_list **alst, void (*del) (void *, size_t));
@@ -143,6 +149,8 @@ size_t				ft_strlen_chr(const char *s, const char c);
 size_t				ft_count_words(char const *s, char c);
 size_t				ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *s);
+
+int					srch_int_in_arr(int *a, int a_len, int srch);
 int					get_next_line(const int fd, char **line);
 int					ft_is_space(int i);
 int					ft_is_lower(int i);

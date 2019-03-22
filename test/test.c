@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/20 18:40:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:59:59 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void		print_double_bits(__int128 li)
 
 int 					main(void)
 {                   
-	int					exp = 22;
-	int					digit = 33;
-	int					exp2 = 4;
-	int					digit2 = 3;
-	int					exp3 = -4;
-	int					digit3 = 3;
+	int					exp = 4;
+	int					digit = 9;
+	int					exp2 = 1;
+	int					digit2 = 2;
+	int					exp3 = -1;
+	int					digit3 = 2;
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
 	t_sum_two_digits	*sum;
@@ -53,17 +53,17 @@ int 					main(void)
 	all->r_len = 1;
 	all->r = (int *)malloc(all->r_len * sizeof(int));
 	ft_bzero(all->r, all->r_len * sizeof(int));
-	while (exp2 <= 25)
+	while (exp2 <= 100)
 	{
-		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
-		s = ft_pos_exp_of_digit(digit, exp);
-		s->i = s->r_len;
-		while (s->r[--(s->r_len)] == 0)
-			;
-		while (s->r_len >= 0)
-			printf("%d", s->r[s->r_len--]);
-		printf("\n");
-
+//		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
+//		s = ft_pos_exp_of_digit(digit, exp);
+//		s->i = s->r_len;
+//		while (s->r[--(s->r_len)] == 0)
+//			;
+//		while (s->r_len >= 0)
+//			printf("%d", s->r[s->r_len--]);
+//		printf("\n");
+//
 		printf("-------->>>>>>> %d ^ %d = ", digit2, exp2);
 		s2 = ft_pos_exp_of_digit(digit2, exp2);
 		s2->i = s2->r_len;
@@ -72,45 +72,45 @@ int 					main(void)
 		while (s2->r_len >= 0)
 			printf("%d", s2->r[s2->r_len--]);
 		printf("\n");
-    
-		sum = ft_sum_two_digits(s2->r, s->r, s2->i, s->i);
-		printf("sum = ");
-		sum->i = sum->r_len;
-		while (sum->r[--(sum->i)] == 0)
-			;
-		while (sum->i >= 0)
-			printf("%d", sum->r[sum->i--]);
-		printf("\n");
-		
-		tmp = all;
-		all = ft_sum_two_digits(all->r, sum->r, all->r_len, sum->r_len);
-		printf("all = ");
-		all->i = all->r_len;
-		while (all->r[--all->i] == 0 && all->i)
-			;
-		while (all->i >= 0)
-			printf("%d", all->r[all->i--]);
-		printf("\n");
+//    
+//		sum = ft_sum_two_digits(s2->r, s->r, s2->i, s->i);
+//		printf("sum = ");
+//		sum->i = sum->r_len;
+//		while (sum->r[--(sum->i)] == 0)
+//			;
+//		while (sum->i >= 0)
+//			printf("%d", sum->r[sum->i--]);
+//		printf("\n");
+//		
+//		tmp = all;
+//		all = ft_sum_two_digits(all->r, sum->r, all->r_len, sum->r_len);
+//		printf("all = ");
+//		all->i = all->r_len;
+//		while (all->r[--all->i] == 0 && all->i)
+//			;
+//		while (all->i >= 0)
+//			printf("%d", all->r[all->i--]);
+//		printf("\n");
+//
+//		sub = ft_int_arr_subtr(all->r, sum->r, all->r_len, sum->r_len);
+//		sub->count = sub->r_len;
+//		printf("sub = ");
+//		while (sub->count > 0 && sub->r[--(sub->count)] == 0)
+//			;
+//		while (sub->count >= 0)
+//			printf("%d", sub->r[sub->count--]);
+//		printf("\n");
+//
+//		mul = ft_int_arr_mult(all->r, sum->r, all->r_len, sum->r_len);
+//		printf("multiple = ");
+//		mul->a_tmp = mul->r_len;
+//		while (mul->r[--(mul->a_tmp)] == 0)
+//			;
+//		while (mul->a_tmp >= 0)
+//			printf("%d", mul->r[(mul->a_tmp)--]);
+//		printf("\n");
 
-		sub = ft_int_arr_subtr(all->r, sum->r, all->r_len, sum->r_len);
-		sub->count = sub->r_len;
-		printf("sub = ");
-		while (sub->count > 0 && sub->r[--(sub->count)] == 0)
-			;
-		while (sub->count >= 0)
-			printf("%d", sub->r[sub->count--]);
-		printf("\n");
-
-		mul = ft_int_arr_mult(all->r, sum->r, all->r_len, sum->r_len);
-		printf("multiple = ");
-		mul->a_tmp = mul->r_len;
-		while (mul->r[--(mul->a_tmp)] == 0)
-			;
-		while (mul->a_tmp >= 0)
-			printf("%d", mul->r[(mul->a_tmp)--]);
-		printf("\n");
-
-		printf("%d ^ %d = ", digit3, exp3);
+		printf("-------->>>>>>> %d ^ %d = ", digit3, exp3);
 		neg = ft_neg_exp_of_digit(digit3, exp3);
 		while (neg->r[--(neg->r_len)] == 0)
 			;
@@ -122,18 +122,18 @@ int 					main(void)
 			printf("%d", neg->r[neg->r_pos++]);
 		}
 		printf("\n");
-		ft_memdel((void **)&s->r);
-		ft_memdel((void **)&s);
-		ft_memdel((void **)&s2->r);
-		ft_memdel((void **)&s2);
-		ft_memdel((void **)&sum->r);
-		ft_memdel((void **)&sum);
-		ft_memdel((void **)&tmp->r);
-		ft_memdel((void **)&tmp);
-		ft_memdel((void **)&sub->r);
-		ft_memdel((void **)&sub); 
-		ft_memdel((void **)&mul->r);
-		ft_memdel((void **)&mul);
+//		ft_memdel((void **)&s->r);
+//		ft_memdel((void **)&s);
+//		ft_memdel((void **)&s2->r);
+//		ft_memdel((void **)&s2);
+//		ft_memdel((void **)&sum->r);
+//		ft_memdel((void **)&sum);
+//		ft_memdel((void **)&tmp->r);
+//		ft_memdel((void **)&tmp);
+//		ft_memdel((void **)&sub->r);
+//		ft_memdel((void **)&sub); 
+//		ft_memdel((void **)&mul->r);
+//		ft_memdel((void **)&mul);
 		--exp3;
 		++exp;
 		++exp2;
