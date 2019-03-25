@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:26:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 10:20:47 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 14:03:39 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,16 @@ static t_neg_exp_of_digit	*init(int dig, int base, int div)
 	return (s);
 }
 
-static int					check_period(t_neg_exp_of_digit *neg)
+static t_sum_two_digits		*init_sum(void)
 {
-	int						i;
-	int						r;
+	t_sum_two_digits		*sum;
 
-	r = 0;
-	i = neg->div_len;
-	while (i >= 0 && neg->div[--i] == 0)
-		;
-	if (i >= 0)
-	{
-		while (i >= 0)
-		{
-			r *= 10;
-			r += neg->div[i--];
-		}
-		i = 0;
-		while (i < neg->per_len && neg->per[i] > 0)
-			if (neg->per[i++] == r)
-				return (1);
-		neg->per[i] = r;
-	}
-	return (0);
+	sum = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
+	ft_bzero(sum, sizeof(t_sum_two_digits));
+	sum->r_len = 1;
+	sum->r = (int *)malloc(sum->r_len * sizeof(int));
+	ft_bzero(sum->r, sum->r_len * sizeof(int));
+	return (sum);
 }
 
 static int					get_result_sum(int *a, int *b, int a_len, int b_len)
@@ -67,17 +54,13 @@ static int					get_result_sum(int *a, int *b, int a_len, int b_len)
 	t_sum_two_digits		*tmp2;
 
 	r = 0;
-	sum = (t_sum_two_digits *)malloc(sizeof(t_sum_two_digits));
-	ft_bzero(sum, sizeof(t_sum_two_digits));
-	sum->r_len = 1;
-	sum->r = (int *)malloc(sum->r_len * sizeof(int));
-	ft_bzero(sum->r, sum->r_len * sizeof(int));
+	sum = init_sum();
 	while (ft_int_arr_comparing(a, sum->r, a_len, sum->r_len) == 1 && ++r)
 	{
 		tmp = sum;
 		sum = ft_sum_two_digits(tmp->r, b, tmp->r_len, b_len);
 		tmp2 = ft_sum_two_digits(sum->r, b, sum->r_len, b_len);
-		if (ft_int_arr_comparing(a, tmp2->r, a_len, tmp2->r_len)  == -1)
+		if (ft_int_arr_comparing(a, tmp2->r, a_len, tmp2->r_len) == -1)
 		{
 			t_sum_two_digits_del(tmp);
 			t_sum_two_digits_del(tmp2);
@@ -87,11 +70,10 @@ static int					get_result_sum(int *a, int *b, int a_len, int b_len)
 		t_sum_two_digits_del(tmp);
 		t_sum_two_digits_del(tmp2);
 	}
-	t_sum_two_digits_del(sum);
 	return (0);
 }
 
-static void					get_subt_res(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
+static void					get(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
 {
 	t_int_arr_subtr			*m;
 	int						i;
@@ -109,6 +91,8 @@ static void					get_subt_res(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
 			n->div[m->r_len] = m->r[m->r_len];
 			--(m->r_len);
 		}
+		ft_memdel((void **)&m->r);
+		ft_memdel((void **)&m);
 	}
 }
 
@@ -116,23 +100,27 @@ t_neg_exp_of_digit			*ft_neg_exp_of_digit(int dig, int base)
 {
 	t_neg_exp_of_digit		*neg;
 	t_pos_exp_of_digit		*pos;
-	int						i;
 
 	base = -base;
 	pos = ft_pos_exp_of_digit(dig, base);
 	neg = init(dig, base, pos->r_len);
 	while (srch_int_in_arr(neg->div, neg->div_len, 0))
 	{
-		while (ft_int_arr_comparing(neg->div, pos->r, neg->div_len, pos->r_len) == -1)
+		while (ft_int_arr_comparing(neg->div, pos->r,
+				neg->div_len, pos->r_len) == -1)
 		{
 			if (check_period(neg))
 				return (neg);
 			move_int_arr(neg->div, neg->div_len);
-			if (ft_int_arr_comparing(neg->div, pos->r, neg->div_len, pos->r_len) == -1)
+			if (ft_int_arr_comparing(neg->div, pos->r,
+				neg->div_len, pos->r_len) == -1)
 				neg->r[neg->r_pos++] = 0;
 		}
-		neg->r[neg->r_pos++] = get_result_sum(neg->div, pos->r, neg->div_len, pos->r_len);
-		get_subt_res(neg, pos);
+		neg->r[neg->r_pos++] = get_result_sum(neg->div,
+		pos->r, neg->div_len, pos->r_len);
+		get(neg, pos);
 	}
+	ft_memdel((void **)&pos->r);
+	ft_memdel((void **)&pos);
 	return (neg);
 }

@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 10:19:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:55:07 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
 
 void				t_sum_two_digits_del(t_sum_two_digits *t);
-
 void				move_int_arr(int *a, int a_len);
 void				ft_print_int_arr(int *a, int a_len);
 void				ft_lstiter(t_list *lst, void (*f) (t_list *elem));
@@ -145,6 +144,7 @@ char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strdup(const char *s1);
 char				**ft_get_arr(size_t x, size_t y);
 char				**ft_strsplit(char const *s, char c);
+
 t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 size_t				ft_strlen_chr(const char *s, const char c);
@@ -152,6 +152,7 @@ size_t				ft_count_words(char const *s, char c);
 size_t				ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *s);
 
+int					check_period(t_neg_exp_of_digit *neg);
 int					srch_int_in_arr(int *a, int a_len, int srch);
 int					get_next_line(const int fd, char **line);
 int					ft_is_space(int i);

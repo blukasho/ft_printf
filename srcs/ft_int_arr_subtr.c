@@ -6,20 +6,16 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 14:57:27 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/22 13:19:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 14:07:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-/*
-** a_len >= b_len
-*/
-
 static t_int_arr_subtr	*init(int *a, int *b, int a_len, int b_len)
 {
 	t_int_arr_subtr		*s;
-	
+
 	s = (t_int_arr_subtr *)malloc(sizeof(t_int_arr_subtr));
 	ft_bzero(s, sizeof(t_int_arr_subtr));
 	s->r_len = a_len + b_len;
