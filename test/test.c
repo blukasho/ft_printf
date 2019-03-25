@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/22 18:59:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:19:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,14 @@ int 					main(void)
 			printf("%d", neg->r[neg->r_pos++]);
 		}
 		printf("\n");
+
+		ft_memdel((void **)&neg->r);
+		ft_memdel((void **)&neg->per);
+		ft_memdel((void **)&neg);
 //		ft_memdel((void **)&s->r);
 //		ft_memdel((void **)&s);
-//		ft_memdel((void **)&s2->r);
-//		ft_memdel((void **)&s2);
+		ft_memdel((void **)&s2->r);
+		ft_memdel((void **)&s2);
 //		ft_memdel((void **)&sum->r);
 //		ft_memdel((void **)&sum);
 //		ft_memdel((void **)&tmp->r);
@@ -140,7 +144,7 @@ int 					main(void)
 	}
 	ft_memdel((void **)&all->r);
 	ft_memdel((void **)&all);
-//	system("leaks a.out");
+	system("leaks a.out");
 }
 /*
  *

@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/22 18:47:11 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:19:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ t_pos_exp_of_digit	*ft_pos_exp_of_digit(int dig, int base);
 t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int  a_len, int b_len);
 t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
+
+void				t_sum_two_digits_del(t_sum_two_digits *t);
 
 void				move_int_arr(int *a, int a_len);
 void				ft_print_int_arr(int *a, int a_len);

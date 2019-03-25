@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 09:44:09 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static long double	round_precision_zero(long double d)
 {
-	__int128 		l;
+	__int128		l;
 	int				r;
 
 	l = d;
@@ -25,7 +25,7 @@ static long double	round_precision_zero(long double d)
 	return (d);
 }
 
-long double		round_double(long double d)
+long double			round_double(long double d)
 {
 	int				l;
 	long double		ld;
@@ -50,19 +50,19 @@ long double		round_double(long double d)
 	return (d);
 }
 
-void			ft_printf_put_char(char c)
+void				ft_printf_put_char(char c)
 {
 	write(1, &c, 1);
 	++g_print_symbols;
 }
 
-void			ft_printf_put_str(char *s)
+void				ft_printf_put_str(char *s)
 {
 	while (*s)
 		ft_printf_put_char(*(s++));
 }
 
-void			print_hesh(void)
+void				print_hesh(void)
 {
 	if (g_data.specifier == 'o')
 		ft_printf_put_char('0');

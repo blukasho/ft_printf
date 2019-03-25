@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 18:07:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/16 14:13:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 09:45:04 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static t_pos_exp_of_digit	*init(int dig, int base)
 	return (s);
 }
 
-t_pos_exp_of_digit		*ft_pos_exp_of_digit(int dig, int base)
+t_pos_exp_of_digit			*ft_pos_exp_of_digit(int dig, int base)
 {
-	t_pos_exp_of_digit	*s;
+	t_pos_exp_of_digit		*s;
 
 	s = init(dig, base);
 	while (base-- > 0)

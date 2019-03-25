@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:26:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/22 18:55:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:20:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,15 @@ static int					get_result_sum(int *a, int *b, int a_len, int b_len)
 		tmp2 = ft_sum_two_digits(sum->r, b, sum->r_len, b_len);
 		if (ft_int_arr_comparing(a, tmp2->r, a_len, tmp2->r_len)  == -1)
 		{
-			ft_memdel((void **)&tmp->r);
-			ft_memdel((void **)&tmp);
-			ft_memdel((void **)&tmp2->r);
-			ft_memdel((void **)&tmp2);
+			t_sum_two_digits_del(tmp);
+			t_sum_two_digits_del(tmp2);
+			t_sum_two_digits_del(sum);
 			return (r);
 		}
+		t_sum_two_digits_del(tmp);
+		t_sum_two_digits_del(tmp2);
 	}
+	t_sum_two_digits_del(sum);
 	return (0);
 }
 

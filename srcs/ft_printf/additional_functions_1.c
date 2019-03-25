@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:12:42 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/11 13:35:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 09:41:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int				print_inf(char *s, long double d, int m)
 {
 	if (_IS_POS_INF(d))
 	{
-		g_data.specifier == 'f' ? (s = "inf") : (s = "INF");
+		s = "inf";
+		if (g_data.specifier == 'f')
+			s = "INF";
 		if (g_data.flags[4] == '-')
 		{
 			if (g_data.flags[3] == '+' || m)
@@ -65,15 +67,17 @@ int				print_inf(char *s, long double d, int m)
 		}
 		return (1);
 	}
-	return(0);
+	return (0);
 }
 
 int				print_nan(char *s, long double d)
 {
 	if (!_IS_NAN(d))
 		return (((g_data.width = g_data.width - ft_strlen(s)) ? 0 : 0));
+	else if (g_data.specifier == 'f')
+		s = "nan";
 	else
-		g_data.specifier == 'f' ? (s = "nan") : (s = "NAN");
+		s = "NAN";
 	if (g_data.flags[4] == '-')
 	{
 		ft_printf_put_str(s);

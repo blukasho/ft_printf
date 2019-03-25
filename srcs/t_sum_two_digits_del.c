@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   additional_functions_double.c                      :+:      :+:    :+:   */
+/*   t_sum_two_digits_del.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/22 18:33:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 09:42:23 by blukasho         ###   ########.fr       */
+/*   Created: 2019/03/25 10:07:59 by blukasho          #+#    #+#             */
+/*   Updated: 2019/03/25 10:13:17 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
-int		srch_int_in_arr(int *a, int a_len, int srch)
+void	t_sum_two_digits_del(t_sum_two_digits *t)
 {
-	while (--a_len >= 0)
-		if (a[a_len] != srch)
-			return (1);
-	return (0);
-}
-
-void	move_int_arr(int *a, int a_len)
-{
-	while (a[--a_len] == 0)
-		;
-	while (a_len >= 0)
-	{
-		a[a_len + 1] = a[a_len];
-		a[a_len] = 0;
-		--a_len;
-	}
+	ft_memdel((void **)&t->r);
+	ft_memdel((void **)&t);
 }

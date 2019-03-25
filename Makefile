@@ -32,6 +32,7 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_int_arr_mult.c ft_int_arr_subtr.c ft_len_of_digit.c\
 	   ft_sum_two_digits.c ft_pos_exp_of_digit.c ft_neg_exp_of_digit.c\
 	   ft_int_arr_comparing.c ft_print_int_arr.c additional_functions_double.c\
+	   t_sum_two_digits_del.c
 
 vpath %.c srcs srcs/ft_printf
 
