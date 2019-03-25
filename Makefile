@@ -40,7 +40,7 @@ DIR_O = tmp
 
 OBJ = $(addprefix $(DIR_O)/,$(SRCS:.c=.o))
 
-FLAGS = -Wall -Wextra -I includes
+FLAGS = -Wall -Wextra -g3 -I includes
 
 NAME = libftprintf.a
 

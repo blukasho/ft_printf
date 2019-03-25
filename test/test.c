@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 13:40:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 15:03:45 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int 					main(void)
 	all->r_len = 1;
 	all->r = (int *)malloc(all->r_len * sizeof(int));
 	ft_bzero(all->r, all->r_len * sizeof(int));
-	while (exp2 <= 100)
+	while (exp2 <= 60)
 	{
 //		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
 //		s = ft_pos_exp_of_digit(digit, exp);
