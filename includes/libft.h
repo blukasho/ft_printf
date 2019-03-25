@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 13:55:07 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/25 17:23:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ typedef struct		s_list
 
 typedef struct		s_int_arr_mult
 {
-	int		  		*r;
-	int		  		a_tmp;
-	int		  		b_tmp;
-	int		  		r_len;
-}			  		t_int_arr_mult;
+	int				*r;
+	int				a_tmp;
+	int				b_tmp;
+	int				r_len;
+}					t_int_arr_mult;
 
 typedef struct		s_int_arr_subtr
-{                   
+{
 	int				flag;
 	int				find;
 	int				count;
@@ -56,7 +56,7 @@ typedef struct		s_int_arr_subtr
 }					t_int_arr_subtr;
 
 typedef struct		s_sum_two_digits
-{                   
+{
 	int				i;
 	int				r_len;
 	int				*r;
@@ -69,7 +69,7 @@ typedef struct		s_pos_exp_of_digit
 	int				*r;
 }					t_pos_exp_of_digit;
 
-#define				MAX_PERIOD 100
+# define MAX_PERIOD 100
 
 typedef struct		s_neg_exp_of_digit
 {
@@ -91,9 +91,10 @@ typedef struct		s_int_arr_division
 }					t_int_arr_division;
 
 __int128			ft_len_of_digit(__int128 d);
+t_neg_exp_of_digit	*ft_sum(t_neg_exp_of_digit *a, t_neg_exp_of_digit *b);
 t_neg_exp_of_digit	*ft_neg_exp_of_digit(int dig, int base);
 t_pos_exp_of_digit	*ft_pos_exp_of_digit(int dig, int base);
-t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int  a_len, int b_len);
+t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int a_len, int b_len);
 t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
 
@@ -152,6 +153,7 @@ size_t				ft_count_words(char const *s, char c);
 size_t				ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *s);
 
+int					ft_int_arr_comparing(int *a, int *b, int a_len, int b_len);
 int					check_period(t_neg_exp_of_digit *neg);
 int					srch_int_in_arr(int *a, int a_len, int srch);
 int					get_next_line(const int fd, char **line);

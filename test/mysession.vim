@@ -50,28 +50,41 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +62 test.c
-badd +103 ../srcs/ft_neg_exp_of_digit.c
+badd +15 ../srcs/ft_neg_exp_of_digit.c
 badd +164 result
 badd +15 ../srcs/ft_int_arr_subtr.c
-badd +102 ../includes/libft.h
+badd +92 ../includes/libft.h
 badd +17 ../srcs/ft_print_int_arr.c
 badd +14 Makefile
-badd +35 ../Makefile
+badd +28 ../Makefile
 badd +29 ../srcs/ft_printf/additional_functions_double.c
 badd +16 ../srcs/t_sum_two_digits_del.c
 badd +22 ../srcs/ft_memdel.c
 badd +14 ../srcs/check_period.c
 badd +16 ../srcs/ft_int_arr_mult.c
+badd +71 ../includes/ft_printf.h
+badd +1 ../srcs/ft_sum_neg_exp.c
+badd +1 ../srcs/ft_sum_neg.c
+badd +31 ../srcs/ft_printf/ft_sum.c
+badd +31 ../srcs/ft_sum_two_digits.c
+badd +1 ../srcs/ft_sum.c
+badd +12 ../srcs/ft_int_arr_comparing.c
 argglobal
 silent! argdel *
 $argadd test.c
 set stal=2
 edit test.c
 set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -178,12 +191,129 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 65 - ((64 * winheight(0) + 35) / 70)
+let s:l = 46 - ((17 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-65
-normal! 021|
+46
+normal! 0
+wincmd w
+argglobal
+edit ../srcs/ft_sum.c
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'c'
+setlocal filetype=c
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'c'
+setlocal syntax=c
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 48 - ((47 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+48
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
 tabedit ../Makefile
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -194,8 +324,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 111 + 110) / 221)
-exe 'vert 2resize ' . ((&columns * 109 + 110) / 221)
+exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -302,12 +432,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 35) / 70)
+let s:l = 25 - ((16 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 026|
+25
+normal! 053|
 wincmd w
 argglobal
 edit ../includes/libft.h
@@ -416,15 +546,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 120 - ((29 * winheight(0) + 35) / 70)
+let s:l = 77 - ((45 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-120
-normal! 048|
+77
+normal! 023|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 111 + 110) / 221)
-exe 'vert 2resize ' . ((&columns * 109 + 110) / 221)
+exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 tabnext 1
 set stal=1
 if exists('s:wipebuf')
