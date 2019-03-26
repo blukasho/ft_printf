@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 20:25:17 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/26 11:49:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ void		print_double_bits(__int128 li)
 		++i;
 	}
 	res[i] = '\0';
+	i = 80;
 	while (--i >= 0)
 		printf("%c", res[i]);
+	printf("\n");
 }
 
 int 					main(void)
 {                   
-	int					exp = 64;
+	int					exp = 63;
 	int					digit = 2;
 	int					exp2 = 1;
 	int					digit2 = 2;
@@ -44,10 +46,10 @@ int 					main(void)
 	long double			ld;
 	__int128			d;
 
-	ld = 3.14;
+	ld = 3.125;
 	d = *(__int128 *)&ld;
 	print_double_bits(d);
-	printf("\n%L.30F\n", ld);
+	printf("\n%.100LF\n", ld);
 
 	t_pos_exp_of_digit	*s;
 	t_pos_exp_of_digit	*s2;
@@ -72,7 +74,7 @@ int 					main(void)
 	all->r_len = 1;
 	all->r = (int *)malloc((all->r_len + 1) * sizeof(int));
 	ft_bzero(all->r, all->r_len * sizeof(int));
-	while (exp2 <= 1)
+	while (exp2 <= 10)
 	{
 		printf("-------->>>>>>> %d ^ %d = ", digit, exp);
 		s = ft_pos_exp_of_digit(digit, exp);

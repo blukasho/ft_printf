@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:26:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 17:23:55 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/26 11:30:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static t_neg_exp_of_digit	*init(int dig, int base, int div)
 
 	s = (t_neg_exp_of_digit *)malloc(sizeof(t_neg_exp_of_digit));
 	ft_bzero(s, sizeof(t_neg_exp_of_digit));
-	s->r_len = dig * base;
+	s->r_len = dig * (base + 1);
 	s->r = (int *)malloc(s->r_len * sizeof(int));
 	ft_bzero(s->r, s->r_len * sizeof(int));
+	if (!base)
+		s->r[0] = 1;
 	s->div_len = div + 1;
 	s->div = (int *)malloc(s->div_len * sizeof(int));
 	ft_bzero(s->div, s->div_len * sizeof(int));
@@ -104,7 +106,7 @@ t_neg_exp_of_digit			*ft_neg_exp_of_digit(int dig, int base)
 	base = -base;
 	pos = ft_pos_exp_of_digit(dig, base);
 	neg = init(dig, base, pos->r_len);
-	while (srch_int_in_arr(neg->div, neg->div_len, 0))
+	while (base && srch_int_in_arr(neg->div, neg->div_len, 0))
 	{
 		while (ft_int_arr_comparing(neg->div, pos->r,
 				neg->div_len, pos->r_len) == -1)
