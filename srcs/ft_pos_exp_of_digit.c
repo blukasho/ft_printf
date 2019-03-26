@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 18:07:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/26 11:21:18 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:29:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_pos_exp_of_digit	*init(int dig, int base)
 
 	s = (t_pos_exp_of_digit *)malloc(sizeof(t_pos_exp_of_digit));
 	ft_bzero(s, sizeof(t_pos_exp_of_digit));
-	s->r_len = base * ft_len_of_digit(dig);
+	s->r_len = base * ft_len_of_digit(dig) + 1;
 	s->r = (int *)malloc(s->r_len * sizeof(int));
 	ft_bzero(s->r, s->r_len * sizeof(int));
 	s->r[0] = 1;

@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 17:23:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:07:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,22 @@ typedef struct		s_int_arr_division
 	int				*r;
 }					t_int_arr_division;
 
+typedef struct		s_bits
+{
+	short			s;
+	short			e;
+	char			m[65];
+}					t_bits;
+
 __int128			ft_len_of_digit(__int128 d);
 t_neg_exp_of_digit	*ft_sum(t_neg_exp_of_digit *a, t_neg_exp_of_digit *b);
 t_neg_exp_of_digit	*ft_neg_exp_of_digit(int dig, int base);
 t_pos_exp_of_digit	*ft_pos_exp_of_digit(int dig, int base);
+t_sum_two_digits	*ft_get_double_exp(t_bits *b);
 t_sum_two_digits	*ft_sum_two_digits(int *a, int *b, int a_len, int b_len);
 t_int_arr_subtr		*ft_int_arr_subtr(int *a, int *b, int a_len, int b_len);
 t_int_arr_mult		*ft_int_arr_mult(int *a, int *b, int a_len, int b_len);
+t_bits				*ft_get_double_bits(long double ld);
 
 void				t_sum_two_digits_del(t_sum_two_digits *t);
 void				move_int_arr(int *a, int a_len);
