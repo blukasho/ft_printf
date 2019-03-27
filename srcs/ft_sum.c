@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 17:08:08 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 19:12:36 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/27 15:10:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_neg_exp_of_digit		*ft_sum(t_neg_exp_of_digit *a, t_neg_exp_of_digit *b)
 
 	i = -1;
 	sum = init(a, b);
-	while (++i <= b->r_len)
+	while (++i < b->r_len)
 		sum->r[i] += b->r[i];
 	i = sum->r_len;
 	while (--i >= 0)
