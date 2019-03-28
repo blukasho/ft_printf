@@ -15,7 +15,7 @@ SRCS = test.c
 all:
 	make -C ../
 	gcc -Wall -Wextra -g3 $(SRCS) ../libftprintf.a
-	./a.out
+	./a.out | cat -e
 #	lldb a.out
 
 fclean:

@@ -6,13 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 14:40:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 14:08:15 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:38:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static t_int_arr_mult	*init(int *a, int a_len, int b_len)
+static t_int_arr_mult	*init(int a_len, int b_len)
 {
 	t_int_arr_mult		*s;
 
@@ -28,7 +28,7 @@ t_int_arr_mult			*ft_int_arr_mult(int *a, int *b, int a_len, int b_len)
 {
 	t_int_arr_mult		*s;
 
-	s = init(a, a_len, b_len);
+	s = init(a_len, b_len);
 	while (a[--a_len] == 0)
 		;
 	while (b[--b_len] == 0)

@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 12:56:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:15:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <stdio.h>
+# define MAX_EXP 32767
 
 int				g_print_symbols;
 
@@ -34,14 +35,17 @@ typedef struct	s_data
 }				t_data;
 
 t_data			g_data;
+int				ft_get_real_len(int *a, int a_len);
+int				ft_is_neg_inf(t_double_res *d);
+int				ft_is_pos_inf(t_double_res *d);
+int				ft_is_nan(t_double_res *d);
 int				ft_printf(const char *format, ...);
 int				ft_len_nbr(__int128 d);
 int				srcrpl(char *s, char a, char b);
 int				main_function(const char **format, va_list ap);
-int				check_exeption_double(long double d);
 int				check_errors(void);
-int				print_nan(char *s, long double d);
-int				print_inf(char *s, long double d, int m);
+int				print_nan(t_double_res *d);
+int				print_inf(t_double_res *d);
 void			get_double_exp(void);
 void			get_double_bits(__int128 li);
 void			print_precision_octal(int l);

@@ -6,13 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:44:53 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/26 19:48:17 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:37:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static t_sum_two_digits	*init(t_bits *b)
+static t_sum_two_digits	*init(void)
 {
 	t_sum_two_digits	*res;
 
@@ -22,24 +22,6 @@ static t_sum_two_digits	*init(t_bits *b)
 	res->r = (int *)malloc(res->r_len * sizeof(int));
 	ft_bzero(res->r, res->r_len * sizeof(int));
 	return (res);
-}
-
-static void				print(t_sum_two_digits *a, t_pos_exp_of_digit *b)
-{
-	int					i;
-
-	i = b->r_len;
-	while (b->r[--i] == 0)
-		;
-	while (i >= 0)
-		printf("%d", b->r[i--]);
-	i = a->r_len;
-	printf("\nsum =           ");
-	while (i && a->r[--i] == 0)
-		;
-	while (i >= 0)
-		printf("%d", a->r[i--]);
-	printf("\n\n");
 }
 
 t_sum_two_digits		*ft_get_double_exp(t_bits *b)
@@ -52,7 +34,7 @@ t_sum_two_digits		*ft_get_double_exp(t_bits *b)
 
 	bits = 63;
 	exp = b->e - 16383;
-	res = init(b);
+	res = init();
 	while (exp >= 0 && bits >= 0)
 	{
 		if (b->m[bits] == '1')

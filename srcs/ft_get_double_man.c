@@ -6,13 +6,13 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 08:33:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/27 15:12:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:36:08 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static t_neg_exp_of_digit	*init(t_bits *b)
+static t_neg_exp_of_digit	*init(void)
 {	
 	t_neg_exp_of_digit		*r;
 
@@ -43,7 +43,7 @@ t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 	int						m;
 
 	m = -1;
-	r = init(b);
+	r = init();
 	bits = b->e - 16383;
 	if (bits < 63)
 	{

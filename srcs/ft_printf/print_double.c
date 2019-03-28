@@ -6,11 +6,33 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 12:56:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:18:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+static void			print_t_double(t_double_res *r)
+{
+	int				i;
+	int				m;
+
+	i = r->e->r_len;
+	while (i && r->e->r[--i] == 0) 
+		;
+	while (i >= 0)
+		ft_printf_put_char(r->e->r[i--] + 48);
+	if (g_data.precision > 0)
+	{
+		m = 0;
+		i = g_data.precision;
+		ft_printf_put_char('.');
+		while (i-- && m < r->m->r_len)
+			ft_printf_put_char(r->m->r[m++] + 48);
+		while (i-- >= 0)
+			ft_printf_put_char('0');
+	}
+}
 
 static void			print_3(int m)
 {
@@ -25,42 +47,48 @@ static void			print_3(int m)
 	}
 }
 
-static void			print_2(char *s, int m, long double d)
+static void			print_2(t_double_res *d)
 {
-	if (!print_inf(s, d, m) && !print_nan(s, d))
+	if (!print_inf(d) && !print_nan(d))
 	{
 		if (g_data.flags[1] == '0')
 		{
-			if (g_data.flags[3] == '+' || m)
+			if (g_data.flags[3] == '+' || d->b->s)
 			{
-				if (m)
+				if (d->b->s)
 					ft_printf_put_char('-');
 				else
 					ft_printf_put_char('+');
 			}
-			while (g_data.width-- > 0)
+			g_data.width -= ft_get_real_len(d->e->r, d->e->r_len);
+			--g_data.width;
+			while (g_data.width-- > g_data.precision + 1)
 				ft_printf_put_char('0');
 		}
 		else
-			print_3(m);
-		ft_printf_put_str(s);
+			print_3(d->b->s);
+		print_t_double(d);
 		if (g_data.flags[0] == '#' && g_data.precision == 0)
 			ft_printf_put_char('.');
 	}
 }
 
-static void			print_1(char *s, int m, long double d)
+static void			print_1(t_double_res *d)
 {
-	if (!print_inf(s, d, m) && !print_nan(s, d))
+	int				i;
+
+	if (!print_inf(d) && !print_nan(d))
 	{
-		if (g_data.flags[3] == '+' || m)
+		if (g_data.flags[3] == '+' || d->b->s)
 		{
-			if (m)
+			if (d->b->s)
 				ft_printf_put_char('-');
 			else
 				ft_printf_put_char('+');
 		}
-		ft_printf_put_str(s);
+		i = g_print_symbols;
+		print_t_double(d);
+		g_data.width = g_data.width - (g_print_symbols - i);
 		if (g_data.flags[0] == '#' && g_data.precision == 0)
 			ft_printf_put_char('.');
 		while (g_data.width-- > 0)
@@ -70,31 +98,28 @@ static void			print_1(char *s, int m, long double d)
 
 static void			print(long double d)
 {
-	char			s[80000];
-	int				m;
+	t_double_res	*r;
 
-//	double_to_string(d);
-//	if ((d == -0 || d < 0) && (m = 1))
-//		d = -d;
-//	else
-//		m = 0;
-//
-//	if (g_data.precision == -1)
-//		g_data.precision = 6;
-//	if (g_data.flags[0] == '#' && g_data.precision == 0 && d == d)
-//		--g_data.width;
-//	if ((g_data.flags[3] == '+' || m) && d == d)
-//		--g_data.width;
-//	d = round_double(d);
-//	if (g_data.flags[2] == ' ' && g_data.flags[3] != '+' && d == d && !m)
-//	{
-//		--g_data.width;
-//		ft_printf_put_char(' ');
-//	}
-//	if (g_data.flags[4] == '-')
-//		print_1(s, m, d);
-//	else
-//		print_2(s, m, d);
+	r = convert_double(d);
+	if (g_data.precision == -1)
+		g_data.precision = 6;
+	round_double(r);
+	if (!ft_is_nan(r))
+	{
+		if (g_data.flags[0] == '#' && g_data.precision == 0)
+			--g_data.width;
+		if ((g_data.flags[3] == '+' || r->b->s))
+			--g_data.width;
+		if (g_data.flags[2] == ' ' && g_data.flags[3] != '+' && !r->b->s)
+		{
+			--g_data.width;
+			ft_printf_put_char(' ');
+		}
+	}
+	if (g_data.flags[4] == '-')
+		print_1(r);
+	else
+		print_2(r);
 }
 
 void				print_double(va_list ap)

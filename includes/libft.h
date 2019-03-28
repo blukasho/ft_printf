@@ -6,17 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 10:09:11 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:53:08 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # define GNL_BUFF_SIZE 42
-
-# define _IS_NAN(n) ((n) != (n)) ? 1 : 0
-# define _IS_POS_INF(n) ((n) == (1.0 / 0.0) ? 1 : 0)
-# define _IS_NEG_INF(n) ((n) == (-1.0 / 0.0) ? 1 : 0)
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -101,6 +97,7 @@ typedef struct		s_double_res
 {
 	t_sum_two_digits	*e;
 	t_neg_exp_of_digit	*m;
+	t_bits				*b;
 }					t_double_res;
 
 t_double_res		*convert_double(long double ld);
