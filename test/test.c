@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 21:44:36 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/27 15:28:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 13:45:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,21 @@ void		print_double_bits(__int128 li)
 int 					main(void)
 {                   
 	int					i;
-	t_bits				*bits;
 	long double			ld;
 
-	ld = 0.51;
-	bits = ft_get_double_bits(ld);
+	ld = 0.5;
+	t_double_res		*r = convert_double(ld);
+	t_sum_two_digits	*exp_ld = r->e;
+	t_neg_exp_of_digit	*man_ld = r->m;
 
-	t_sum_two_digits	*exp_ld = ft_get_double_exp(bits);
-	t_neg_exp_of_digit	*man_ld = ft_get_double_man(bits);
-
+	printf("mant len %d\n", r->m->r_len);
 	while (exp_ld->r_len && exp_ld->r[--(exp_ld->r_len)] == 0)
 		;
 	while (exp_ld->r_len >= 0)
 		printf("%d", exp_ld->r[exp_ld->r_len--]);
-	while (man_ld->r_len && man_ld->r[man_ld->r_len] == 0)
-		--(man_ld->r_len);
-	i = 1;
+	while (man_ld->r_len && man_ld->r[--(man_ld->r_len)] == 0)
+		;
+	i = 0;
 	printf(".");
 	while (i <= man_ld->r_len)
 		printf("%d", man_ld->r[i++]);
@@ -64,6 +63,9 @@ int 					main(void)
 }
 /*
  *
+ * 888888999999999999978607390094254014911712147295475006103515625
+ * 888888888888888888117900677343641291372478008270263671875
+ * 7999999999999971578290569595992565155029296875
  * 11111111111111111000000000000000000000000000000000000000000000000000000000000000 -Inf
  * 01111111111111111000000000000000000000000000000000000000000000000000000000000000 +Inf
  * 01111111111111111100000000000000000000000000000000000000000000000000000000000000 NaN

@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 16:51:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/28 12:56:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ void			parse_format_specifiers(const char **format);
 void			parse_flags(const char **format);
 void			double_to_string(long double d);
 void			reverse_double(char *s);
-long double		round_double(long double d);
+void			round_double(t_double_res *d);
 #endif
