@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:30:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:15:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 # define MAX_EXP 32767
 
 int				g_print_symbols;
@@ -27,19 +26,15 @@ typedef struct	s_data
 	long		precision;
 	char		length;
 	char		specifier;
-	double		pos_inf;
-	double		neg_inf;
-	char		double_bit_mask[81];
-	char		double_sign;
-	short		double_exp;
 }				t_data;
 
 t_data			g_data;
+
+int				ft_printf(const char *format, ...);
 int				ft_get_real_len(int *a, int a_len);
 int				ft_is_neg_inf(t_double_res *d);
 int				ft_is_pos_inf(t_double_res *d);
 int				ft_is_nan(t_double_res *d);
-int				ft_printf(const char *format, ...);
 int				ft_len_nbr(__int128 d);
 int				srcrpl(char *s, char a, char b);
 int				main_function(const char **format, va_list ap);
@@ -47,8 +42,6 @@ int				check_errors(void);
 int				print_nan(t_double_res *d);
 int				print_inf(t_double_res *d);
 void			print_t_double(t_double_res *r);
-void			get_double_exp(void);
-void			get_double_bits(__int128 li);
 void			print_precision_octal(int l);
 void			print_width_octal(char c);
 void			print_percent(va_list ap);
@@ -70,7 +63,6 @@ void			print_c(int c);
 void			result_preparation(va_list ap);
 void			parse_format_specifiers(const char **format);
 void			parse_flags(const char **format);
-void			double_to_string(long double d);
 void			reverse_double(char *s);
 void			round_double(t_double_res *d);
 #endif

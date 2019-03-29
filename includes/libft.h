@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:57:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 16:54:27 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct		s_double_res
 	t_neg_exp_of_digit	*m;
 }					t_double_res;
 
+void				ft_print_double_bits(long double d);
 void				clear_t_double_res(t_double_res *r);
 t_double_res		*convert_double(long double ld);
 __int128			ft_len_of_digit(__int128 d);

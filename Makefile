@@ -28,51 +28,38 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   print_digits.c print_octal.c additional_functions.c\
 	   print_unsigned_digits.c print_hexdecimal.c print_double.c\
 	   print_percent.c print_string.c main_function.c check_errors.c\
-	   reverse_double.c additional_functions_1.c additional_functions_2.c\
+	   reverse_double.c additional_functions_1.c\
 	   ft_int_arr_mult.c ft_int_arr_subtr.c ft_len_of_digit.c\
 	   ft_sum_two_digits.c ft_pos_exp_of_digit.c ft_neg_exp_of_digit.c\
 	   ft_int_arr_comparing.c ft_print_int_arr.c additional_functions_double.c\
 	   t_sum_two_digits_del.c check_period.c ft_sum.c ft_get_double_bits.c\
 	   ft_get_double_exp.c ft_get_double_man.c convert_double.c round_double.c\
+	   ft_print_double_bits.c
 
 vpath %.c srcs srcs/ft_printf
 
 DIR_O = tmp
 
-OBJ = $(addprefix $(DIR_O)/,$(SRCS:.c=.o))
+OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -g3 -I includes
+FLAGS = -Wall -Wextra -Werror -I includes
 
 NAME = libftprintf.a
 
-all: $(DIR_O) printf
-
-printf: $(NAME)
-	@echo "\033[4;31m"
-#	cp -rvf libftprintf.a ~/Documents/tests/Vol4icatest/ft_printf/
-	@echo "\033[0m"
-	gcc $(FLAGS) main.c $(NAME)
-	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
-	@valgrind --error-limit=yes --leak-check=full ./a.out | cat -e
-	@./a.out | cat -e
+all: $(NAME)
     
-$(DIR_O):
-	mkdir -p tmp
-
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
 	ranlib $(NAME)
 
-$(OBJ): $(DIR_O)/%.o: %.c
+$(OBJ): %.o: %.c
 	gcc -c $(FLAGS) $< -o $@
 
 clean: 
-	rm -rf $(DIR_O)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf a.out
-	rm -rf a.out.dSYM
 
 re:	fclean all
 

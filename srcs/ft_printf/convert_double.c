@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 09:58:26 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 09:03:01 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:53:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static t_double_res	*init(void)
 	t_double_res	*r;
 
 	r = (t_double_res *)malloc(sizeof(t_double_res));
+	ft_bzero(r, sizeof(t_double_res));
 	return (r);
 }
 
