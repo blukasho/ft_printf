@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 21:17:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:04:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				print_hesh(void)
 
 int					ft_get_real_len(int *a, int a_len)
 {
-	while (a[--a_len] == 0)
+	while (a_len > 0 && a[--a_len] == 0)
 		;
 	return (a_len);
 }

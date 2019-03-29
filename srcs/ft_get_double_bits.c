@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:40:44 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/26 17:43:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:35:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_bits			*ft_get_double_bits(long double ld)
 {
 	t_bits		*bits;
 	__int128	li;
-	int			i;	
+	int			i;
 
 	li = *(__int128 *)&ld;
 	bits = (t_bits *)malloc(sizeof(t_bits));

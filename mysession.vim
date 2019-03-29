@@ -49,135 +49,25 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 ../../tests/Vol4icatest/ft_printf/tests
-badd +0 main.c
-badd +0 srcs/ft_printf/print_double.c
-badd +42 srcs/ft_printf/additional_functions.c
-badd +0 srcs/ft_printf/additional_functions_1.c
-badd +0 srcs/ft_printf/check_errors.c
+badd +210 ../../tests/Vol4icatest/ft_printf/tests
+badd +63 main.c
+badd +73 srcs/ft_printf/print_double.c
+badd +33 srcs/ft_printf/additional_functions.c
+badd +25 srcs/ft_printf/additional_functions_1.c
+badd +26 srcs/ft_printf/check_errors.c
+badd +31 srcs/ft_printf/convert_double.c
+badd +18 test/test.c
+badd +41 srcs/ft_printf/additional_functions_double.c
+badd +19 srcs/ft_get_double_bits.c
+badd +30 srcs/ft_get_double_man.c
+badd +21 srcs/ft_get_double_exp.c
+badd +70 srcs/ft_printf/round_double.c
+badd +0 includes/ft_printf.h
 argglobal
 silent! argdel *
 $argadd ../../tests/Vol4icatest/ft_printf/tests
 set stal=2
-edit ../../tests/Vol4icatest/ft_printf/tests
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-argglobal
-setlocal noautoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'conf'
-setlocal filetype=conf
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'conf'
-setlocal syntax=conf
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 109 - ((29 * winheight(0) + 35) / 70)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-109
-normal! 0
-tabedit srcs/ft_printf/print_double.c
+edit srcs/ft_printf/print_double.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -187,8 +77,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 111 + 111) / 223)
-exe 'vert 2resize ' . ((&columns * 111 + 111) / 223)
+exe 'vert 1resize ' . ((&columns * 104 + 107) / 215)
+exe 'vert 2resize ' . ((&columns * 110 + 107) / 215)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -295,11 +185,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 50 - ((19 * winheight(0) + 35) / 70)
+let s:l = 44 - ((41 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-50
+44
 normal! 0
 wincmd w
 argglobal
@@ -409,16 +299,17 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 35) / 70)
+let s:l = 58 - ((54 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 012|
+58
+normal! 02|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 111 + 111) / 223)
-exe 'vert 2resize ' . ((&columns * 111 + 111) / 223)
-tabedit srcs/ft_printf/additional_functions_1.c
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 104 + 107) / 215)
+exe 'vert 2resize ' . ((&columns * 110 + 107) / 215)
+tabedit srcs/ft_get_double_man.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -428,8 +319,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 111 + 111) / 223)
-exe 'vert 2resize ' . ((&columns * 111 + 111) / 223)
+exe 'vert 1resize ' . ((&columns * 107 + 107) / 215)
+exe 'vert 2resize ' . ((&columns * 107 + 107) / 215)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -536,15 +427,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 66 - ((44 * winheight(0) + 35) / 70)
+let s:l = 46 - ((45 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-66
-normal! 013|
+46
+normal! 015|
 wincmd w
 argglobal
-edit srcs/ft_printf/check_errors.c
+edit includes/ft_printf.h
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -573,8 +464,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'c'
-setlocal filetype=c
+if &filetype != 'cpp'
+setlocal filetype=cpp
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -635,8 +526,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'c'
-setlocal syntax=c
+if &syntax != 'cpp'
+setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -650,15 +541,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 36 - ((35 * winheight(0) + 35) / 70)
+let s:l = 49 - ((48 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
-normal! 044|
+49
+normal! 048|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 111 + 111) / 223)
-exe 'vert 2resize ' . ((&columns * 111 + 111) / 223)
+exe 'vert 1resize ' . ((&columns * 107 + 107) / 215)
+exe 'vert 2resize ' . ((&columns * 107 + 107) / 215)
 tabnext 1
 set stal=1
 if exists('s:wipebuf')

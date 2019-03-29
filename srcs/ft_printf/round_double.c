@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:51:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 21:40:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:28:10 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		round_double(t_double_res *d)
 			round_exp(d);
 		}
 	}
-	else if (i == 0) 
+	else if (i == 0)
 	{
 		round_presicion_zero(d);
 		round_exp(d);

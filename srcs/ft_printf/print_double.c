@@ -6,37 +6,15 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 21:18:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:30:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void			print_t_double(t_double_res *r)
-{
-	int				i;
-	int				m;
-
-	i = r->e->r_len;
-	while (i && r->e->r[--i] == 0) 
-		;
-	while (i >= 0)
-		ft_printf_put_char(r->e->r[i--] + 48);
-	if (g_data.precision > 0)
-	{
-		m = 0;
-		i = g_data.precision;
-		ft_printf_put_char('.');
-		while (i-- && m < r->m->r_len)
-			ft_printf_put_char(r->m->r[m++] + 48);
-		while (i-- >= 0)
-			ft_printf_put_char('0');
-	}
-}
-
 static void			print_3(int m)
 {
-	while (g_data.width-- > 0)
+	while (g_data.width-- > g_data.precision)
 		ft_printf_put_char(' ');
 	if (g_data.flags[3] == '+' || m)
 	{
@@ -51,6 +29,10 @@ static void			print_2(t_double_res *d)
 {
 	if (!print_inf(d) && !print_nan(d))
 	{
+		if (g_data.width > 0)
+			g_data.width -= ft_get_real_len(d->e->r, d->e->r_len) + 1;
+		if (g_data.precision > 0)
+			--g_data.width;
 		if (g_data.flags[1] == '0')
 		{
 			if (g_data.flags[3] == '+' || d->b->s)
@@ -60,9 +42,7 @@ static void			print_2(t_double_res *d)
 				else
 					ft_printf_put_char('+');
 			}
-			g_data.width -= ft_get_real_len(d->e->r, d->e->r_len);
-			--g_data.width;
-			while (g_data.width-- > g_data.precision + 1)
+			while (g_data.width-- > g_data.precision)
 				ft_printf_put_char('0');
 		}
 		else
@@ -103,12 +83,13 @@ static void			print(long double d)
 	r = convert_double(d);
 	if (g_data.precision == -1)
 		g_data.precision = 6;
-	round_double(r);
+	if (!ft_is_nan(r) && !ft_is_pos_inf(r) && !ft_is_neg_inf(r))
+		round_double(r);
 	if (!ft_is_nan(r))
 	{
 		if (g_data.flags[0] == '#' && g_data.precision == 0)
 			--g_data.width;
-		if ((g_data.flags[3] == '+' || r->b->s))
+		if (g_data.flags[3] == '+' || r->b->s)
 			--g_data.width;
 		if (g_data.flags[2] == ' ' && g_data.flags[3] != '+' && !r->b->s)
 		{
@@ -125,7 +106,7 @@ static void			print(long double d)
 void				print_double(va_list ap)
 {
 	if (g_data.length == 3)
-		print(va_arg(ap, long double));
+		print((long double)va_arg(ap, long double));
 	else
 		print(va_arg(ap, double));
 }

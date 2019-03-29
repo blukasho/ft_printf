@@ -6,13 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:33:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/25 09:42:23 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:33:36 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
-int		srch_int_in_arr(int *a, int a_len, int srch)
+int			srch_int_in_arr(int *a, int a_len, int srch)
 {
 	while (--a_len >= 0)
 		if (a[a_len] != srch)
@@ -20,7 +20,7 @@ int		srch_int_in_arr(int *a, int a_len, int srch)
 	return (0);
 }
 
-void	move_int_arr(int *a, int a_len)
+void		move_int_arr(int *a, int a_len)
 {
 	while (a[--a_len] == 0)
 		;
@@ -29,5 +29,27 @@ void	move_int_arr(int *a, int a_len)
 		a[a_len + 1] = a[a_len];
 		a[a_len] = 0;
 		--a_len;
+	}
+}
+
+void		print_t_double(t_double_res *r)
+{
+	int		i;
+	int		m;
+
+	i = r->e->r_len;
+	while (i && (r->e->r[--i]) == 0)
+		;
+	while (i >= 0)
+		ft_printf_put_char(r->e->r[i--] + 48);
+	if (g_data.precision > 0)
+	{
+		m = 0;
+		i = g_data.precision;
+		ft_printf_put_char('.');
+		while (i-- && m < r->m->r_len)
+			ft_printf_put_char(r->m->r[m++] + 48);
+		while (i-- >= 0)
+			ft_printf_put_char('0');
 	}
 }

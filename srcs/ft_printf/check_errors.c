@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:54:39 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 22:18:27 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:34:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		check_errors(void)
 
 int		ft_is_nan(t_double_res *d)
 {
-	return((d->b->e == MAX_EXP && d->b->m[62] == '1') ? 1 : 0);
+	return ((d->b->e == MAX_EXP && d->b->m[62] == '1') ? 1 : 0);
 }
 
 int		ft_is_pos_inf(t_double_res *d)

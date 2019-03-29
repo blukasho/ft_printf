@@ -6,14 +6,14 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 08:33:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 21:36:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:37:20 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
 static t_neg_exp_of_digit	*init(void)
-{	
+{
 	t_neg_exp_of_digit		*r;
 
 	r = (t_neg_exp_of_digit *)malloc(sizeof(t_neg_exp_of_digit));
@@ -42,13 +42,13 @@ t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 	int						bits;
 	int						m;
 
-	m = -1;
+	m = 0;
 	r = init();
 	bits = b->e - 16383;
-	if (bits < 63)
+	if (bits < 63 && bits >= 0)
 	{
 		bits = 63 - bits;
-		while (bits >= 0)
+		while (--m && bits >= 0)
 		{
 			if (b->m[--bits] == '1')
 			{
@@ -58,7 +58,6 @@ t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 				del(tmp);
 				del(tmp2);
 			}
-			--m;
 		}
 	}
 	return (r);

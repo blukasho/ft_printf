@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 21:15:47 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:30:53 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int				main_function(const char **format, va_list ap);
 int				check_errors(void);
 int				print_nan(t_double_res *d);
 int				print_inf(t_double_res *d);
+void			print_t_double(t_double_res *r);
 void			get_double_exp(void);
 void			get_double_bits(__int128 li);
 void			print_precision_octal(int l);
