@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/28 18:53:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:57:26 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,12 @@ typedef struct		s_bits
 
 typedef struct		s_double_res
 {
+	t_bits				*b;
 	t_sum_two_digits	*e;
 	t_neg_exp_of_digit	*m;
-	t_bits				*b;
 }					t_double_res;
 
+void				clear_t_double_res(t_double_res *r);
 t_double_res		*convert_double(long double ld);
 __int128			ft_len_of_digit(__int128 d);
 t_neg_exp_of_digit	*ft_sum(t_neg_exp_of_digit *a, t_neg_exp_of_digit *b);

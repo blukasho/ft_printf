@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:30:57 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:30:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:59:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ static void			print(long double d)
 		print_1(r);
 	else
 		print_2(r);
+	clear_t_double_res(r);
 }
 
 void				print_double(va_list ap)

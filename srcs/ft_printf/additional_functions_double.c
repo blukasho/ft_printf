@@ -6,11 +6,34 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:33:13 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:33:36 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/29 15:48:27 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void		clear_t_double_res(t_double_res *r)
+{
+	if (r->b)
+		ft_memdel((void **)&r->b);
+	if (r->e)
+	{
+		ft_memdel((void **)&r->e->r);
+		ft_memdel((void **)&r->e);
+	}
+	if (r->m)
+	{
+		if (r->m->r)
+			ft_memdel((void **)&r->m->r);
+		if (r->m->div)
+			ft_memdel((void **)&r->m->div);
+		if (r->m->per)
+			ft_memdel((void **)&r->m->per);
+		ft_memdel((void **)&r->m);
+	}
+	if (r)
+		ft_memdel((void **)&r);
+}
 
 int			srch_int_in_arr(int *a, int a_len, int srch)
 {

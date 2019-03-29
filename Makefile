@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/03/27 10:17:10 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/03/29 16:28:20 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,11 @@ all: $(DIR_O) printf
 
 printf: $(NAME)
 	@echo "\033[4;31m"
-	cp -rvf libftprintf.a ~/Documents/tests/Vol4icatest/ft_printf/
+#	cp -rvf libftprintf.a ~/Documents/tests/Vol4icatest/ft_printf/
 	@echo "\033[0m"
 	gcc $(FLAGS) main.c $(NAME)
 	@echo "\033[4;32m<<<<<<<<<<<DONE>>>>>>>>>>>\033[0m"
+	@valgrind --error-limit=yes --leak-check=full ./a.out | cat -e
 	@./a.out | cat -e
     
 $(DIR_O):
