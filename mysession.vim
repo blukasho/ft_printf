@@ -55,14 +55,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 main.c
-badd +100 srcs/ft_printf/print_double.c
+badd +89 srcs/ft_printf/print_double.c
 badd +1 Makefile
-badd +14 srcs/ft_get_double_bits.c
+badd +33 srcs/ft_get_double_bits.c
 badd +1 srcs/ft_atoi.c
-badd +25 includes/libft.h
+badd +26 includes/libft.h
 badd +43 srcs/ft_printf/round_double.c
-badd +35 srcs/ft_printf/convert_double.c
-badd +26 srcs/ft_get_double_man.c
+badd +34 srcs/ft_printf/convert_double.c
+badd +57 srcs/ft_get_double_man.c
 badd +118 srcs/ft_neg_exp_of_digit.c
 badd +1 srcs/ft_printf/convert_double.c\`
 badd +15 srcs/ft_int_arr_comparing.c
@@ -185,12 +185,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 20 - ((19 * winheight(0) + 25) / 50)
+let s:l = 25 - ((24 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 010|
+25
+normal! 021|
 tabedit srcs/ft_get_double_man.c
 set splitbelow splitright
 set nosplitbelow
@@ -306,13 +306,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 43 - ((19 * winheight(0) + 25) / 50)
+let s:l = 51 - ((29 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-43
+51
 normal! 0
-tabedit srcs/ft_printf/print_double.c
+tabedit srcs/ft_printf/round_double.c
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -427,12 +427,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 84 - ((20 * winheight(0) + 25) / 50)
+let s:l = 41 - ((22 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-84
-normal! 0
+41
+normal! 072|
 tabedit includes/libft.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -680,7 +680,7 @@ normal! 04|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 96 + 96) / 193)
 exe 'vert 2resize ' . ((&columns * 96 + 96) / 193)
-tabnext 3
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

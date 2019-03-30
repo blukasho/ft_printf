@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 08:33:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/30 17:57:19 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/30 18:55:08 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 	bits = get_curr_bits(bits);
 	if (bits >= 0)
 	{
-		while (--m && bits >= 0)
+		while (--m && bits >= 0 && m > -66)
 		{
 			if (b->m[--bits] == '1')
 			{
