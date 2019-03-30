@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/03/29 16:28:20 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/03/30 16:56:50 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,14 @@ DIR_O = tmp
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -I includes
+FLAGS = -Wall -Wextra -Werror -g3 -I includes
 
 NAME = libftprintf.a
 
 all: $(NAME)
+	gcc $(FLAGS) main.c libftprintf.a
+#	valgrind --leak-check=full ./a.out
+	./a.out
     
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^

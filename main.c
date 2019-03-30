@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_arr_comparing.c                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/18 18:07:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/30 16:44:33 by blukasho         ###   ########.fr       */
+/*   Created: 2019/03/30 10:23:32 by blukasho          #+#    #+#             */
+/*   Updated: 2019/03/30 17:55:04 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "includes/ft_printf.h"
+#include <stdio.h>
 
-int	ft_int_arr_comparing(int *a, int *b, int a_len, int b_len)
+int					main(void)
 {
-	while (a_len && a[--a_len] == 0)
-		;
-	while (b_len && b[--b_len] == 0)
-		;
-	if (a_len > b_len)
-		return (1);
-	else if (a_len < b_len)
-		return (-1);
-	else
-	{
-		while (a_len >= 0)
-		{
-			if (a[a_len] > b[a_len])
-				return (1);
-			else if (a[a_len] < b[a_len])
-				return (-1);
-			--a_len;
-		}
-	}
+	int				my;
+	int				sy;
+	long double		ld;
+	char			*s;
+
+	ld = 2.51L;
+	s = "|%.0LF|\n";
+	my = ft_printf(s, ld);
+    sy = printf(s, ld);
+	printf("my = %d, sy = %d\n", my, sy);
 	return (0);
 }
+//00111111111111101000000000000000000000000000000000000000000000000000000000000000

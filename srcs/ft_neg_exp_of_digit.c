@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:26:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/27 11:28:13 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/30 16:45:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void					get(t_neg_exp_of_digit *n, t_pos_exp_of_digit *p)
 		m = ft_int_arr_subtr(n->div, p->r, n->div_len, p->r_len);
 		while (i < n->div_len)
 			n->div[i++] = 0;
-		while (m->r[--(m->r_len)] == 0)
+		while (m->r_len && m->r[--(m->r_len)] == 0)
 			;
 		while (m->r_len >= 0)
 		{

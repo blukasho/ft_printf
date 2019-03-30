@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 08:33:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:37:20 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/30 17:57:19 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ static void					del(t_neg_exp_of_digit *n)
 	ft_memdel((void **)&n);
 }
 
+static int					get_curr_bits(int bits)
+{
+	if (bits < 0)
+		return(63 + (-bits));
+	return (63 - bits);
+}
+
 t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 {
 	t_neg_exp_of_digit		*r;
@@ -45,9 +52,9 @@ t_neg_exp_of_digit			*ft_get_double_man(t_bits *b)
 	m = 0;
 	r = init();
 	bits = b->e - 16383;
-	if (bits < 63 && bits >= 0)
+	bits = get_curr_bits(bits);
+	if (bits >= 0)
 	{
-		bits = 63 - bits;
 		while (--m && bits >= 0)
 		{
 			if (b->m[--bits] == '1')

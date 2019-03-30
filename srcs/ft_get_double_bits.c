@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:40:44 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 15:05:18 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/30 17:28:20 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bits			*ft_get_double_bits(long double ld)
 	bits = (t_bits *)malloc(sizeof(t_bits));
 	ft_bzero(bits, sizeof(t_bits));
 	i = 0;
-	while (i < 64)
+	while (i <= 63)
 	{
 		if ((li & 0x1) == 1)
 			bits->m[i++] = '1';
@@ -31,7 +31,7 @@ t_bits			*ft_get_double_bits(long double ld)
 		li = li >> 1;
 	}
 	bits->m[i] = '\0';
-	bits->e = li | 0x0000;
+	bits->e = li & 0xFFFF;
 	if (bits->e < 0)
 		bits->e = bits->e ^ 0x8000;
 	li = li >> 15;

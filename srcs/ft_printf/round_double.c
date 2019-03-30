@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:51:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:28:10 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/03/30 17:20:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	round_exp(t_double_res *d)
 		d->m->r[0] = d->m->r[0] % 10;
 		++(d->e->r[0]);
 	}
-	while (d->e->r[--l] == 0)
+	while (l && d->e->r[--l] == 0)
 		;
 	while (i <= l)
 	{
@@ -38,7 +38,7 @@ static void	round_presicion_zero(t_double_res *d)
 {
 	if ((d->e->r[0]) % 2 && (d->m->r[0]) >= 5)
 		++(d->e->r[0]);
-	else if (!(d->e->r[0] % 2) && (d->m->r[0]) > 5)
+	else if (!(d->e->r[0] % 2) && (d->m->r[2]) >= 5)
 		++(d->e->r[0]);
 	else if (((d->m->r[0]) >= 5) && ((d->m->r[1]) != 0))
 		++(d->e->r[0]);
@@ -46,7 +46,7 @@ static void	round_presicion_zero(t_double_res *d)
 
 static int	check(t_double_res *d, int i)
 {
-	return ((d->m->r[i] == 5 && d->m->r[i + 1] == 0) ? 1 : 0);
+	return ((d->m->r[i] == 0 && d->m->r[i + 1] == 0) ? 1 : 0);
 }
 
 void		round_double(t_double_res *d)
