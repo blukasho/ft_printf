@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:49:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 17:15:48 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/04/01 13:50:32 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int				main_function(const char **format, va_list ap);
 int				check_errors(void);
 int				print_nan(t_double_res *d);
 int				print_inf(t_double_res *d);
+void			move_int_arr(int *a, int a_len);
 void			print_t_double(t_double_res *r);
 void			print_precision_octal(int l);
 void			print_width_octal(char c);
@@ -63,6 +64,5 @@ void			print_c(int c);
 void			result_preparation(va_list ap);
 void			parse_format_specifiers(const char **format);
 void			parse_flags(const char **format);
-void			reverse_double(char *s);
 void			round_double(t_double_res *d);
 #endif

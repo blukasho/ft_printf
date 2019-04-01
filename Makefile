@@ -28,13 +28,12 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   print_digits.c print_octal.c additional_functions.c\
 	   print_unsigned_digits.c print_hexdecimal.c print_double.c\
 	   print_percent.c print_string.c main_function.c check_errors.c\
-	   reverse_double.c additional_functions_1.c\
-	   ft_int_arr_mult.c ft_int_arr_subtr.c ft_len_of_digit.c\
+	   additional_functions_1.c ft_int_arr_mult.c ft_int_arr_subtr.c\
 	   ft_sum_two_digits.c ft_pos_exp_of_digit.c ft_neg_exp_of_digit.c\
 	   ft_int_arr_comparing.c ft_print_int_arr.c additional_functions_double.c\
 	   t_sum_two_digits_del.c check_period.c ft_sum.c ft_get_double_bits.c\
 	   ft_get_double_exp.c ft_get_double_man.c convert_double.c round_double.c\
-	   ft_print_double_bits.c
+	   ft_print_double_bits.c ft_len_of_digit.c\
 
 vpath %.c srcs srcs/ft_printf
 
@@ -61,6 +60,7 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
+	rm -rf a.out*
 	rm -rf $(NAME)
 
 re:	fclean all
