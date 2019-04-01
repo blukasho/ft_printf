@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:51:33 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/30 23:37:04 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/04/01 11:55:38 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void	round_exp(t_double_res *d)
 static void	round_presicion_zero(t_double_res *d)
 {
 	if ((d->e->r[0]) % 2 && (d->m->r[0]) >= 5 && d->m->r[1] == 0)
+		++(d->e->r[0]);
+	else if (!(d->e->r[0] % 2) && (d->m->r[0] > 5) && d->m->r[1] == 0)
 		++(d->e->r[0]);
 	else if (!(d->e->r[0] % 2) && (d->m->r[0] >= 5) && d->m->r[1] != 0)
 		++(d->e->r[0]);
