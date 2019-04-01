@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 08:33:58 by blukasho          #+#    #+#             */
-/*   Updated: 2019/04/01 11:46:57 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/04/01 12:02:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void					del(t_neg_exp_of_digit *n)
 static int					get_curr_bits(int bits)
 {
 	if (bits < 0)
-		return(63 + (-bits));
+		return (63 + (-bits));
 	return (63 - bits);
 }
 

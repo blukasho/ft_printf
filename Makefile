@@ -48,7 +48,6 @@ NAME = libftprintf.a
 
 all: $(NAME)
 	gcc $(FLAGS) main.c libftprintf.a
-#	valgrind --leak-check=full ./a.out
 	./a.out
     
 $(NAME): $(OBJ)
