@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:54:39 by blukasho          #+#    #+#             */
-/*   Updated: 2019/03/29 14:34:18 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:45:06 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		check_errors(void)
 {
-	if (g_data.width > 2147483646)
+	if (g_data.width > 2147483646 && g_data.specifier != 's')
 		return (-1);
-	if (g_data.precision > 2147483641)
+	if (g_data.precision > 2147483641 && g_data.specifier != 's')
 		return (-1);
 	return (0);
 }

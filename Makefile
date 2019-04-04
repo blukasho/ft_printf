@@ -37,17 +37,13 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 
 vpath %.c srcs srcs/ft_printf
 
-DIR_O = tmp
-
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -g3 -I includes
+FLAGS = -Wall -Wextra -Werror -I includes
 
 NAME = libftprintf.a
 
 all: $(NAME)
-	gcc $(FLAGS) main.c libftprintf.a
-	./a.out
     
 $(NAME): $(OBJ)
 	ar -rv $(NAME) $^
@@ -60,7 +56,6 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf a.out*
 	rm -rf $(NAME)
 
 re:	fclean all
